@@ -46,7 +46,8 @@ export async function build({ mode='preview', outDir=resolve('dist') }={}) {
   }
   const pairs=Object.fromEntries(selected.flatMap(record=>locales.map(l=>[record.paths[l],record.paths])));
   const modelContext=Object.fromEntries(models.flatMap(m=>locales.map(l=>[routes.find(r=>r.id===m.id).paths[l],m.name])));
-  await writeFile(resolve(outDir,'assets','routes.js'),`window.eebdRoutePairs=${JSON.stringify(pairs)};window.eebdModelContext=${JSON.stringify(modelContext)};`);
+  const bulkContext=selected.filter(r=>['fleet','fleetProcurement','procurementDocs'].includes(r.id)).flatMap(r=>Object.values(r.paths));
+  await writeFile(resolve(outDir,'assets','routes.js'),`window.eebdRoutePairs=${JSON.stringify(pairs)};window.eebdModelContext=${JSON.stringify(modelContext)};window.eebdBulkContext=${JSON.stringify(bulkContext)};`);
   const sitemap=mode==='production'?sitemapRoutes(selected).flatMap(r=>locales.map(l=>`<url><loc>${esc(site.origin+r.paths[l])}</loc>${locales.map(alt=>`<xhtml:link rel="alternate" hreflang="${alt}-CA" href="${esc(site.origin+r.paths[alt])}"/>`).join('')}<image:image><image:loc>${esc(site.origin+imagePath(r.id))}</image:loc></image:image></url>`)).join(''):'';
   await writeFile(resolve(outDir,'sitemap.xml'),`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">${sitemap}</urlset>`);
   await writeFile(resolve(outDir,'robots.txt'),`User-agent: *\nAllow: /\n${mode==='production'?`Sitemap: ${site.origin}/sitemap.xml\n`:''}`);

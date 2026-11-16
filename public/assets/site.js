@@ -49,6 +49,10 @@
   if (enquiry) {
     const modelContext=window.eebdModelContext || {};
     const source=params.get('source');
+    if((window.eebdBulkContext || []).includes(source)) {
+      const bulk=enquiry.querySelector('[data-bulk-fields]');
+      if(bulk)bulk.open=true;
+    }
     if(source && Object.hasOwn(modelContext,source)) {
       enquiry.querySelectorAll('input[name="model"]').forEach(input=>{input.value=modelContext[source];});
     }

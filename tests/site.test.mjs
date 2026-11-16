@@ -32,8 +32,8 @@ test('draft, planned and withdrawn routes cannot enter production or the sitemap
   assert.equal(includedRoutes('preview',records).length,3);
   assert.equal(includedRoutes('production',records).length,2);
   assert.equal(sitemapRoutes(records).length,1);
-  assert.equal(includedRoutes('production').length,19+cities.length+offerings.length+models.length);
-  assert.equal(sitemapRoutes().length,17+cities.length+offerings.length+models.length);
+  assert.equal(includedRoutes('production').length,21+cities.length+offerings.length+models.length);
+  assert.equal(sitemapRoutes().length,19+cities.length+offerings.length+models.length);
 });
 test('production requires verified launch evidence while keeping unarranged supply explicit',()=>{
   assert.doesNotThrow(()=>assertProductionReady());
@@ -132,4 +132,17 @@ test('general contact collects only relevant fields and requires a message',()=>
   const value={...request(),requestType:'general',fields:{contact:'Sample Buyer',email:'buyer@example.invalid',message:'A general question'}};
   assert.equal(validateEnquiry(value,allowedPaths).ok,true);
   value.fields.message='';assert.equal(validateEnquiry(value,allowedPaths).errors.message,'required');
+});
+
+test('optional purchasing requirements retain multiline schedules only for equipment enquiries',()=>{
+  const input=request();
+  Object.assign(input.fields,{partNumber:'Specified part',purchasePlan:'forecast',destinationSchedule:'Halifax: 12\nEsquimalt: 8',remainingShelfLife:'At delivery: to discuss'});
+  const validated=validateEnquiry(input,allowedPaths);
+  assert.equal(validated.ok,true);
+  assert.equal(validated.value.requestSpecificFields.destinationSchedule,'Halifax: 12\nEsquimalt: 8');
+  input.requestType='service';
+  assert.equal(validateEnquiry(input,allowedPaths).value.requestSpecificFields.destinationSchedule,undefined);
+  input.requestType='equipment';input.fields.purchasePlan='guaranteed-contract';input.fields.nsn='x'.repeat(81);
+  const invalid=validateEnquiry(input,allowedPaths);
+  assert.deepEqual(invalid.errors,{nsn:'invalid',purchasePlan:'invalid'});
 });

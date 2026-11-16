@@ -15,6 +15,7 @@ export const imageDescriptions = {
 const coreImages={home:'marine-port',equipment:'marine-port',marineEquipment:'marine-port',industrialEquipment:'industrial-facility',accessories:'training-workshop',training:'training-workshop',service:'service-planning',fleet:'river-port',industries:'industrial-facility',marine:'atlantic-harbour',industrial:'industrial-facility',coverage:'marine-port',resources:'procurement-desk',quoteGuide:'procurement-desk',escapeGuide:'marine-port',about:'procurement-desk',contact:'procurement-desk',quote:'procurement-desk',privacy:'procurement-desk','404':'marine-port'};
 const regionImages={pacific:'marine-port',atlantic:'atlantic-harbour',stlawrence:'river-port',greatlakes:'river-port',inland:'industrial-facility'};
 export function imageFor(id) {
+  if(id==='comparison')return 'ocenco-m202-niosh';
   if(modelFor(id))return modelFor(id).image;
   const city=cities.find(c=>c.id===id),offering=offerings.find(o=>o.id===id);
   return city?regionImages[city.region]:offering?.image || coreImages[id] || 'procurement-desk';

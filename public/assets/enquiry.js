@@ -18,15 +18,16 @@ import { submitEnquiry } from './formspree.js';
   function clearErrors() {
     errors.hidden=true;errors.querySelector('ul').replaceChildren();
     root.querySelectorAll('.field-error').forEach(el=>el.remove());
-    root.querySelectorAll('[aria-invalid]').forEach(el=>{el.removeAttribute('aria-invalid');el.removeAttribute('aria-describedby');});
+    root.querySelectorAll('[aria-invalid]').forEach(el=>{el.removeAttribute('aria-invalid');if(el.dataset.helpId)el.setAttribute('aria-describedby',el.dataset.helpId);else el.removeAttribute('aria-describedby');});
   }
   function showErrors(items) {
     clearErrors();
     if (!items.length) return;
     for(const [el,message] of items) {
       el.setAttribute('aria-invalid','true');
+      const disclosure=el.closest('[data-bulk-fields]');if(disclosure)disclosure.open=true;
       const error=document.createElement('p');error.className='field-error';error.id=el.id+'-error';error.textContent=message;
-      el.setAttribute('aria-describedby',error.id);if(el.closest('.field'))el.closest('.field').append(error);else el.closest('.check-label').after(error);
+      el.setAttribute('aria-describedby',[el.dataset.helpId,error.id].filter(Boolean).join(' '));if(el.closest('.field'))el.closest('.field').append(error);else el.closest('.check-label').after(error);
       const li=document.createElement('li'),a=document.createElement('a');a.href='#'+el.id;a.textContent=label(el)+': '+message;
       a.addEventListener('click',event=>{event.preventDefault();el.focus();});li.append(a);errors.querySelector('ul').append(li);
     }

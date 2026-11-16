@@ -10,7 +10,17 @@ export const fieldDefinitions = {
   model: { en: 'Manufacturer/model or “not sure”', fr: 'Fabricant et modèle ou « Je ne sais pas »', required: true, max: 240 },
   quantity: { en: 'Quantity or approximate requirement', fr: 'Quantité ou besoin approximatif', required: true, max: 120 },
   application: { en: 'Application', fr: 'Application', required: true, options: [['marine','Marine','Maritime'],['industrial','Industrial','Industrielle'],['other','Other / not sure','Autre / Je ne sais pas']] },
-  specifications: { en: 'Part number, required documents or procurement reference (optional)', fr: 'Numéro de pièce, documents ou référence d’achat (facultatif)', max: 1500, type: 'textarea' },
+  specifications: { en: 'Other equipment specifications (optional)', fr: 'Autres spécifications de l’équipement (facultatif)', max: 1500, type: 'textarea' },
+  partNumber: { en: 'Manufacturer part number (optional)', fr: 'Numéro de pièce du fabricant (facultatif)', max: 160 },
+  nsn: { en: 'NATO Stock Number / NSN (optional)', fr: 'Numéro de nomenclature OTAN / NNO (facultatif)', max: 80 },
+  ncage: { en: 'Manufacturer NCAGE (optional)', fr: 'NCAGE du fabricant (facultatif)', max: 80 },
+  procurementReference: { en: 'Tender or purchasing reference (optional)', fr: 'Référence d’appel d’offres ou d’achat (facultatif)', max: 240 },
+  purchasePlan: { en: 'Purchase schedule (optional)', fr: 'Calendrier d’achat (facultatif)', options: [['one-off','One-time purchase','Achat ponctuel'],['staged','Staged deliveries','Livraisons échelonnées'],['forecast','Annual forecast / planning estimate','Prévision annuelle / estimation'],['replacement','Replacement programme','Programme de remplacement'],['discuss','To discuss','À discuter']] },
+  destinationSchedule: { en: 'Quantities, destinations and required dates (optional)', fr: 'Quantités, destinations et dates souhaitées (facultatif)', max: 2000, type: 'textarea', help: { en: 'Use one line per vessel or site. Label estimates and firm quantities separately.', fr: 'Utilisez une ligne par navire ou site. Distinguez les estimations des quantités fermes.' } },
+  remainingShelfLife: { en: 'Minimum remaining shelf life (optional)', fr: 'Durée minimale de conservation restante (facultatif)', max: 240, help: { en: 'State the required period or percentage and when it must be measured, for example at delivery.', fr: 'Précisez la période ou le pourcentage exigé et le moment de mesure, par exemple à la livraison.' } },
+  documentation: { en: 'Required documents and languages (optional)', fr: 'Documents et langues requis (facultatif)', max: 1500, type: 'textarea', help: { en: 'For example: exact-variant approvals, instructions, applicable SDS, traceability and release documents.', fr: 'Exemples : homologations de la variante, instructions, FDS applicables, traçabilité et documents de libération.' } },
+  accessories: { en: 'Separate training units and accessories (optional)', fr: 'Appareils de formation et accessoires distincts (facultatif)', max: 1500, type: 'textarea', help: { en: 'List each trainer, bracket or storage item with its own model or part number and quantity.', fr: 'Indiquez le modèle ou numéro de pièce et la quantité de chaque appareil de formation, support ou accessoire.' } },
+  deliveryTerms: { en: 'Freight, handover or receiving requirements (optional)', fr: 'Exigences de transport, de transfert ou de réception (facultatif)', max: 500 },
   participants: { en: 'Participant count or estimate', fr: 'Nombre de participants ou estimation', required: true, max: 120 },
   language: { en: 'Preferred training language', fr: 'Langue de formation souhaitée', required: true, options: [['en','English','Anglais'],['fr','French','Français'],['both','English and French','Anglais et français'],['discuss','To discuss','À discuter']] },
   objective: { en: 'Learning objective and any required credential', fr: 'Objectif d’apprentissage et qualification exigée, le cas échéant', required: true, max: 1500, type: 'textarea' },
@@ -21,8 +31,9 @@ export const fieldDefinitions = {
   notes: { en: 'Additional information (optional)', fr: 'Renseignements supplémentaires (facultatif)', max: 2000, type: 'textarea' },
 };
 export const commonFields = ['contact','organization','email','phone','location','timing'];
+export const bulkFields = ['partNumber','nsn','ncage','procurementReference','purchasePlan','destinationSchedule','remainingShelfLife','documentation','accessories','deliveryTerms'];
 export const specificFields = {
-  equipment: ['application','model','quantity','specifications'],
+  equipment: ['application','model','quantity','specifications',...bulkFields],
   training: ['model','participants','language','objective','format'],
   service: ['model','quantity','support','issue','records'],
 };

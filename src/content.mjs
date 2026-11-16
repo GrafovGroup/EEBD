@@ -1,6 +1,7 @@
 import { cities } from './cities.mjs';
 import { offerings } from './offerings.mjs';
 import { models } from './models.mjs';
+import { procurementPages, enhanceProcurementContent } from './procurement.mjs';
 export const ui = {
   en: {
     skip: 'Skip to content', preview: 'DESIGN PREVIEW · ENQUIRIES INACTIVE', concepts: 'VIEW SELECTED LOGO',
@@ -240,6 +241,7 @@ export const pages = {
 };
 
 
+Object.assign(pages, procurementPages);
 for(const item of offerings) pages[item.id]={en:item.en,fr:item.fr};
 for(const model of models) pages[model.id]=Object.fromEntries(['en','fr'].map(locale=>[locale,{...model[locale],requestType:'equipment',sources:model.sources}]));
 for(const city of cities) pages[city.id]=Object.fromEntries(['en','fr'].map(locale=>{
@@ -248,3 +250,4 @@ for(const city of cities) pages[city.id]=Object.fromEntries(['en','fr'].map(loca
     sections:[[c.contextHeading,c.context],[fr?'Préparer votre demande locale':'Prepare your local enquiry',fr?'Précisez le site de destination, la personne responsable de la réception et les contraintes d’accès. Distinguez la livraison d’équipement, la formation et le soutien technique : chaque volet demande une confirmation distincte.':'Identify the receiving site, receiving contact and access constraints. Separate equipment delivery, training and service support: each part needs its own confirmation.']],
     sources:city.sources.map(s=>[s.title,s.url]),related:['marineEquipment','training','service','coverage']}];
 }));
+enhanceProcurementContent(pages);

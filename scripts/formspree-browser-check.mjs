@@ -6,6 +6,7 @@ import { build } from './build.mjs';
 import { previewServer } from './server.mjs';
 import { renderPage } from '../src/render.mjs';
 import { models } from '../src/models.mjs';
+import { bulkFields } from '../src/enquiry.mjs';
 import { pathFor } from '../src/routes.mjs';
 import { contentSecurityPolicy } from '../src/security.mjs';
 import { FORMSPREE_ENDPOINT } from '../public/assets/formspree.js';
@@ -22,6 +23,7 @@ if(!liveOrigin) {
 const origin=liveOrigin || `http://127.0.0.1:${server.address().port}`;
 const browser=await chromium.launch({headless:true,executablePath:process.env.EEBD_CHROME_EXECUTABLE});
 const context=await browser.newContext({viewport:{width:390,height:844}});
+context.setDefaultTimeout(12000);
 const page=await context.newPage();
 let calls=[],scenario='success',unexpected=[];
 const pageErrors=[];page.on('pageerror',error=>pageErrors.push(error.message));
@@ -41,9 +43,10 @@ await context.route('**/*',async route=>{
   }
   return route.continue();
 });
-async function prepare(locale,type) {
+async function prepare(locale,type,sourceId=sourceRoute) {
+  console.log('Form check:',locale,type,scenario,sourceId);
   calls=[];
-  await page.goto(origin+pathFor(type==='general'?'contact':'quote',locale)+'?type='+type+'&source='+encodeURIComponent(pathFor(sourceRoute,locale)));
+  await page.goto(origin+pathFor(type==='general'?'contact':'quote',locale)+'?type='+type+'&source='+encodeURIComponent(pathFor(sourceId,locale)));
   await page.locator('[data-review]').click();
   assert.equal(await page.locator('[data-errors]').isVisible(),true);
   for(const [name,value] of Object.entries(type==='general'?{contact:'Synthetic Buyer',email:'buyer@example.invalid'}:{contact:'Synthetic Buyer',organization:'Example Test Organization',email:'buyer@example.invalid',location:'Ontario',timing:'Flexible'}))await page.locator('#common-'+name).fill(value);
@@ -99,11 +102,43 @@ try {
       assert.equal(await page.locator('[data-errors]').isVisible(),true);assert.equal(await page.locator('#common-email').getAttribute('aria-invalid'),'true');
     } else assert.ok((await page.locator('[data-submission-status]').innerText()).length>20);
   }
+  const bulkValues={partNumber:'TEST-PART-01',nsn:'TEST-NSN',ncage:'TEST-CAGE',procurementReference:'TEST ONLY procurement',purchasePlan:'forecast',destinationSchedule:'Halifax: 12 estimated, April 2027\nEsquimalt: 8 estimated, May 2027',remainingShelfLife:'Required at delivery: to discuss',documentation:'English and French instructions; exact-variant approvals',accessories:'2 dedicated trainers\n20 separate mounting brackets',deliveryTerms:'Receiving contact and freight terms to confirm'};
+  for(const locale of ['en','fr']) {
+    scenario='success';await prepare(locale,'equipment','fleetProcurement');
+    await page.locator('[data-edit]').click();
+    assert.equal(await page.locator('[data-bulk-fields]').getAttribute('open'),'');
+    for(const [name,value] of Object.entries(bulkValues)) {
+      const field=page.locator('#equipment-'+name);
+      if(name==='purchasePlan')await field.selectOption(value);else await field.fill(value);
+    }
+    await page.locator('[data-review]').click();
+    const summary=await page.locator('[data-summary]').innerText();
+    assert.ok(summary.includes(bulkValues.destinationSchedule));assert.ok(summary.includes(bulkValues.documentation));
+    await page.locator('[data-edit]').click();
+    assert.equal(await page.locator('#equipment-accessories').inputValue(),bulkValues.accessories);
+    await page.locator('[data-review]').click();await page.locator('[data-send]').click();
+    await page.locator('[data-enquiry-complete]').waitFor({state:'visible'});
+    assert.equal(calls.length,1);
+    for(const [name,value] of Object.entries(bulkValues))assert.equal(calls[0][name],value,name+' survives submission');
+    assert.equal(calls[0].sourcePath,pathFor('fleetProcurement',locale));
+    assert.ok(calls[0].message.includes(bulkValues.destinationSchedule));
+    for(const name of bulkFields)assert.equal(await page.locator('#equipment-'+name).inputValue(),'');
+  }
+  // Switching away from a populated equipment branch must not send its purchasing data.
+  await prepare('en','equipment','fleetProcurement');await page.locator('[data-edit]').click();
+  await page.locator('#equipment-partNumber').fill('DO NOT SEND');
+  await page.locator('[name="requestType"][value="service"]').check();
+  for(const [name,value] of Object.entries({model:'Test unit',quantity:'1',issue:'Test documentation request'}))await page.locator('#service-'+name).fill(value);
+  await page.locator('#service-support').selectOption('documents');
+  await page.locator('[data-review]').click();
+  assert.ok(!(await page.locator('[data-summary]').innerText()).includes('DO NOT SEND'));
+  await page.locator('[data-send]').click();await page.locator('[data-enquiry-complete]').waitFor({state:'visible'});
+  for(const name of bulkFields)assert.equal(calls[0][name],undefined,'Inactive bulk field '+name);
   scenario='slow';await prepare('en','service');
   await page.locator('[data-send]').evaluate(button=>{button.click();button.click();});
   await page.locator('[data-enquiry-complete]').waitFor({state:'visible'});assert.equal(calls.length,1,'Double click must not send twice');
   assert.deepEqual(unexpected,[]);assert.deepEqual(pageErrors,[]);
-  const report={origin,sourceRoute,checkedAt:new Date().toISOString(),browser:await browser.version(),modelContextChecks:models.length*2,unknownModelSourceIgnored:true,successJourneys:8,failureJourneys:6,doubleClick:'PASS',externalRequests:0,realSubmissions:0,limits:'Provider responses are intercepted. This suite does not verify account settings or inbox delivery; those require separate evidence.'};
+  const report={origin,sourceRoute,checkedAt:new Date().toISOString(),browser:await browser.version(),modelContextChecks:models.length*2,unknownModelSourceIgnored:true,successJourneys:8,bulkJourneys:2,inactiveBulkFieldsDiscarded:true,failureJourneys:6,doubleClick:'PASS',externalRequests:0,realSubmissions:0,limits:'Provider responses are intercepted. This suite does not verify account settings or inbox delivery; those require separate evidence.'};
   await writeFile(`test-results/formspree-${liveOrigin?'live-':''}browser-report.json`,JSON.stringify(report,null,2)+'\n');console.log(report);
 } finally {
   await browser.close();
