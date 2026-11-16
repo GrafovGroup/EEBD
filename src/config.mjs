@@ -3,7 +3,7 @@ export const site = Object.freeze({
   name: 'EEBD.ca',
   origin: 'https://eebd.ca',
   // Bump when shared CSS/JS changes so WHC's cached assets are refreshed.
-  assetVersion: '20261116-page-photography',
+  assetVersion: '20261116-mobile-enquiries',
   bingVerification: '8540AF3FE8C8197267E84BBE602115F7',
   phone: '(833) 696-9996',
   phoneTel: '+18336969996',

@@ -25,7 +25,7 @@ import { submitEnquiry } from './formspree.js';
     if (!items.length) return;
     for(const [el,message] of items) {
       el.setAttribute('aria-invalid','true');
-      const disclosure=el.closest('[data-bulk-fields]');if(disclosure)disclosure.open=true;
+      const disclosure=el.closest('details');if(disclosure)disclosure.open=true;
       const error=document.createElement('p');error.className='field-error';error.id=el.id+'-error';error.textContent=message;
       el.setAttribute('aria-describedby',[el.dataset.helpId,error.id].filter(Boolean).join(' '));if(el.closest('.field'))el.closest('.field').append(error);else el.closest('.check-label').after(error);
       const li=document.createElement('li'),a=document.createElement('a');a.href='#'+el.id;a.textContent=label(el)+': '+message;

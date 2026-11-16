@@ -80,6 +80,18 @@ test('missing, invalid and oversized values return field errors without a fake a
   assert.deepEqual(Object.keys(result.errors).sort(),['contact','email','notes','privacyAcknowledgement']);
   assert.equal(result.value,undefined);
 });
+test('a short equipment enquiry accepts unknown model, organization and timing but requires buying context',()=>{
+  const input=request();
+  for(const field of ['organization','timing','model'])delete input.fields[field];
+  const result=validateEnquiry(input,allowedPaths);
+  assert.equal(result.ok,true);
+  assert.equal(result.value.requestSpecificFields.model,'');
+  assert.equal(result.value.organization,'');
+  for(const field of ['location','application','quantity']) {
+    const invalid={...input,fields:{...input.fields,[field]:''}};
+    assert.equal(validateEnquiry(invalid,allowedPaths).errors[field],'required');
+  }
+});
 test('untrusted locale, type, source and unsupported product references are rejected',()=>{
   const input={...request(),locale:'xx',requestType:'rescue',sourcePath:'https://example.invalid/private',productId:'unverified-model'};
   const result=validateEnquiry(input,allowedPaths);

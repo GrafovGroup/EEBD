@@ -1,7 +1,7 @@
 // Editorial comparison. Exact approvals and manufacturer instructions control selection.
 export const escapeComparison = {
   en: {
-    eyebrow: 'EEBD VS. SCBA', title: 'Escape or response? Know the difference.',
+    eyebrow: 'EEBD VS. SCBA', title: 'EEBD vs SCBA: differences and uses.',
     description: 'Compare EEBD escape equipment with entry-and-escape SCBA: purpose, breathing system, duration, training and the questions to ask before purchasing.',
     intro: 'An EEBD helps a person leave a hazardous atmosphere. Entry-and-escape SCBA supports trained personnel performing approved tasks. Their roles are different, even when both carry a breathing supply.',
     sections: [
@@ -20,7 +20,7 @@ export const escapeComparison = {
     ],
   },
   fr: {
-    eyebrow: 'EEBD OU ARI / SCBA', title: 'Évacuation ou intervention? Distinguez les usages.',
+    eyebrow: 'EEBD OU ARI / SCBA', title: 'EEBD ou ARI / SCBA : différences et usages.',
     description: 'Comparez EEBD et ARI/SCBA : évacuation, intervention, système respiratoire, durée, formation et questions à préciser avant un achat.',
     intro: 'Un EEBD aide une personne à quitter une atmosphère dangereuse. Un ARI d’entrée et d’évacuation permet au personnel formé d’effectuer les tâches autorisées. Leurs fonctions diffèrent, même si les deux transportent une réserve respiratoire.',
     sections: [

@@ -22,7 +22,7 @@ if(!liveOrigin) {
 }
 const origin=liveOrigin || `http://127.0.0.1:${server.address().port}`;
 const browser=await chromium.launch({headless:true,executablePath:process.env.EEBD_CHROME_EXECUTABLE});
-const context=await browser.newContext({viewport:{width:390,height:844}});
+const context=await browser.newContext({viewport:{width:390,height:844},reducedMotion:'reduce'});
 context.setDefaultTimeout(12000);
 const page=await context.newPage();
 let calls=[],scenario='success',unexpected=[];
@@ -49,6 +49,7 @@ async function prepare(locale,type,sourceId=sourceRoute) {
   await page.goto(origin+pathFor(type==='general'?'contact':'quote',locale)+'?type='+type+'&source='+encodeURIComponent(pathFor(sourceId,locale)));
   await page.locator('[data-review]').click();
   assert.equal(await page.locator('[data-errors]').isVisible(),true);
+  if(type!=='general')await page.locator('[data-optional-details] summary').click();
   for(const [name,value] of Object.entries(type==='general'?{contact:'Synthetic Buyer',email:'buyer@example.invalid'}:{contact:'Synthetic Buyer',organization:'Example Test Organization',email:'buyer@example.invalid',location:'Ontario',timing:'Flexible'}))await page.locator('#common-'+name).fill(value);
   const group=page.locator('[data-request-type="'+type+'"]');
   if(type==='general')await group.locator('[name="message"]').fill('<script>literal model name</script>');
@@ -92,6 +93,26 @@ try {
     assert.equal(await page.evaluate(()=>localStorage.length+sessionStorage.length),0);
     assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1),false);
     if(type==='equipment')await page.screenshot({path:`test-results/formspree-${liveOrigin?'live-':''}confirmation-${locale}.png`,fullPage:true});
+  }
+  // A buyer can enquire without inventing a model, company or delivery date.
+  for(const locale of ['en','fr']) {
+    scenario='success';calls=[];
+    await page.goto(origin+pathFor('quote',locale));
+    assert.equal(await page.locator('[data-optional-details]').getAttribute('open'),null);
+    assert.equal(await page.locator('[required]:visible').count(),6);
+    for(const [name,value] of Object.entries({contact:'Synthetic Buyer',email:'buyer@example.invalid',location:'Halifax'}))await page.locator('#common-'+name).fill(value);
+    await page.locator('#equipment-application').selectOption('marine');
+    await page.locator('#equipment-quantity').fill('12');
+    await page.locator('[name="privacyAcknowledgement"]').check();
+    await page.locator('[data-review]').click();
+    assert.equal(await page.locator('[data-enquiry-review]').isVisible(),true);
+    assert.equal(calls.length,0);
+    await page.locator('[data-send]').click();
+    await page.locator('[data-enquiry-complete]').waitFor({state:'visible'});
+    assert.equal(calls.length,1);
+    assert.equal(calls[0].model,'');assert.equal(calls[0].organization,'');assert.equal(calls[0].timing,'');
+    assert.equal(calls[0].quantity,'12');assert.equal(calls[0].location,'Halifax');
+    assert.ok(calls[0].message.length>50);
   }
   for(const failure of ['invalid','rate','verification','server','malformed','network']) {
     scenario=failure;await prepare('fr','training');await page.locator('[data-send]').click();
@@ -138,7 +159,7 @@ try {
   await page.locator('[data-send]').evaluate(button=>{button.click();button.click();});
   await page.locator('[data-enquiry-complete]').waitFor({state:'visible'});assert.equal(calls.length,1,'Double click must not send twice');
   assert.deepEqual(unexpected,[]);assert.deepEqual(pageErrors,[]);
-  const report={origin,sourceRoute,checkedAt:new Date().toISOString(),browser:await browser.version(),modelContextChecks:models.length*2,unknownModelSourceIgnored:true,successJourneys:8,bulkJourneys:2,inactiveBulkFieldsDiscarded:true,failureJourneys:6,doubleClick:'PASS',externalRequests:0,realSubmissions:0,limits:'Provider responses are intercepted. This suite does not verify account settings or inbox delivery; those require separate evidence.'};
+  const report={origin,sourceRoute,checkedAt:new Date().toISOString(),browser:await browser.version(),modelContextChecks:models.length*2,unknownModelSourceIgnored:true,successJourneys:8,shortEnquiryJourneys:2,bulkJourneys:2,inactiveBulkFieldsDiscarded:true,failureJourneys:6,doubleClick:'PASS',externalRequests:0,realSubmissions:0,limits:'Provider responses are intercepted. This suite does not verify account settings or inbox delivery; those require separate evidence.'};
   await writeFile(`test-results/formspree-${liveOrigin?'live-':''}browser-report.json`,JSON.stringify(report,null,2)+'\n');console.log(report);
 } finally {
   await browser.close();

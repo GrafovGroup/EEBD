@@ -41,6 +41,8 @@ try {
       assert.equal(await page.locator('meta[name="robots"]').getAttribute('content'),route.indexable?'index, follow':'noindex, nofollow');
       assert.equal(await page.locator('.preview-bar').count(),0);
       assert.equal(await page.locator('main .editorial-image').count(),1);
+      await page.locator('main .editorial-image img').scrollIntoViewIfNeeded();
+      await page.waitForFunction(()=>{const img=document.querySelector('main .editorial-image img');return img.complete && img.naturalWidth>0;});
       assert.equal(await page.locator('main .editorial-image img').evaluate(img=>img.complete && img.naturalWidth>0),true);
       const schema=JSON.parse(await page.locator('script[type="application/ld+json"]').textContent());
       assert.equal(schema['@graph'].find(item=>item['@type']==='WebPage').url,'https://eebd.ca'+route.paths[locale]);
