@@ -5,6 +5,8 @@
   if(html.dataset.mode!=='production' || !Object.hasOwn(routes,location.pathname))return;
   const id=html.dataset.analyticsId;
   if(!/^G-[A-Z0-9]+$/.test(id || ''))return;
+  const pendingKey='eebd.pending-quote.v1';
+  const placements=new Set(['mobile_bar','header','footer','hero','content']);
   const key='eebd.analytics-consent.v1', lifetime=180*24*60*60*1000;
   const panel=document.querySelector('[data-analytics-consent]');
   const preferences=document.querySelector('[data-analytics-preferences]');
@@ -36,6 +38,7 @@
       gtag('consent','update',{analytics_storage:'granted',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied'});
       if(!loaded) {
         loaded=true;
+        gtag('set',{...page,send_page_view:false,allow_google_signals:false,allow_ad_personalization_signals:false,cookie_expires:15552000,cookie_update:false});
         gtag('js',new Date());
         gtag('config',id,{...page,send_page_view:false,allow_google_signals:false,allow_ad_personalization_signals:false,cookie_expires:15552000,cookie_update:false});
         const script=document.createElement('script');script.async=true;script.src='https://www.googletagmanager.com/gtag/js?id='+id;
@@ -44,7 +47,7 @@
       if(!pageSent){pageSent=true;gtag('event','page_view',{...page,send_to:id});}
     } else {
       gtag('consent','update',{analytics_storage:'denied',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied'});
-      clearCookies();
+      clearCookies();try{sessionStorage.removeItem(pendingKey);}catch{}
     }
     window.dispatchEvent(new Event('analytics-consent-change'));
   }
@@ -63,7 +66,13 @@
     const url=new URL(a.href,location.href);
     if(url.origin!==location.origin || !['/en/request-a-quote/','/fr/demander-une-soumission/'].includes(url.pathname))return;
     const placement=a.closest('[data-mobile-enquiry]')?'mobile_bar':a.closest('.site-header')?'header':a.closest('.site-footer')?'footer':a.closest('.page-hero,.immersive-hero')?'hero':'content';
-    event('quote_click',url.searchParams.get('type'),{cta_location:placement,source_page:location.pathname});
+    const extra={cta_location:placement,source_page:location.pathname};
+    // Carry same-tab CTA events to the destination, where the tag can finish its
+    // normal batch while the visitor completes the form. Never delay navigation.
+    if(allowed && !e.defaultPrevented && e.button===0 && !e.metaKey && !e.ctrlKey && !e.shiftKey && !e.altKey && (!a.target || a.target==='_self')) {
+      try{sessionStorage.setItem(pendingKey,JSON.stringify({at:Date.now(),source:location.pathname,type:type(url.searchParams.get('type')),placement}));return;}catch{}
+    }
+    event('quote_click',url.searchParams.get('type'),extra);
   }));
   preferences?.addEventListener('click',()=>{
     returnFocus=preferences;panel.hidden=false;
@@ -78,4 +87,10 @@
   try{saved=JSON.parse(localStorage.getItem(key));}catch{}
   if(saved && ['granted','denied'].includes(saved.value) && Number.isFinite(saved.at) && Date.now()-saved.at>=0 && Date.now()-saved.at<lifetime)consent(saved.value);
   else {clearCookies();if(panel)panel.hidden=false;window.dispatchEvent(new Event('analytics-consent-change'));}
+  let pending;
+  try{pending=JSON.parse(sessionStorage.getItem(pendingKey));sessionStorage.removeItem(pendingKey);}catch{}
+  if(allowed && pending && Number.isFinite(pending.at) && Date.now()-pending.at>=0 && Date.now()-pending.at<60000 && Object.hasOwn(routes,pending.source) && types.has(pending.type) && placements.has(pending.placement)) {
+    event('quote_click',pending.type,{source_page:pending.source,cta_location:pending.placement,page_location:'https://eebd.ca'+pending.source});
+  }
+
 })();

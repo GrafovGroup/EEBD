@@ -68,6 +68,10 @@ try {
  // Prevent navigation only in this fixture so the click event can be inspected.
  await page.locator('[data-mobile-enquiry] a').evaluate(a=>a.addEventListener('click',e=>e.preventDefault()));await page.locator('[data-mobile-enquiry] a').click();
  assert.equal((await events()).find(x=>x[1]==='quote_click')[2].cta_location,'mobile_bar');
+ await page.goto(origin+pathFor('comparison','en'));
+ await page.evaluate(()=>scrollTo(0,document.querySelector('.page-hero').getBoundingClientRect().bottom+100));await page.locator('[data-mobile-enquiry]').waitFor({state:'visible'});
+ await page.locator('[data-mobile-enquiry] a').click();await page.waitForURL('**/request-a-quote/**',{timeout:2000});
+ assert.equal((await events()).filter(x=>x[1]==='quote_click').length,1);assert.equal(await page.evaluate(()=>sessionStorage.getItem('eebd.pending-quote.v1')),null);
  await page.goto(origin+'/homepage-options/1/en/');assert.equal(await page.locator('script[src*="analytics.js"]').count(),0);
  assert.deepEqual(errors,[]);assert.equal(posts,4,'Only two failed and two accepted mocked submissions');
  const report={passed:true,locales:2,responsiveStickyCases:8,mockedFormspreeRequests:posts,realFormspreeRequests:0,pageErrors:errors};

@@ -14,7 +14,7 @@ Events:
 
 Fixed event parameters: `enquiry_type`, `source_page`, `site_language`; quote clicks also carry `cta_location`. There are no monetary values or claimed sales. Review, validation failures and unconfirmed sends are not conversions. The submission identifier is used only for in-memory deduplication and is never sent to Google.
 
-The consent panel is bilingual. Declining leaves the form fully functional. Google is not contacted until analytics is allowed. Only the consent choice and its timestamp are saved in local storage for 180 days. Form values remain in memory. Withdrawal disables collection and removes this site's `_ga` cookies. Other open tabs receive the changed choice. Advertising consent and personalization remain disabled. Enhanced measurement is off to avoid automatic form and URL capture.
+The consent panel is bilingual. Declining leaves the form fully functional. Google is not contacted until analytics is allowed. The consent choice and its timestamp are saved in local storage for 180 days. A same-tab quote click carries only its registered source path, type, placement and timestamp through session storage for up to 60 seconds, then removes the record on the next page. This lets the tag finish its batch on the destination without delaying navigation. No form contents are stored. Form values remain in memory. Withdrawal disables collection and removes this site's `_ga` cookies. Other open tabs receive the changed choice. Advertising consent and personalization remain disabled. Enhanced measurement is off to avoid automatic form and URL capture.
 
 Page locations and source paths use the known route registry; arbitrary query/hash data are excluded. Referrers retain only recognized search-engine origins or registered EEBD paths. Names, email addresses, phone numbers, company names, quantities and message fields are never analytics parameters. Analytics failures do not block enquiries. Preview pages, homepage alternatives and error pages do not collect analytics.
 
@@ -31,3 +31,7 @@ Only new, revised or removed indexable URLs are included. Quote, privacy, previe
 Deployment files are packaged under `deployment/`, outside `web-root/`. Upload the archive to the private WHC backup directory. Run the verified `deployment/activate.py` with the new commit, archive SHA-256, previous deployed commit and expected public-file count. It performs the same live-file, archive, staged-file and atomic rollback checks as earlier releases, then calls the notifier. Preserve `indexnow-state.json` and receipts in the private backup directory. Never upload these records to the site.
 
 Official protocol: https://www.indexnow.org/documentation
+
+## Property configuration verified November 16, 2026
+
+`generate_lead` is a key event, counted once per event, without a default monetary value. Event-scoped custom dimensions are registered for enquiry type, source page, quote-button location and site language. The reports snapshot uses the Marketing performance template; Reports → Generate leads and Realtime show enquiry activity as it arrives. Event and user data retention are two months with activity resets off. Google signals and user-provided data collection are off; ads personalization is disallowed in all 307 regions. Initial traffic includes release-verification visits, not actual leads.
