@@ -17,8 +17,8 @@ Milestone: initial bilingual build and selected Precision identity, November 15,
 | Recall/notice process | PASS | Publication filter requires reviewed/cleared status; ABS notice noted in research. Actual stock clearance is not performed |
 | Training/service provider scope | BLOCKED | Availability, geography, language and credentials need actual arrangements |
 | Preview enquiry branching and review | PASS | Three localized branches, field errors, review/edit, disabled sending, no upload or browser persistence |
-| Formspree integration | IMPLEMENTED / DELIVERY PENDING | Owner endpoint configured; native AJAX, bilingual review/confirmation, provider errors, honeypot and production CSP. Actual account spam/CAPTCHA settings and delivery remain unverified; no server-side idempotency claimed |
-| Provider acceptance / notifications / inbox delivery | ACCEPTANCE PASS / INBOX PENDING | One owner-authorized labelled test returned HTTP 200 and `ok:true`; actual recipient/inbox receipt unverified. Browser suite: six success journeys, six error journeys, double-click protection, no automatic retry |
+| Formspree integration | IMPLEMENTED | Owner endpoint configured; native AJAX, bilingual review/confirmation, provider errors, honeypot and production CSP. Actual account spam/CAPTCHA settings remain unverified; no server-side idempotency claimed |
+| Provider acceptance / notifications / inbox delivery | PASS FOR AUTHORIZED TEST | One owner-authorized labelled test returned HTTP 200 and `ok:true`; owner confirmed receipt in the configured inbox. Browser suite: six success journeys, six error journeys, double-click protection, no automatic retry |
 | Phone/email routing | BLOCKED | Supplied phone not called; proposed mailbox not activated or tested |
 | Contracting entity / production privacy | PARTIAL | Superclean Canada Inc. confirmed; actual retention, delivery and production policy remain open |
 | Public pricing / stock / checkout / credentials | PASS | Not invented or emitted |

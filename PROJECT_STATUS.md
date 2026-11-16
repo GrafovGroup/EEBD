@@ -29,7 +29,7 @@ Verification: 22 automated tests passed; the new isolated Formspree browser suit
 
 1. Selected Precision identity is implemented. Complete remaining platform/browser checks for the actual release host.
 2. Superclean Canada Inc. and info@eebd.ca are owner-confirmed. Suppliers, trainers and service partners are not arranged; no saleable models are populated.
-3. WHC selected; owner-authenticated cPanel inspected. Domain attached to its own directory, separate from existing sites. DNS and HTTPS are verified. Complete Formspree delivery verification and remaining full-site host checks. Keep account/session details out of source.
+3. WHC selected; owner-authenticated cPanel inspected. Domain attached to its own directory, separate from existing sites. DNS and HTTPS are verified. Formspree accepted one test and the owner confirmed inbox receipt. Complete remaining full-site host checks. Keep account/session details out of source.
 4. Verify phone/mailbox routing, implement provider-dependent security/privacy handling and test acceptance/delivery for all six language/type combinations using an authorized test destination.
 5. Complete competent technical/content review, selected-brand accessibility/performance/browser checks, then publish only ready routes and verified products.
 6. Record exact deployed revision, HTTPS/domain/redirect checks and actual search-console actions.
@@ -42,6 +42,6 @@ Domain/hosting connection is complete. Public URL: https://eebd.ca/. It displays
 
 Owner selected Formspree `https://formspree.io/f/xrpqpylv` for contact/enquiry delivery. Native AJAX now supports all six language/type journeys, preserves the review/edit step, and reports provider acceptance without claiming inbox delivery. WHC packaging is static-only. The unused PHP implementation remains in source/history; it is no longer a deployment requirement.
 
-Next: verify Formspree's actual recipient, activation, spam/CAPTCHA settings and delivery using an authorized test; finish production privacy/content readiness. Preview sending remains off. The owner authorized one clearly labelled live test. Formspree returned HTTP 200 with `ok:true` and `next:/thanks`; inbox receipt remains unverified. No Formspree dashboard settings have been changed. The earlier mailbox-versus-forwarding question remains separate from the new form provider choice.
+Next: review Formspree account spam/CAPTCHA and retention settings, then finish production privacy/content readiness. One authorized end-to-end delivery test is complete. Preview sending remains off. The owner authorized one clearly labelled live test. Formspree returned HTTP 200 with `ok:true` and `next:/thanks`; the owner confirmed receipt in the configured inbox. No Formspree dashboard settings have been changed. The earlier mailbox-versus-forwarding question remains separate from the new form provider choice.
 
 The approved identity is complete; do not reopen it. Routine implementation choices do not require renewed permission. The full site has not been released.

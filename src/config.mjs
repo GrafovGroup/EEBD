@@ -18,7 +18,7 @@ export const site = Object.freeze({
     businessIdentity: true,
     offerArrangements: false,
     contactRouting: false,
-    enquiryDelivery: false,
+    enquiryDelivery: true,
     privacyReview: false,
     technicalReview: false,
     hosting: false,

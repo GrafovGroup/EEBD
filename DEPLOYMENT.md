@@ -59,11 +59,11 @@ AJAX uses JSON and `Accept: application/json`, omits credentials, and does not f
 
 The production CSP permits connections only to `https://formspree.io`; scripts remain local. `strict-origin-when-cross-origin` permits Formspree's domain restriction to see the origin without the full page path/query. The public holding page keeps its own more restrictive policy because it has no form.
 
-One owner-authorized, clearly labelled synthetic test was submitted on November 15 at 23:16 Toronto (04:16 UTC November 16). Formspree returned HTTP 200 with `{"next":"/thanks","ok":true}`. There was exactly one POST and no automatic retry. This verifies API acceptance; inbox receipt and account controls remain unverified. Test details stay in ignored local records.
+One owner-authorized, clearly labelled synthetic test was submitted on November 15 at 23:16 Toronto (04:16 UTC November 16). Formspree returned HTTP 200 with `{"next":"/thanks","ok":true}`. There was exactly one POST and no automatic retry. The owner subsequently confirmed receipt in the configured inbox, establishing end-to-end delivery for this test. Dashboard spam/CAPTCHA, retention and plan settings have not been inspected. Test details stay in ignored local records.
 
 Before enabling the full site:
 
-1. Verify the actual notification recipient and inbox receipt for the authorized test. Account access, delivery and recipient are not inferred from the form URL.
+1. Keep the confirmed Formspree notification destination available to the operator. The owner confirmed inbox receipt for the test; this does not establish that the separate info@eebd.ca mailbox/forwarder has been configured.
 2. Set the Formspree project's Restrict to Domain setting to `eebd.ca`; verify current spam/CAPTCHA and plan-limit behavior. If the form requires CAPTCHA tokens, add the appropriate public site key/widget and matching CSP before launch; no challenge is silently disabled or bypassed.
 3. Confirm the service's handling, retention and recipients in the production privacy notice. Preview text identifies Formspree but remains a preview notice.
 4. Validate all three types in both languages on the actual host and release only approved routes/content. Supplier, trainer and service arrangements remain unconfirmed.
