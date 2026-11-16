@@ -5,10 +5,10 @@
 The complete bilingual enquiry website is live at **https://eebd.ca/** on WHC. The root redirects to `/en/`; `/fr/` is available through the language switch. The domain has its own document root, separate from existing websites.
 
 - Repository: `https://github.com/GrafovGroup/EEBD.git`, branch `codex/initial-build`.
-- Deployed runtime source: **`f2f3f1e4d0fe822de1706bf955c092706c25cf3c`**.
-- Activated November 16, 2026 at **15:56:56 UTC** (November 16, 10:56 Toronto).
+- Deployed runtime source: **`157068fa22f0bfaebc20437f810fbe9cc77ccf58`**.
+- Activated November 16, 2026 at **16:03:38 UTC** (November 16, 11:03 Toronto).
 - Static package: **255 public files**, including two Apache configuration files; 253 readable files verified byte-for-byte over HTTPS.
-- Archive: `test-results/eebd-release-f2f3f1e.tar.gz` (6,061,740 bytes); SHA-256 `3fbe875fde8ab03c70b4fcab2b22d8126122cc59b9b792e306354ac50592f11d`.
+- Archive: `test-results/eebd-release-157068f.tar.gz` (6,036,403 bytes); SHA-256 `4b62e5d86cfe466d67c856119ad03d96058999c368100db83d3461f6312ce1da`.
 - `manifest.json` records every file hash, exact source commit and `sourceDirty:false`. Later documentation-only commits do not change the deployed runtime.
 
 Account identifiers, credentials, session URLs, host backup paths and submissions remain outside Git. Other hosted sites were not changed.
@@ -132,3 +132,11 @@ Published `f2f3f1e4d0fe822de1706bf955c092706c25cf3c` at 15:56:56 UTC / 10:56 Tor
 Equipment enquiries now require contact name, email, location, application, quantity and privacy acknowledgement (six entries, formerly nine). Model, organization and timing are optional; organization/phone/timing are in an expandable section. The photo follows the form on mobile, and bulk purchasing details still open from fleet links. Review/edit and recoverable delivery states remain in place. The mobile utility tagline, Contact link and language switch stay on one line in English and French, tested down to 320 px.
 
 Validation: 25 unit/integration checks; 112 HTML documents and 4,959 internal references; 48 unique photos; 384 responsive page checks; 36 targeted layout/keyboard checks locally and again on the actual host. The live Formspree simulation passed six model-context checks, eight standard successes, two shortened enquiries, two bulk journeys, inactive-field exclusion, six failure states and double-click protection at 15:57:25 UTC. Provider responses were intercepted: zero real submissions. All 253 readable public files matched the clean release hashes over HTTPS at 15:57:20 UTC; localized 404s passed. The previous complete release is retained privately for rollback.
+
+## November 16 — shorter homepage
+
+Published `157068fa22f0bfaebc20437f810fbe9cc77ccf58` at 16:03:38 UTC / 11:03 Toronto. The owner requested less text while scrolling. The approved Immersive hero is followed by five sections: compact model cards, fleet/training/service links, coastal-city navigation, three expandable FAQs and an enquiry call to action. Detailed destination pages remain available. Model names/configurations, all nine previously linked coastal cities, the bilingual structure, search titles, imagery and one-line mobile utility bar are preserved.
+
+At a 390 × 844 viewport with FAQs closed, English visible main text fell from 783 to 224 whitespace-separated words; French fell from 867 to 245. Total page height fell from 10,749 to 3,888 px in English and 11,009 to 3,980 px in French (about 64% shorter). These are layout measurements, not Core Web Vitals or ranking claims.
+
+Validation: 25 existing unit/integration checks; 112 preview documents and 4,769 references; the 48-photo audit; 10 bilingual homepage checks at 320/390/768/1440/2560 px locally and again on live HTTPS, covering all main links, keyboard FAQs, mobile menu, metadata and overflow. All 253 readable public files matched the clean package hashes at 16:03:59 UTC. Localized 404s passed. The enquiry implementation was not changed; the previous live simulated delivery checks remain the latest form evidence. No real enquiry was sent. A complete previous-release backup is retained privately.

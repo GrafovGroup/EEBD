@@ -4,8 +4,8 @@ Updated November 16, 2026 (America/Toronto). **The bilingual enquiry website is 
 
 ## Published release
 
-- Runtime source: `f2f3f1e4d0fe822de1706bf955c092706c25cf3c`, branch `codex/initial-build` in `GrafovGroup/EEBD`. Later documentation-only commits do not change the deployed runtime.
-- Activated November 16 at 15:56:56 UTC / 10:56 Toronto, with a full previous-release backup. Archive, checksum and rollback details are in DEPLOYMENT.md.
+- Runtime source: `157068fa22f0bfaebc20437f810fbe9cc77ccf58`, branch `codex/initial-build` in `GrafovGroup/EEBD`. Later documentation-only commits do not change the deployed runtime.
+- Activated November 16 at 16:03:38 UTC / 11:03 Toronto, with a full previous-release backup. Archive, checksum and rollback details are in DEPLOYMENT.md.
 - 48 paired page purposes: **96 public content/form pages**, **92 indexable sitemap URLs**, plus localized error pages.
 - Three bilingual model guides: Ocenco M-20.2, Interspiro Spiroscape bar configurations, and Dräger Saver CF10 N (4042056). Specification tables, source documents, model limitations and model-aware enquiries are implemented. Language switching preserves model context.
 - These are reference/enquiry pages. Suppliers, trainers and service partners remain unarranged. No stock, prices, authorized-dealer status, blanket Canadian approval or recall clearance is invented; saleable catalogue records remain empty.
@@ -20,9 +20,9 @@ Updated November 16, 2026 (America/Toronto). **The bilingual enquiry website is 
 
 ## Verification
 
-25 unit/integration tests passed. Preview checks covered 112 HTML files and 4,959 internal references. The current release passed 384 route/width combinations (96 pages at 320/390/768/1440 px) without page errors, failed resources or horizontal overflow. Thirty-six targeted checks at 320/390/768/900/901/1440 px passed locally and on the live host for bilingual comparison cards/tables, shorter enquiries, keyboard disclosure controls and the single-line mobile utility bar. The photo audit confirms 48 distinct images, one per page purpose.
+25 unit/integration tests passed. Preview checks covered 112 HTML files and 4,769 internal references. The preceding mobile UX release passed 384 route/width combinations (96 pages at 320/390/768/1440 px) without page errors, failed resources or horizontal overflow. Thirty-six targeted checks at 320/390/768/900/901/1440 px passed locally and on the live host for bilingual comparison cards/tables, shorter enquiries, keyboard disclosure controls and the single-line mobile utility bar. The homepage-only follow-up passed 10 bilingual checks at 320/390/768/1440/2560 px locally and on live HTTPS, including all main destination links and keyboard FAQs. The photo audit confirms 48 distinct images, one per page purpose.
 
-All 255 public files were verified on the host; all 253 readable files matched release SHA-256 hashes over HTTPS at 15:57:20 UTC. Localized 404s passed. The sitemap still contains 92 URLs. These checks establish the deployed content, not search-engine indexing.
+All 255 public files were verified on the host; all 253 readable files matched release SHA-256 hashes over HTTPS at 16:03:59 UTC. Localized 404s passed. The sitemap still contains 92 URLs. These checks establish the deployed content, not search-engine indexing.
 
 The live simulated form suite passed at 15:57:25 UTC: six model-context checks, eight standard success journeys, two shortened enquiries, two bulk journeys, inactive-field exclusion, six error states and double-click protection. All provider requests were intercepted; zero real submissions occurred. The earlier single authorized inbox test remains the delivery evidence.
 
@@ -57,3 +57,9 @@ Final Formspree browser simulation completed at 07:37:59 UTC: six model-context 
 The owner authorized descriptive page titles, a shorter mobile enquiry flow and phone-friendly comparisons. All bilingual search titles now describe their topic; the English home title stays exactly as requested. Equipment enquiries have six required entries instead of nine. Organization, phone and timing sit in an optional disclosure; unknown models can be left blank. The form precedes its photograph on mobile. Comparison pages use model/criterion cards through 900 px and desktop tables above that, with all data and source/model links preserved.
 
 The owner also requested that the top bar fit on one mobile line. The tagline, Contact and EN/FR controls remain visible on one line, without overlap or page overflow at the tested 320/390 px phone widths. Source and release records are synchronized with GitHub. Existing Immersive homepage, branding, footer, commercial boundaries and Formspree endpoint are preserved.
+
+## Streamlined homepage
+
+The owner requested less text while scrolling. The live bilingual homepage now has five sections below the preserved Immersive hero: compact model cards, fleet/training/service links, coastal-city links, three closed-by-default FAQs and an enquiry CTA. Repeated training/service/process paragraphs and nine full city summaries were replaced with concise links into the existing detailed pages. All nine coastal city destinations remain directly linked.
+
+At 390 px, visible main text is approximately 71% lower (English 783 → 224 words, French 867 → 245), and total page height is approximately 64% lower (English 10,749 → 3,888 px, French 11,009 → 3,980 px). The previous mobile form, comparison cards and utility-bar fixes remain intact. No new photo or real form submission was needed. Source and release records are backed up on GitHub.

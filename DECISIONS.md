@@ -100,3 +100,10 @@ Published the comparison and document-checklist pages in both languages, blank C
 - Equipment forms require six entries instead of nine. Model/company/timing are optional; company/phone/timing are expandable. Photos follow the form on mobile. Fleet purchasing details and review/edit/delivery handling are retained.
 - Both comparison pages use cards through 900 px and desktop tables above it, sharing their existing content sources. The utility tagline, Contact link and language controls fit on one line on tested phones.
 - Runtime `f2f3f1e4d0fe822de1706bf955c092706c25cf3c` activated at 15:56:56 UTC after 25 unit checks, 384 responsive checks, 36 targeted layout checks, static checks and simulated Formspree flows. Live checks confirmed all 253 readable file hashes and repeated the mobile/enquiry tests. No supplier messages or real test enquiries were sent. The previous runtime remains backed up privately.
+
+## November 16 — reduce homepage text and scroll length
+
+- Owner asked to improve the text-heavy homepage. Preserve the approved Immersive opening and replace the long body with five concise sections that lead to the existing detailed pages.
+- Model cards use one short summary and a guide link; training, service and fleet purchasing share a compact section. Nine coastal-city links replace full city summaries. Three keyboard-accessible FAQs and a final enquiry CTA remain.
+- Both languages were checked at 320/390/768/1440/2560 px. At 390 px, visible main words fell about 71% and full page height about 64%. These measurements do not claim SEO ranking or real-user performance gains.
+- Runtime `157068fa22f0bfaebc20437f810fbe9cc77ccf58` was activated at 16:03:38 UTC and all 253 readable public file hashes verified. All 25 existing unit/integration checks passed. The previous release is retained for rollback; no real enquiry or supplier message was sent.

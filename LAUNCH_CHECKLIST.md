@@ -1,15 +1,15 @@
 # Launch checklist
 
-Updated November 16, 2026 (America/Toronto), under the owner's explicit full-site launch instruction. Deployed runtime: `f2f3f1e4d0fe822de1706bf955c092706c25cf3c`.
+Updated November 16, 2026 (America/Toronto), under the owner's explicit full-site launch instruction. Deployed runtime: `157068fa22f0bfaebc20437f810fbe9cc77ccf58`.
 
 | Check | Status | Evidence / limitation |
 | --- | --- | --- |
 | Source preserved and backed up | PASS | Original history retained; runtime commit on `codex/initial-build`; clean package manifest |
 | Approved identity | PASS | Precision 01, integrated singular descriptor, no .ca in logo; bilingual SVG/PNG, favicon/social assets |
 | Complete paired pages | PASS | 48 purposes × two languages, 96 public pages plus localized error pages |
-| Build and internal references | PASS | 112 preview HTML files, 4,959 references; labels, IDs and private-source exclusion |
+| Build and internal references | PASS | 112 preview HTML files, 4,769 references; labels, IDs and private-source exclusion |
 | Unit/integration checks | PASS | 25 tests: route/content pairs, publication guard, product filters, validation, escaping, transport, preview isolation and packaging |
-| Production responsive checks | PASS | Current release: 384 public-page/width checks and 36 targeted EN/FR mobile/keyboard checks locally and on the actual host; no page errors or horizontal overflow |
+| Production responsive checks | PASS | Previous mobile release: 384 public-page/width and 36 targeted checks. Latest homepage: 10 EN/FR viewport checks locally and on the actual host; no page errors or horizontal overflow |
 | General and scoped enquiry UI | PASS | General contact plus equipment/training/service in both languages; review/edit, active fields, consent and no persistence |
 | Actual-host form checks | PASS | Eight standard, two shortened and two bulk success journeys, inactive bulk-field exclusion, six failure journeys and double-click protection; intercepted provider responses, zero real submissions |
 | Actual inbox delivery | PASS FOR AUTHORIZED TEST | One authorized POST accepted by Formspree; owner confirmed receipt; authenticated workflow recipient info@eebd.ca |
@@ -71,3 +71,10 @@ Browser checks are not WCAG certification or real-user performance evidence. Loc
 - PASS: Phone-friendly cards for model and EEBD/SCBA comparisons; desktop tables retained; values, sources and model-aware enquiry links checked.
 - PASS: Mobile utility bar stays on one line in both languages at 320 and 390 px without overlap.
 - PASS: Actual-host simulated delivery tests, all 253 readable file hashes and localized 404s. No real enquiry sent.
+
+## Homepage simplification — November 16, 16:03 UTC
+
+- PASS: Five concise sections below the approved hero; model, equipment, service, fleet, comparison, enquiry and coastal-city destinations retained.
+- PASS: About 71% fewer visible main words and 64% less page height at 390 px in both languages; detailed content remains on destination pages.
+- PASS: Five responsive widths per language, keyboard FAQ controls, mobile menu, one-line utility bar, metadata and all main links.
+- PASS: 25 existing unit/integration checks, 112-document/4,769-reference static audit, 48-photo audit and 253 readable live file hashes. The previous form checks remain valid evidence for the unchanged enquiry implementation.
