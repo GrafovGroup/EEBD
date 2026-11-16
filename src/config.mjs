@@ -14,6 +14,7 @@ export const site = Object.freeze({
   footerCopyright: '2026 EEBD.CA. A division of Facility Unlimited Corp. All Right Reserved.',
   hostingProvider: 'WHC',
   approvedConcept: 1,
+  homepageVariant: 1,
   previewConcept: 1,
   formEnabled: true,
   formProvider: Object.freeze({name:'Formspree',endpoint:FORMSPREE_ENDPOINT}),

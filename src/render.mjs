@@ -98,7 +98,7 @@ function cta(locale, source) {
 function requestLabel(type,locale) {
   return ({equipment:{en:'Prepare an equipment enquiry',fr:'Préparer une demande d’équipement'},training:{en:'Discuss training',fr:'Discuter de formation'},service:{en:'Request service support',fr:'Demander du soutien'}})[type][locale];
 }
-function renderHome(locale,variant=0) {
+function renderHome(locale,variant=site.homepageVariant) {
   const c=home[locale], t=ui[locale];
   const opening = `<section class="hero wrap"><div class="hero-copy"><p class="eyebrow"><span class="status-dot" aria-hidden="true"></span>${c.eyebrow}</p><h1>${textLines(c.title)}</h1><p class="hero-intro">${c.intro}</p><div class="actions">${quoteLink(locale)}${link('equipment',locale,t.explore,'button button-outline')}</div><p class="hero-caption">${t.footerLine}</p></div>${photo('home',locale,'hero-photo',true)}</section>`;
   return `${variant?alternativeHero(variant,locale,photo('home',locale,'alternative-photo',true)):opening}
