@@ -107,3 +107,12 @@ Published the comparison and document-checklist pages in both languages, blank C
 - Model cards use one short summary and a guide link; training, service and fleet purchasing share a compact section. Nine coastal-city links replace full city summaries. Three keyboard-accessible FAQs and a final enquiry CTA remain.
 - Both languages were checked at 320/390/768/1440/2560 px. At 390 px, visible main words fell about 71% and full page height about 64%. These measurements do not claim SEO ranking or real-user performance gains.
 - Runtime `157068fa22f0bfaebc20437f810fbe9cc77ccf58` was activated at 16:03:38 UTC and all 253 readable public file hashes verified. All 25 existing unit/integration checks passed. The previous release is retained for rollback; no real enquiry or supplier message was sent.
+
+## 2026-11-16 — Enquiry tracking, mobile quotes, IndexNow and more buyer content
+
+- Owner authorized publication and selected GA4 for statistics. Created a dedicated EEBD.ca property; added consent-based page, quote-click, form-start and confirmed-lead measurement. No customer field values or arbitrary URL parameters are sent to Analytics.
+- Same-tab CTA events carry only whitelisted context briefly through session storage so Google can complete its batch on the destination without delaying navigation. Global settings prevent duplicate page views.
+- Added a mobile quote bar after the hero on longer pages, preserving context and hiding around competing mobile controls.
+- Added original practical guidance and FAQs to four EN/FR page pairs rather than lengthening the homepage. Manufacturer-specific comparison context cites Ocenco’s current model page; no supplier or tender-compliance claims were added.
+- Added production ownership verification and a post-activation IndexNow hook with semantic hashes, live verification and private retry receipts. Initial submission covered eight changed URLs, returning 202/key-validation-pending; unchanged presentation updates are not resubmitted.
+- Final runtime `f1db02b8b269554675b3aac752f1eb22bad88895` activated 16:39:39 UTC. All 255 readable public files matched hashes. Live GA4 confirmed page, quote and start events; no real enquiry or supplier message was sent.

@@ -5,10 +5,10 @@
 The complete bilingual enquiry website is live at **https://eebd.ca/** on WHC. The root redirects to `/en/`; `/fr/` is available through the language switch. The domain has its own document root, separate from existing websites.
 
 - Repository: `https://github.com/GrafovGroup/EEBD.git`, branch `codex/initial-build`.
-- Deployed runtime source: **`157068fa22f0bfaebc20437f810fbe9cc77ccf58`**.
-- Activated November 16, 2026 at **16:03:38 UTC** (November 16, 11:03 Toronto).
-- Static package: **255 public files**, including two Apache configuration files; 253 readable files verified byte-for-byte over HTTPS.
-- Archive: `test-results/eebd-release-157068f.tar.gz` (6,036,403 bytes); SHA-256 `4b62e5d86cfe466d67c856119ad03d96058999c368100db83d3461f6312ce1da`.
+- Deployed runtime source: **`f1db02b8b269554675b3aac752f1eb22bad88895`**.
+- Activated November 16, 2026 at **16:39:39 UTC** (November 16, 11:39 Toronto).
+- Static package: **257 public files**, including two Apache configuration files; 255 readable files verified byte-for-byte over HTTPS.
+- Archive: `test-results/eebd-release-f1db02b.tar.gz` (6,055,691 bytes); SHA-256 `510dcd32aafe633bf25a891357b7fad1de5871350750eef7baa40486288040d3`.
 - `manifest.json` records every file hash, exact source commit and `sourceDirty:false`. Later documentation-only commits do not change the deployed runtime.
 
 Account identifiers, credentials, session URLs, host backup paths and submissions remain outside Git. Other hosted sites were not changed.
@@ -24,9 +24,9 @@ Live release checks:
 - HTTP and www requests return 308 to `https://eebd.ca`, preserving path and query.
 - `/` returns 302 to `/en/`; public pages return 200.
 - Missing URLs and direct error-page routes return HTTP 404 with the appropriate English/French page. Dedicated error assets avoid recursive error dispatch on WHC LiteSpeed; French directory configuration supplies the localized handler.
-- Security headers include nosniff, strict-origin referrer policy and a CSP allowing form AJAX only to Formspree. The preview's blanket noindex header is absent.
-- The sitemap contains 92 indexable URLs. Contact and quote forms work without React, external scripts, PHP or a Node service on WHC.
-- ACME/DCV directories and cgi-bin were preserved. Analytics is not configured. Google Search Console is verified and the sitemap submission processed successfully.
+- Security headers include nosniff, strict-origin referrer policy and a CSP allowing form AJAX to Formspree and optional, consent-gated Google Analytics scripts/collection. The preview's blanket noindex header is absent.
+- The sitemap contains 92 indexable URLs. Contact and quote forms work without React, PHP or a Node service on WHC; delivery does not depend on Analytics.
+- ACME/DCV directories and cgi-bin were preserved. Consent-based GA4 enquiry measurement is configured. Google Search Console is verified and the sitemap submission processed successfully.
 
 ## Reproducible commands
 
@@ -42,7 +42,7 @@ node scripts/package-whc.mjs --production
 
 Local preview runs on `127.0.0.1:4173`, builds `dist/` and watches source/public changes. It sends no enquiries; its CSP prohibits outgoing connections. Brand review utilities exist only in preview. The new four-option homepage review gallery is published at `/homepage-options/` with noindex metadata and is excluded from the sitemap. Production readiness is checked against the actual enquiry-site scope. Saleable product records have separate evidence filters and remain empty.
 
-For the exact release, check out the deployed revision in a clean checkout, then run the production package command. Upload only the contents of `test-results/whc-production/web-root/` into the EEBD document root. Do not upload `manifest.json`, source, test reports or account records. Node is required locally only. Preview packages deny all public access until authenticated staging is configured.
+For the exact release, check out the deployed revision in a clean checkout, then run the production package command. Upload the release archive to the private deployment directory and use `scripts/whc/activate.py` with verified commit/archive/previous-release arguments. It activates only `web-root/` and automatically notifies IndexNow after verifying changed live pages. See `docs/ANALYTICS_AND_INDEXNOW.md`. Do not upload `manifest.json`, source, test reports or account records. Node is required locally only. Preview packages deny all public access until authenticated staging is configured.
 
 ## Formspree integration and evidence
 
@@ -140,3 +140,13 @@ Published `157068fa22f0bfaebc20437f810fbe9cc77ccf58` at 16:03:38 UTC / 11:03 Tor
 At a 390 × 844 viewport with FAQs closed, English visible main text fell from 783 to 224 whitespace-separated words; French fell from 867 to 245. Total page height fell from 10,749 to 3,888 px in English and 11,009 to 3,980 px in French (about 64% shorter). These are layout measurements, not Core Web Vitals or ranking claims.
 
 Validation: 25 existing unit/integration checks; 112 preview documents and 4,769 references; the 48-photo audit; 10 bilingual homepage checks at 320/390/768/1440/2560 px locally and again on live HTTPS, covering all main links, keyboard FAQs, mobile menu, metadata and overflow. All 253 readable public files matched the clean package hashes at 16:03:59 UTC. Localized 404s passed. The enquiry implementation was not changed; the previous live simulated delivery checks remain the latest form evidence. No real enquiry was sent. A complete previous-release backup is retained privately.
+
+## Enquiry measurement, mobile quote action and buyer content — November 16, 2026
+
+Published final runtime `f1db02b8b269554675b3aac752f1eb22bad88895` at 16:39:39 UTC / 11:39 Toronto. Dedicated GA4 property and bilingual consent controls record quote clicks, starts and provider-confirmed enquiries without form contents. `generate_lead` is a key event; enquiry type, source page, CTA placement and site language are registered dimensions. Two-month event/user retention, Google signals off, user-provided data off and ads personalization disallowed. A short-lived anonymous navigation record carries same-tab quote events to the destination without delaying navigation; global tag settings suppress duplicate page views.
+
+The mobile quote bar appears after the hero on long content pages and hides for menus, consent controls, editing and the footer. Four English/French page pairs now include expanded quotation, fleet replacement, port receiving and comparison guidance plus FAQs. The shortened homepage and 48 unique photos are preserved.
+
+The activation hook submitted eight changed indexable URLs to IndexNow at 16:29:40 UTC. HTTP 202 means key validation pending; no indexing claim is made. The final tracking-only release respected the pending receipt’s retry delay and did not repeat the submission. The sitemap remains at 92 URLs.
+
+Validation: 27 unit/integration checks, 384 responsive checks, eight targeted mobile-bar cases, bilingual consent/PII/event deduplication tests and the complete simulated enquiry suite. Actual-host Formspree simulations passed at 16:31:46 UTC with zero real submissions. The final 255 readable public files matched package hashes at 16:39:47 UTC, including localized 404 checks. Real GA4 requests returned HTTP 204 for page views, quote clicks and form starts at 16:40:07 UTC; arbitrary URL data and form fields were absent, and no request went to Google before consent. Initial Analytics traffic includes verification visits. Previous complete releases remain available privately for rollback.

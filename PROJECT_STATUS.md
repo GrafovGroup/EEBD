@@ -4,8 +4,8 @@ Updated November 16, 2026 (America/Toronto). **The bilingual enquiry website is 
 
 ## Published release
 
-- Runtime source: `157068fa22f0bfaebc20437f810fbe9cc77ccf58`, branch `codex/initial-build` in `GrafovGroup/EEBD`. Later documentation-only commits do not change the deployed runtime.
-- Activated November 16 at 16:03:38 UTC / 11:03 Toronto, with a full previous-release backup. Archive, checksum and rollback details are in DEPLOYMENT.md.
+- Runtime source: `f1db02b8b269554675b3aac752f1eb22bad88895`, branch `codex/initial-build` in `GrafovGroup/EEBD`. Later documentation-only commits do not change the deployed runtime.
+- Activated November 16 at 16:39:39 UTC / 11:39 Toronto, with a full previous-release backup. Archive, checksum and rollback details are in DEPLOYMENT.md.
 - 48 paired page purposes: **96 public content/form pages**, **92 indexable sitemap URLs**, plus localized error pages.
 - Three bilingual model guides: Ocenco M-20.2, Interspiro Spiroscape bar configurations, and Dräger Saver CF10 N (4042056). Specification tables, source documents, model limitations and model-aware enquiries are implemented. Language switching preserves model context.
 - These are reference/enquiry pages. Suppliers, trainers and service partners remain unarranged. No stock, prices, authorized-dealer status, blanket Canadian approval or recall clearance is invented; saleable catalogue records remain empty.
@@ -20,11 +20,10 @@ Updated November 16, 2026 (America/Toronto). **The bilingual enquiry website is 
 
 ## Verification
 
-25 unit/integration tests passed. Preview checks covered 112 HTML files and 4,769 internal references. The preceding mobile UX release passed 384 route/width combinations (96 pages at 320/390/768/1440 px) without page errors, failed resources or horizontal overflow. Thirty-six targeted checks at 320/390/768/900/901/1440 px passed locally and on the live host for bilingual comparison cards/tables, shorter enquiries, keyboard disclosure controls and the single-line mobile utility bar. The homepage-only follow-up passed 10 bilingual checks at 320/390/768/1440/2560 px locally and on live HTTPS, including all main destination links and keyboard FAQs. The photo audit confirms 48 distinct images, one per page purpose.
+27 unit/integration checks, 384 responsive checks across all 96 public pages, eight targeted mobile quote cases and bilingual consent/analytics tests passed. Static checks covered 112 HTML files and 4,855 references. The existing unique-photo audit still reports 48 distinct photographs.
 
-All 255 public files were verified on the host; all 253 readable files matched release SHA-256 hashes over HTTPS at 16:03:59 UTC. Localized 404s passed. The sitemap still contains 92 URLs. These checks establish the deployed content, not search-engine indexing.
+All 257 public files passed the deployment manifest checks; 255 readable files matched HTTPS hashes at 16:39:47 UTC. Localized 404s and the 92-URL sitemap passed. Live enquiry simulations passed all standard, short, bulk, error and double-click journeys; zero real messages were sent. Live GA4 page-view, quote-click and form-start traffic returned HTTP 204, without form contents or arbitrary query data. These establish delivery and measurement behavior, not search indexing.
 
-The live simulated form suite passed at 15:57:25 UTC: six model-context checks, eight standard success journeys, two shortened enquiries, two bulk journeys, inactive-field exclusion, six error states and double-click protection. All provider requests were intercepted; zero real submissions occurred. The earlier single authorized inbox test remains the delivery evidence.
 
 ## Commercial and operational follow-through
 
@@ -63,3 +62,9 @@ The owner also requested that the top bar fit on one mobile line. The tagline, C
 The owner requested less text while scrolling. The live bilingual homepage now has five sections below the preserved Immersive hero: compact model cards, fleet/training/service links, coastal-city links, three closed-by-default FAQs and an enquiry CTA. Repeated training/service/process paragraphs and nine full city summaries were replaced with concise links into the existing detailed pages. All nine coastal city destinations remain directly linked.
 
 At 390 px, visible main text is approximately 71% lower (English 783 → 224 words, French 867 → 245), and total page height is approximately 64% lower (English 10,749 → 3,888 px, French 11,009 → 3,980 px). The previous mobile form, comparison cards and utility-bar fixes remain intact. No new photo or real form submission was needed. Source and release records are backed up on GitHub.
+
+## Latest enquiry measurement and content release
+
+GA4 reporting is configured with `generate_lead` as a key event and dimensions for enquiry type, source page, CTA placement and language. Visitors choose whether to enable Analytics; declining leaves the form functional. The mobile quote action appears after the hero on longer content pages and preserves the enquiry context.
+
+Eight English/French pages gained substantive purchasing guidance, fleet replacement and receiving checklists, comparison advice and FAQs. The homepage stays concise. The deployment workflow now verifies and notifies IndexNow about meaningful indexable-page changes. Its first eight-URL submission returned HTTP 202 (key validation pending); the final tracking-only deployment deferred a repeat according to the retry policy. See `docs/ANALYTICS_AND_INDEXNOW.md` for reporting and operational details.
