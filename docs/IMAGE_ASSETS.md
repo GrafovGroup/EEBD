@@ -2,7 +2,7 @@
 
 Created November 15, 2026 with the built-in image-generation tool. Final site assets are in `public/assets/images/`, with 1200 px and 640 px WebP versions. The original generations remain in ignored local output and the tool's generation directory. WebP encoding/resizing changes file size and dimensions only.
 
-Images illustrate contexts, not EEBD.ca premises, personnel, inventory, specific products or a photographed city. Every page's main image carries a conceptual-image caption and localized alt text. No operational respirator details, certification marks or manufacturer logos are fabricated. The approved Precision logo is unchanged.
+Images illustrate contexts, not EEBD.ca premises, personnel, inventory, specific products or a photographed city. Every page's main image carries a conceptual-image caption and localized alt text. Generated illustrations do not establish model-specific operating instructions, certification or manufacturer approval. No certification marks or manufacturer logos are fabricated. The approved Precision logo is unchanged.
 
 ## Prompts
 

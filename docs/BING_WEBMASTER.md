@@ -14,3 +14,7 @@ Only EEBD.ca was added. Automatic approval review rejected the proposed Google S
 Private evidence: `test-results/bing-sitemap-submitted.png`, `test-results/bing-setup.json`. These are ignored local records and are not part of the website package.
 
 Reference: https://www2.bing.com/webmasters/help/add-and-verify-site-12184f8b . The final account state is based on the authenticated report, not documentation alone.
+
+## November 16 resubmission and indexing audit
+
+Bing processed the 90-URL sitemap successfully, then accepted the requested resubmission for processing. The initial 86-URL observation above is historical. Later direct inspections found 37 URLs discovered but not crawled; the remaining URLs are not individually verified. The homepage and comparison-page live tests passed. Homepage metadata/image notices were corrected and the fresh live test reported no SEO/GEO issues. Explicit indexing requests were accepted for the English homepage, comparison and fleet procurement pages. A French-homepage request returned a Bing server error. See `INDEXING_AUDIT.md`; discovery and request acceptance do not confirm indexing.

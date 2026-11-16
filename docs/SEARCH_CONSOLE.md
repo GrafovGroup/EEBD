@@ -23,3 +23,7 @@ Google controls crawling, indexing and ranking. Discovered URLs are not proof of
 Private screenshots, the exact verification token and timestamps are retained in ignored local records. Do not commit Google sessions or account credentials.
 
 Google also accepted individual indexing requests for https://eebd.ca/en/ and https://eebd.ca/fr/, confirming each was added to a priority crawl queue. At inspection, both were discovered but not yet indexed. The requests were submitted once per homepage; no repeated bulk requests were made.
+
+## November 16 update
+
+Resubmission of the updated sitemap succeeded with 90 discovered pages. Direct URL Inspection confirmed both language homepages are indexed. Checks of 64 distinct URLs found 57 discovered/not yet indexed and five unknown to Google; the daily inspection quota then prevented additional checks. The aggregate Page indexing report is still processing. See `INDEXING_AUDIT.md` for evidence, limitations and technical corrections.

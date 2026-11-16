@@ -4,8 +4,8 @@ Updated November 16, 2026 (America/Toronto). **The bilingual enquiry website is 
 
 ## Published release
 
-- Runtime source: `f57fbd4403f91f8c74039c12644e8314bc5fb02d`, branch `codex/initial-build` in `GrafovGroup/EEBD`. Later documentation-only commits do not change the deployed runtime.
-- Activated November 16 at 06:33:03 UTC / 01:33 Toronto, with a full previous-release backup. Archive, checksum and rollback details are in DEPLOYMENT.md.
+- Runtime source: `8b95aaff87bc26c4d466f232e7b04dfcae371884`, branch `codex/initial-build` in `GrafovGroup/EEBD`. Later documentation-only commits do not change the deployed runtime.
+- Activated November 16 at 07:03:32 UTC / 02:03 Toronto, with a full previous-release backup. Archive, checksum and rollback details are in DEPLOYMENT.md.
 - 47 paired page purposes: **94 public content/form pages**, **90 indexable sitemap URLs**, plus localized error pages.
 - Three bilingual model guides: Ocenco M-20.2, Interspiro Spiroscape bar configurations, and Dräger Saver CF10 N (4042056). Specification tables, source documents, model limitations and model-aware enquiries are implemented. Language switching preserves model context.
 - These are reference/enquiry pages. Suppliers, trainers and service partners remain unarranged. No stock, prices, authorized-dealer status, blanket Canadian approval or recall clearance is invented; saleable catalogue records remain empty.
@@ -20,7 +20,7 @@ Updated November 16, 2026 (America/Toronto). **The bilingual enquiry website is 
 
 ## Verification
 
-24 unit/integration tests passed. Preview checks covered 101 HTML files and 4,194 internal references. Production Chromium checks covered 376 route/width combinations (94 pages at 320, 390, 768 and 1440 px), with no script errors or failed resources.
+24 unit/integration tests passed. Preview checks covered 101 HTML files and 4,194 internal references. The current layout passed 752 route/width combinations (94 pages at eight widths from 320 to 2560 px), with no page errors or horizontal overflow. The deployed public files also passed SHA-256 comparison.
 
 All 160 public files were verified on the host; all 158 readable files matched release SHA-256 hashes over HTTPS. Localized 404s, the Bing tag and the 90-URL XML sitemap passed. Existing HTTPS/canonical routing and privacy controls remain unchanged.
 
@@ -32,6 +32,10 @@ Keep Formspree, the notification inbox and WHC active. Required form fields, For
 
 Obtain actual supplier terms, approved commercial media, current model/serial documents and qualified service/training arrangements before promising supply. See `docs/MODEL_RESEARCH.md` for current-source conflicts and the unresolved Saver CF notice applicability. Specialist technical/French sign-off and Safari/Firefox/real-device/screen-reader testing are not claimed.
 
-Google Search Console ownership is DNS-verified. The earlier sitemap was processed successfully with 80 discovered URLs; the live sitemap now contains 90. Search engines control crawling, indexing and ranking. See `docs/SEARCH_CONSOLE.md` and the Bing release record for actual submission status.
+Google Search Console ownership is DNS-verified. The updated sitemap was processed successfully with 90 discovered URLs. Direct inspections confirm the English and French homepages are indexed; the aggregate indexing report is still processing. See `docs/INDEXING_AUDIT.md` for checked URLs and the inspection quota limit. Search engines control crawling, indexing and ranking. See `docs/SEARCH_CONSOLE.md` and the Bing release record for actual submission status.
 
-Bing ownership is verified using the site meta tag. The updated sitemap was submitted successfully; its last observed status is **Processing**, with no errors or warnings reported. See `docs/BING_WEBMASTER.md`. The final live simulated form check passed at 06:35:51 UTC: six model/language checks, eight standard success journeys, two bulk journeys, inactive bulk-field exclusion, six failure states and double-click protection. All Formspree requests were intercepted; zero real submissions occurred.
+Bing ownership is verified using the site meta tag. The updated sitemap was accepted and 90 URLs were discovered; it reached Success before the requested resubmission returned it to Processing. This does not confirm page indexing. See `docs/BING_WEBMASTER.md`. The final live simulated form check passed at 06:35:51 UTC: six model/language checks, eight standard success journeys, two bulk journeys, inactive bulk-field exclusion, six failure states and double-click protection. All Formspree requests were intercepted; zero real submissions occurred.
+
+## Latest owner-directed presentation updates
+
+The live layout uses the full screen width with responsive padding and 25% larger navigation text. The English homepage browser title is `Emergency Escape Breathing Device | EEBD.CA`. The bottom-left footer now reads exactly `2026 EEBD.CA. A division of Facility Unlimited Corp. All Right Reserved.` The earlier owner-supplied contracting entity remains the contact/privacy entity; the new instruction specified the footer wording. Five search descriptions and the localized homepage image descriptions were improved.

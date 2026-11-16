@@ -5,10 +5,10 @@
 The complete bilingual enquiry website is live at **https://eebd.ca/** on WHC. The root redirects to `/en/`; `/fr/` is available through the language switch. The domain has its own document root, separate from existing websites.
 
 - Repository: `https://github.com/GrafovGroup/EEBD.git`, branch `codex/initial-build`.
-- Deployed runtime source: **`f57fbd4403f91f8c74039c12644e8314bc5fb02d`**.
-- Activated November 16, 2026 at **06:33:03 UTC** (November 16, 01:33 Toronto).
+- Deployed runtime source: **`8b95aaff87bc26c4d466f232e7b04dfcae371884`**.
+- Activated November 16, 2026 at **07:03:32 UTC** (November 16, 02:03 Toronto).
 - Static package: **160 public files**, including two Apache configuration files; 158 readable files verified byte-for-byte over HTTPS.
-- Archive: `test-results/eebd-release-f57fbd4.tar.gz` (1,374,839 bytes); SHA-256 `18bc2c5aaa09ba0dd303848c6999577cae0cffe288e8016082b0b26f32bfc597`.
+- Archive: `test-results/eebd-release-8b95aaf.tar.gz` (1,375,284 bytes); SHA-256 `f6ae134bd062ed9459ae9ff0409d85a231a684d6661a993b61c93f7d317f1a76`.
 - `manifest.json` records every file hash, exact source commit and `sourceDirty:false`. Later documentation-only commits do not change the deployed runtime.
 
 Account identifiers, credentials, session URLs, host backup paths and submissions remain outside Git. Other hosted sites were not changed.
@@ -107,3 +107,9 @@ Local checks passed: 24 unit/integration tests, 101 preview HTML files and 4,194
 WHC serves CSS with a seven-day cache lifetime. Shared CSS and entry-script URLs now use `site.assetVersion`; bump it when those assets change.
 
 The final live simulated form check passed at 06:35:51 UTC: six model/language checks, eight standard success journeys, two bulk journeys, inactive bulk-field exclusion, six failure states and double-click protection. All Formspree requests were intercepted; zero real submissions occurred.
+
+## Layout and search metadata release — November 16, 07:03 UTC
+
+Navigation labels and the header enquiry button are 25% larger at their existing breakpoints. Containers use the full viewport width with responsive side padding. The owner supplied the exact new footer notice; the English homepage title is `Emergency Escape Breathing Device | EEBD.CA`. Five overlong meta descriptions were rewritten and eight homepage image instances now have localized descriptions.
+
+Validation: 752 rendered route/viewport combinations at 320, 390, 768, 1024, 1200, 1440, 1920 and 2560 px; no page errors or horizontal page overflow. All 160 public files were verified on WHC and 158 readable files matched release hashes over HTTPS at 07:04 UTC. All 90 sitemap pages remain HTTP 200, indexable, self-canonical and reachable within three HTML link steps. Quote and privacy exclusions remain intentional. See `docs/INDEXING_AUDIT.md` for actual search-index evidence and its limits.

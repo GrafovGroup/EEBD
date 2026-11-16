@@ -3,6 +3,7 @@ import { offerings } from './offerings.mjs';
 import { modelFor } from './models.mjs';
 
 export const imageDescriptions = {
+  'eebd-in-use': {en:'AI-generated illustration of a maritime worker using an EEBD escape hood connected to a carried air-supply pouch in a ship corridor.',fr:'Illustration générée par IA d’un travailleur maritime portant une cagoule d’évacuation EEBD reliée à une réserve d’air en bandoulière dans une coursive.'},
   'ocenco-m202-niosh': {en:'Ocenco M-20.2 EEBD shown open beside a closed unit in a NIOSH assessment photograph.',fr:'EEBD Ocenco M-20.2 ouvert à côté d’un appareil fermé dans une photographie d’évaluation du NIOSH.'},
   'marine-port': {en:'Conceptual image of a cargo vessel beside a Pacific coastal terminal.',fr:'Image conceptuelle d’un cargo à un terminal de la côte du Pacifique.'},
   'atlantic-harbour': {en:'Conceptual image of working vessels in an Atlantic harbour.',fr:'Image conceptuelle de navires de travail dans un port de l’Atlantique.'},
@@ -12,7 +13,7 @@ export const imageDescriptions = {
   'service-planning': {en:'Conceptual workbench prepared for equipment inventory and service planning.',fr:'Établi conceptuel préparé pour l’inventaire d’équipement et la planification des services.'},
   'procurement-desk': {en:'Conceptual procurement workspace with documents and a closed laptop.',fr:'Espace de travail conceptuel pour l’approvisionnement, avec documents et ordinateur fermé.'},
 };
-const coreImages={home:'marine-port',equipment:'marine-port',marineEquipment:'marine-port',industrialEquipment:'industrial-facility',accessories:'training-workshop',training:'training-workshop',service:'service-planning',fleet:'river-port',industries:'industrial-facility',marine:'atlantic-harbour',industrial:'industrial-facility',coverage:'marine-port',resources:'procurement-desk',quoteGuide:'procurement-desk',escapeGuide:'marine-port',about:'procurement-desk',contact:'procurement-desk',quote:'procurement-desk',privacy:'procurement-desk','404':'marine-port'};
+const coreImages={home:'eebd-in-use',equipment:'marine-port',marineEquipment:'marine-port',industrialEquipment:'industrial-facility',accessories:'training-workshop',training:'training-workshop',service:'service-planning',fleet:'river-port',industries:'industrial-facility',marine:'atlantic-harbour',industrial:'industrial-facility',coverage:'marine-port',resources:'procurement-desk',quoteGuide:'procurement-desk',escapeGuide:'marine-port',about:'procurement-desk',contact:'procurement-desk',quote:'procurement-desk',privacy:'procurement-desk','404':'marine-port'};
 const regionImages={pacific:'marine-port',atlantic:'atlantic-harbour',stlawrence:'river-port',greatlakes:'river-port',inland:'industrial-facility'};
 export function imageFor(id) {
   if(id==='comparison')return 'ocenco-m202-niosh';

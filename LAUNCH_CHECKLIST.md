@@ -1,6 +1,6 @@
 # Launch checklist
 
-Updated November 16, 2026 (America/Toronto), under the owner's explicit full-site launch instruction. Deployed runtime: `f57fbd4403f91f8c74039c12644e8314bc5fb02d`.
+Updated November 16, 2026 (America/Toronto), under the owner's explicit full-site launch instruction. Deployed runtime: `8b95aaff87bc26c4d466f232e7b04dfcae371884`.
 
 | Check | Status | Evidence / limitation |
 | --- | --- | --- |
@@ -9,7 +9,7 @@ Updated November 16, 2026 (America/Toronto), under the owner's explicit full-sit
 | Complete paired pages | PASS | 47 purposes × two languages, 94 public pages plus localized error pages |
 | Build and internal references | PASS | 101 preview HTML files, 4,194 references; labels, IDs and private-source exclusion |
 | Unit/integration checks | PASS | 24 tests: route/content pairs, publication guard, product filters, validation, escaping, transport, preview isolation and packaging |
-| Production responsive checks | PASS | Chromium 158.0.8127.36, 376 page/width combinations at 320/390/768/1440 px; zero page errors or failed resources |
+| Production responsive checks | PASS | 752 page/width combinations at 320/390/768/1024/1200/1440/1920/2560 px; no page errors or horizontal overflow |
 | General and scoped enquiry UI | PASS | General contact plus equipment/training/service in both languages; review/edit, active fields, consent and no persistence |
 | Actual-host form checks | PASS | Eight standard and two bulk success journeys, inactive bulk-field exclusion, six failure journeys and double-click protection; intercepted provider responses, zero real submissions |
 | Actual inbox delivery | PASS FOR AUTHORIZED TEST | One authorized POST accepted by Formspree; owner confirmed receipt; authenticated workflow recipient info@eebd.ca |
@@ -24,7 +24,7 @@ Updated November 16, 2026 (America/Toronto), under the owner's explicit full-sit
 | Search metadata | PASS | 90 indexable sitemap URLs; reciprocal alternates/canonicals; quote/privacy noindex; review utilities excluded |
 | Secrets and submissions excluded | PASS | No credentials, customer messages, private source or database in public output/Git |
 | Rollback | PREPARED | Private previous-release and holding-directory backups with manifests/timestamps; no rollback needed |
-| Google Search Console | PASS | Domain verified with DNS TXT; sitemap processed successfully with 80 discovered URLs; indexing/rankings not promised |
+| Google Search Console | PASS | Domain verified with DNS TXT; sitemap processed successfully with 90 discovered URLs; indexing/rankings not promised |
 | Analytics | NOT CONFIGURED | No tracking code added |
 | Editorial imagery | PASS | Seven generated contextual images, 14 responsive WebP files, localized captions/alt text; every public content/form route covered |
 | Expanded enquiry topics | PASS | Nine paired detail pages; no unverified saleable models |
