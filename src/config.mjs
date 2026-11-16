@@ -3,7 +3,7 @@ export const site = Object.freeze({
   name: 'EEBD.ca',
   origin: 'https://eebd.ca',
   // Bump when shared CSS/JS changes so WHC's cached assets are refreshed.
-  assetVersion: '20261116-procurement',
+  assetVersion: '20261116-layout-seo',
   bingVerification: '8540AF3FE8C8197267E84BBE602115F7',
   phone: '(833) 696-9996',
   phoneTel: '+18336969996',
@@ -11,6 +11,7 @@ export const site = Object.freeze({
   email: 'info@eebd.ca',
   emailVerified: true,
   contractingEntity: 'Superclean Canada Inc.',
+  footerCopyright: '2026 EEBD.CA. A division of Facility Unlimited Corp. All Right Reserved.',
   hostingProvider: 'WHC',
   approvedConcept: 1,
   previewConcept: 1,

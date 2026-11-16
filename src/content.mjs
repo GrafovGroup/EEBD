@@ -36,6 +36,7 @@ export const ui = {
 export const home = {
   en: {
     eyebrow: 'MARINE & INDUSTRIAL · CANADA', title: 'Emergency escape.\nPrecisely equipped.',
+    description: 'Explore emergency escape breathing devices for Canadian vessels and facilities. Compare EEBD models and enquire about equipment, training and service support.',
     intro: 'Tell us what your vessel, facility or fleet needs: emergency escape breathing equipment, product-specific training or service support. We review each enquiry before confirming what can be arranged.',
     visualTitle: 'READY FOR THE NEXT STEP', visualSub: 'A specification-led approach',
     offerLabel: 'ONE CONVERSATION. THREE WAYS TO HELP.', offerTitle: 'Equipment is only the beginning.',
@@ -65,6 +66,7 @@ export const home = {
   },
   fr: {
     eyebrow: 'MARITIME ET INDUSTRIEL · CANADA', title: 'L’évacuation d’urgence.\nL’équipement adapté.',
+    description: 'Comparez les appareils respiratoires d’évacuation pour navires et installations au Canada. Préparez une demande d’équipement, de formation ou de soutien.',
     intro: 'Présentez les besoins de votre navire, de votre installation ou de votre flotte : appareils respiratoires d’évacuation, formation ou soutien technique. Chaque demande est examinée avant de confirmer les possibilités.',
     visualTitle: 'PRÉPARER LA PROCHAINE ÉTAPE', visualSub: 'Une approche fondée sur vos spécifications',
     offerLabel: 'UN ÉCHANGE. TROIS FAÇONS DE VOUS AIDER.', offerTitle: 'Au-delà de l’équipement.',
@@ -97,12 +99,12 @@ export const home = {
 // Content is paired by purpose. No product or provider arrangement is inferred from these drafts.
 export const pages = {
   equipment: {
-    en: { eyebrow: 'EQUIPMENT', title: 'Start with the requirement.', intro: 'Emergency escape breathing equipment for marine and selected industrial applications. An exact model, part number or specification gives your enquiry a useful starting point.', sections: [
+    en: { eyebrow: 'EQUIPMENT', title: 'Start with the requirement.', description: 'Explore marine and industrial EEBD equipment. Compare escape devices, training units and accessories, then prepare an enquiry for your Canadian operation.', intro: 'Emergency escape breathing equipment for marine and selected industrial applications. An exact model, part number or specification gives your enquiry a useful starting point.', sections: [
       ['Choose the application', 'Explore marine equipment, industrial escape requirements, or training units and accessories. Keep operational devices and practice equipment clearly identified.'],
       ['Define the quotation', 'Include the quantity, delivery location, required documents, existing model and timing. State any procurement reference or required approval for the actual application.'],
       ['Confirm the exact configuration', 'A product name alone does not establish suitability or availability. The quotation needs to identify the model, variant, included items, documentation and delivery arrangements.'],
     ], checklist: ['Manufacturer, model or “not sure”', 'Part number and quantity', 'Application and required documentation', 'Delivery location and target timing'], related: ['marineEquipment', 'industrialEquipment', 'accessories'], requestType: 'equipment' },
-    fr: { eyebrow: 'ÉQUIPEMENT', title: 'Commencez par les besoins.', intro: 'Appareils respiratoires d’évacuation pour les applications maritimes et certaines applications industrielles. Un modèle, un numéro de pièce ou des spécifications orientent votre demande.', sections: [
+    fr: { eyebrow: 'ÉQUIPEMENT', title: 'Commencez par les besoins.', description: 'Explorez les appareils respiratoires d’évacuation, les unités de formation et les accessoires. Préparez votre demande d’équipement EEBD au Canada.', intro: 'Appareils respiratoires d’évacuation pour les applications maritimes et certaines applications industrielles. Un modèle, un numéro de pièce ou des spécifications orientent votre demande.', sections: [
       ['Choisir l’application', 'Explorez l’équipement maritime, les besoins d’évacuation industrielle ou les appareils de formation et accessoires. Distinguez clairement les appareils opérationnels de ceux de pratique.'],
       ['Définir la soumission', 'Précisez la quantité, le lieu de livraison, les documents requis, le modèle existant et l’échéancier. Indiquez toute référence d’achat ou homologation exigée pour l’application.'],
       ['Confirmer la configuration exacte', 'Le nom d’un produit ne suffit pas à établir son adéquation ou sa disponibilité. La soumission doit préciser le modèle, la variante, les articles inclus, les documents et les modalités de livraison.'],
