@@ -1,0 +1,15 @@
+{
+  "name": "eebd-ca",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Bilingual, static-first EEBD.ca website",
+  "engines": { "node": ">=24 <25" },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "build:production": "node scripts/build.mjs --production",
+    "dev": "node scripts/dev.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "check": "node scripts/check.mjs"
+  }
+}

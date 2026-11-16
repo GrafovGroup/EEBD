@@ -4,7 +4,7 @@ Canadian emergency escape breathing equipment: **equipment sales, product-specif
 
 ## Project status
 
-The owner has confirmed the domain, business model, and this repository. This initial repository setup contains the full build instruction and starting guide. Website implementation and deployment have not started.
+The owner has authorized implementation. A local bilingual development preview, editable brand concepts and the static site foundation now exist on `codex/initial-build`. The website has not been deployed. Read [PROJECT_STATUS.md](PROJECT_STATUS.md) and [DECISIONS.md](DECISIONS.md) before resuming.
 
 - **Repository:** https://github.com/GrafovGroup/EEBD.git
 - **Domain:** EEBD.ca — owned
@@ -13,7 +13,25 @@ The owner has confirmed the domain, business model, and this repository. This in
 - **Baseline:** Grafov Group Universal Codex Website Launch Master Prompt v2.0
 - **Languages:** Canadian English and Québec-appropriate French
 - **Primary audience:** commercial marine buyers, with selected industrial applications and fleet procurement
-- **Branding:** five logo concepts required; no identity selected yet
+- **Branding:** ten concepts prepared across two rounds; current options 06–10 include the full descriptor beneath EEBD with no .ca; no identity selected yet
+
+## Run the local review
+
+Use Node **24.22.1** (see `.nvmrc`). The site has no third-party build/runtime dependencies.
+
+```sh
+node scripts/build.mjs
+node scripts/dev.mjs
+```
+
+Open [the brand review](http://127.0.0.1:4173/brand-concepts/), [English draft](http://127.0.0.1:4173/en/) or [French draft](http://127.0.0.1:4173/fr/). The preview server must be running. Current artwork is in `public/assets/brand/`; the summary board is in `design/`. Regenerate editable SVGs with `node scripts/brand-assets.mjs`.
+
+```sh
+node scripts/check.mjs
+node --test tests/*.test.mjs
+```
+
+Production output is intentionally blocked until the selected identity, real offer arrangements, contracting identity, contact routing, enquiry service and hosting have been verified. Inputs in the enquiry preview do not submit or persist. See [DEPLOYMENT.md](DEPLOYMENT.md) and [LAUNCH_CHECKLIST.md](LAUNCH_CHECKLIST.md) for the exact limits.
 
 ## Start here
 
@@ -72,6 +90,6 @@ The established new-brand phone is **(833) 696-9996**. Contact routing must be t
 
 ## Scope and recovery
 
-This repository is the source destination for EEBD.ca. Preserve its history and existing work. The current setup authorizes the prompt and README upload; implementation and release follow the owner's subsequent instruction and the current platform rules.
+This repository is the source destination for EEBD.ca. Preserve its history and existing work. The initial documentation setup has been followed by the owner’s build instruction. Preserve the latest decisions in DECISIONS.md, especially the integrated singular descriptor and no-.ca logo requirement. Production release remains subject to the masterplan’s actual readiness requirements.
 
 During the build, create or maintain the project records named in MASTER_PROMPT.md. Keep secrets, customer submissions, attachments, private supplier terms, and live production data out of Git. Record any separate hosting-source remote and the exact deployed revision.
