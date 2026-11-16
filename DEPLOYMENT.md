@@ -5,10 +5,10 @@
 The complete bilingual enquiry website is live at **https://eebd.ca/** on WHC. The root redirects to `/en/`; `/fr/` is available through the language switch. The domain has its own document root, separate from existing websites.
 
 - Repository: `https://github.com/GrafovGroup/EEBD.git`, branch `codex/initial-build`.
-- Deployed runtime source: **`c77f1ab0b1a77986631ee410cfe86869781c6726`**.
-- Activated November 16, 2026 at **04:54:44 UTC** (November 15, 23:54 Toronto).
-- Static package: **147 public files**, including two Apache configuration files; 145 readable files verified byte-for-byte over HTTPS.
-- Archive: `test-results/eebd-release-c77f1ab.tar.gz`; SHA-256 `b6fd9f6b458e10915f67b8082654ee842066e492f721c6ab0ff069fea320481a`.
+- Deployed runtime source: **`30a44088149a521e31d4e98fd40ed339ab42ac44`**.
+- Activated November 16, 2026 at **06:04:05 UTC** (November 16, 01:04 Toronto).
+- Static package: **154 public files**, including two Apache configuration files; 152 readable files verified byte-for-byte over HTTPS.
+- Archive: `test-results/eebd-release-30a4408.tar.gz` (1,360,816 bytes); SHA-256 `cbc036687818d6a7cd75066064f1fdd479daed1ccbe4c8958ac7b883265a092a`.
 - `manifest.json` records every file hash, exact source commit and `sourceDirty:false`. Later documentation-only commits do not change the deployed runtime.
 
 Account identifiers, credentials, session URLs, host backup paths and submissions remain outside Git. Other hosted sites were not changed.
@@ -25,7 +25,7 @@ Live release checks:
 - `/` returns 302 to `/en/`; public pages return 200.
 - Missing URLs and direct error-page routes return HTTP 404 with the appropriate English/French page. Dedicated error assets avoid recursive error dispatch on WHC LiteSpeed; French directory configuration supplies the localized handler.
 - Security headers include nosniff, strict-origin referrer policy and a CSP allowing form AJAX only to Formspree. The preview's blanket noindex header is absent.
-- The sitemap contains 80 indexable URLs. Contact and quote forms work without React, external scripts, PHP or a Node service on WHC.
+- The sitemap contains 86 indexable URLs. Contact and quote forms work without React, external scripts, PHP or a Node service on WHC.
 - ACME/DCV directories and cgi-bin were preserved. Analytics is not configured. Google Search Console is verified and the sitemap submission processed successfully.
 
 ## Reproducible commands
@@ -87,3 +87,11 @@ Submitted **https://eebd.ca/sitemap.xml** after the enriched deployment. Search 
 The sitemap contains 80 canonical page URLs, 80 image references and 160 reciprocal language links. Public HTTP checks returned 200 with application/xml, including a Googlebot user-agent check. Google controls crawl/indexing timing and ranking; discovery is not an indexing guarantee. No analytics tracking code was added. See `docs/SEARCH_CONSOLE.md` for the account-independent access link and references.
 
 Google also accepted individual indexing requests for https://eebd.ca/en/ and https://eebd.ca/fr/, confirming each was added to a priority crawl queue. At inspection, both were discovered but not yet indexed. The requests were submitted once per homepage; no repeated bulk requests were made.
+
+## November 16 model release and Bing submission
+
+The model release `30a4408` adds six paired model-reference pages and one attributed public-domain M-20.2 photograph. The static sitemap now contains 86 URLs. The previous enriched runtime `c77f1ab` remains in the private rollback backup.
+
+All 154 public files were verified before activation; all 152 readable files matched over HTTPS at 06:04:25 UTC. The hosted simulated form suite passed at 06:05:46 UTC: six model/language context checks, unknown-source rejection, eight successful journeys, six failure cases and double-click protection. Every Formspree response was intercepted; zero real submissions occurred.
+
+Bing Webmaster ownership was verified through the production meta tag. The 86-URL sitemap was submitted and the report showed **Processing**, with no errors or warnings reported at that point. This does not establish indexing. See `docs/BING_WEBMASTER.md`. The Google submission above records its earlier 80-URL processing result; the same public sitemap now includes the new model pages.

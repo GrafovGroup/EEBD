@@ -1,12 +1,12 @@
 # Launch checklist
 
-Published November 15, 2026 (America/Toronto), under the owner's explicit full-site launch instruction. Deployed runtime: `c77f1ab0b1a77986631ee410cfe86869781c6726`.
+Updated November 16, 2026 (America/Toronto), under the owner's explicit full-site launch instruction. Deployed runtime: `30a44088149a521e31d4e98fd40ed339ab42ac44`.
 
 | Check | Status | Evidence / limitation |
 | --- | --- | --- |
 | Source preserved and backed up | PASS | Original history retained; runtime commit on `codex/initial-build`; clean package manifest |
 | Approved identity | PASS | Precision 01, integrated singular descriptor, no .ca in logo; bilingual SVG/PNG, favicon/social assets |
-| Complete paired pages | PASS | 42 purposes × two languages, 84 public pages plus localized error pages |
+| Complete paired pages | PASS | 45 purposes × two languages, 90 public pages plus localized error pages |
 | Build and internal references | PASS | 91 preview HTML files, 3,664 references; labels, IDs and private-source exclusion |
 | Unit/integration checks | PASS | 23 tests: route/content pairs, publication guard, product filters, validation, escaping, transport, preview isolation and packaging |
 | Production responsive checks | PASS | Chromium 158.0.8127.36, 336 page/width combinations at 320/390/768/1440 px; zero page errors or failed resources |
@@ -19,9 +19,9 @@ Published November 15, 2026 (America/Toronto), under the owner's explicit full-s
 | Content/offer boundaries | PASS | Broad technical sources reviewed; arrangements explicitly pending; no stock, pricing, credentials or saleable models asserted |
 | Model/provider evidence | FUTURE COMMERCIAL WORK | Actual suppliers, trainers and service partners remain unarranged; evidence required before offering specific models/capabilities |
 | HTTPS and canonical redirects | PASS | Trusted root/www certificate; HTTP/www 308 preserves path/query; root 302 to English |
-| Final host files | PASS | All 147 public files hash-verified on host; 145 readable files matched over HTTPS |
+| Final host files | PASS | All 154 public files hash-verified on host; 152 readable files matched over HTTPS |
 | Error pages | PASS | English/French HTTP 404 bodies and direct error routes verified after correcting LiteSpeed recursion |
-| Search metadata | PASS | 80 indexable sitemap URLs; reciprocal alternates/canonicals; quote/privacy noindex; review utilities excluded |
+| Search metadata | PASS | 86 indexable sitemap URLs; reciprocal alternates/canonicals; quote/privacy noindex; review utilities excluded |
 | Secrets and submissions excluded | PASS | No credentials, customer messages, private source or database in public output/Git |
 | Rollback | PREPARED | Private previous-release and holding-directory backups with manifests/timestamps; no rollback needed |
 | Google Search Console | PASS | Domain verified with DNS TXT; sitemap processed successfully with 80 discovered URLs; indexing/rankings not promised |
@@ -33,3 +33,12 @@ Published November 15, 2026 (America/Toronto), under the owner's explicit full-s
 | Other browsers / assistive technology | NOT TESTED | Safari/WebKit, Firefox, real devices and manual screen-reader checks remain outside observed Chromium coverage |
 
 Browser checks are not WCAG certification or real-user performance evidence. Local timing measurements are not Core Web Vitals. Continued Formspree account capacity, inbox handling and hosting renewal require normal operation.
+
+## Model release verification — November 16
+
+- PASS: Three model guides in both languages; ratings/configurations remain distinct; direct manufacturer documentation; no sale offers or blanket recall-clearance claims.
+- PASS: Public-domain M-20.2 photograph with attribution and non-endorsement. Owner confirms no existing manufacturer photo permission; Interspiro/Dräger photographs remain linked at source, not copied.
+- PASS: Six model/language enquiry checks, unknown source rejection, eight successful form journeys, six failure states and double-click protection on live HTTPS, all provider responses intercepted.
+- PASS: 360 production responsive route checks, zero script/resource failures; 23 unit/integration tests; 97 preview HTML files and 3,938 internal references.
+- PASS: Bing property verified; sitemap submitted, current status Processing. No indexing guarantee.
+- PREPARED / NOT SENT: Three supplier introduction drafts. No supplier application, message, purchase or commercial relationship created.

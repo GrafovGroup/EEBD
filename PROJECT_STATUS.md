@@ -1,37 +1,33 @@
 # EEBD.ca implementation status
 
-Updated November 15, 2026 (America/Toronto). **The full bilingual enquiry website is live at https://eebd.ca/ on WHC. Contact and quotation forms are enabled through Formspree.**
+Updated November 16, 2026 (America/Toronto). **The bilingual enquiry website is live at https://eebd.ca/ on WHC.** Formspree handles contact and equipment/training/service enquiries.
 
 ## Published release
 
-- Deployed runtime source: `c77f1ab0b1a77986631ee410cfe86869781c6726`, branch `codex/initial-build` in `GrafovGroup/EEBD`. Later documentation commits do not imply a different deployed runtime.
-- Approved Precision 01 identity: EEBD with the singular descriptor directly beneath the letters, no `.ca` inside the logo. English/French light, white and monochrome assets are included.
-- 42 page purposes in both languages: 84 public pages, plus localized error pages. Equipment categories, training, service support, fleet supply, industries, coverage, resources, about, contact, quote and privacy are published.
-- 80 indexable URLs in the sitemap. Quote and privacy pages remain available but non-indexable. Brand reviews and source files are excluded from production.
-- Superclean Canada Inc. is the operator. Verified contact route: info@eebd.ca. The unverified phone is not displayed.
-- General contact and equipment/training/service forms provide validation, review/edit, provider-confirmed success and useful failure states. Preview sending remains disabled.
-- Suppliers, trainers and service partners are not arranged. Public copy states this; availability requires confirmation. No stock, saleable models, credentials, prices or checkout are invented.
+- Runtime source: `30a44088149a521e31d4e98fd40ed339ab42ac44`, branch `codex/initial-build` in `GrafovGroup/EEBD`. Later documentation-only commits do not change the deployed runtime.
+- Activated November 16 at 06:04:05 UTC / 01:04 Toronto, with a full previous-release backup. Archive, checksum and rollback details are in DEPLOYMENT.md.
+- 45 paired page purposes: **90 public content/form pages**, **86 indexable sitemap URLs**, plus localized error pages.
+- Three bilingual model guides: Ocenco M-20.2, Interspiro Spiroscape bar configurations, and Dräger Saver CF10 N (4042056). Specification tables, source documents, model limitations and model-aware enquiries are implemented. Language switching preserves model context.
+- These are reference/enquiry pages. Suppliers, trainers and service partners remain unarranged. No stock, prices, authorized-dealer status, blanket Canadian approval or recall clearance is invented; saleable catalogue records remain empty.
+- Six Canadian supplier candidates are researched in `docs/CANADIAN_SUPPLIER_RESEARCH.md`. Survitec, Dräger Canada and VIKING are the initial priorities. Introduction drafts are prepared but **not sent**.
+- One real M-20.2 photo is reproduced from a public-domain CDC/NIOSH report, with attribution and non-endorsement. The owner confirmed no manufacturer photo permissions. Interspiro/Dräger pages link their official photographs; on-site product photos for those two require permission.
+- Seven earlier conceptual images, nine detailed enquiry topics and fourteen Canadian city guides remain published. The approved Precision 01 logo is unchanged: descriptor directly under EEBD, no .ca inside the logo.
+- Operator: Superclean Canada Inc. Contact: info@eebd.ca. The unverified telephone is not displayed.
 
 ## Verification
 
-23 unit/integration tests passed. Preview checks covered 91 HTML files and 3,664 internal references. Production Chromium checks covered 336 route/width combinations across 320, 390, 768 and 1440 px, with no script errors or failed resources.
+23 unit/integration tests passed. Preview checks covered 97 HTML files and 3,938 internal references. Production Chromium checks covered 360 route/width combinations (90 pages at 320, 390, 768 and 1440 px), with no script errors or failed resources.
 
-On the enriched WHC site, eight English/French successful form journeys, six failure journeys and double-click protection passed with the new Halifax city-page source context, all provider responses intercepted and zero real submissions. Separately, the single owner-authorized real Formspree test was accepted and the owner confirmed inbox receipt. The authenticated Formspree workflow names info@eebd.ca as its notification recipient.
+All 154 public files were verified on the host; all 152 readable files matched release SHA-256 hashes over HTTPS. Localized 404s, the Bing tag and the 86-URL XML sitemap passed. Existing HTTPS/canonical routing and privacy controls remain unchanged.
 
-The enriched deployment was activated at 04:54:44 UTC November 16 (23:54 Toronto November 15): 147 packaged public files verified on the host; all 145 readable public files matched their SHA-256 hashes over HTTPS. Localized error responses and the sitemap passed. Existing HTTPS/canonical routing and form transport remain in place.
+The simulated form suite checks all three model prefills in both languages, translated model context, rejected unknown source context, eight successful form journeys, six failure states and double-click protection. Provider requests are intercepted; no new real enquiry is sent. The earlier single authorized real test was accepted and the owner confirmed inbox receipt. Formspree's authenticated workflow identifies info@eebd.ca as the notification destination.
 
-See DEPLOYMENT.md for reproduction and rollback, LAUNCH_CHECKLIST.md for evidence limits, and DECISIONS.md for owner instructions. Private account/session details and enquiry data are excluded from Git.
+## Commercial and operational follow-through
 
-## Continuing operation
+Keep Formspree, the notification inbox and WHC active. Required form fields, Formshield and the eebd.ca domain restriction are configured; CAPTCHA was already disabled and remains unchanged. Plan limits and inbox monitoring remain operational responsibilities.
 
-Keep the Formspree account, notification inbox and WHC hosting active. Formshield, submission archive and required email/contact/message validations are enabled; the project is restricted to eebd.ca. CAPTCHA was already disabled and was not changed. Plan limits and ongoing inbox monitoring are operational responsibilities.
+Obtain actual supplier terms, approved commercial media, current model/serial documents and qualified service/training arrangements before promising supply. See `docs/MODEL_RESEARCH.md` for current-source conflicts and the unresolved Saver CF notice applicability. Specialist technical/French sign-off and Safari/Firefox/real-device/screen-reader testing are not claimed.
 
-Before publishing individual products or promising training/service delivery, establish the actual commercial relationships and model-specific evidence. Specialist technical/French review, real-device/Safari/Firefox/screen-reader checks and analytics have not been claimed. Google Search Console domain ownership is DNS-verified and the submitted sitemap was processed successfully with 80 discovered URLs. Discovery is not a claim that all pages are indexed. These do not reopen the completed identity or the owner's authorized enquiry-site launch.
+Google Search Console ownership is DNS-verified. The earlier sitemap was processed successfully with 80 discovered URLs; the live sitemap now contains 86. Search engines control crawling, indexing and ranking. See `docs/SEARCH_CONSOLE.md` and the Bing release record for actual submission status.
 
-## Imagery, detailed enquiries and Canadian coverage
-
-Seven original conceptual images now appear across every public content/form page, with bilingual alt text and captions. Responsive WebP variants total less than 1 MB; imagery does not represent actual EEBD premises, stock or photographed city locations. The approved logo is unchanged.
-
-Nine new paired topics cover compressed-air devices, oxygen escape devices, compatible stowage, familiarization, crew refreshers, equipment registers, inspection coordination, replacement planning and fleet procurement. Fourteen paired city guides cover Vancouver, Victoria, Prince Rupert, Halifax, Saint John, St. John’s, Sydney, Montreal, Quebec City, Toronto, Hamilton, Calgary, Edmonton and Winnipeg. They provide specific local context and enquiry questions without local-office or availability claims.
-
-The home/coverage pages link the regional guides, and category pages link detailed topics. Canonicals, language alternates, Organization/WebPage/Breadcrumb structured data, image metadata and sitemap image/language entries are present. Research and generation prompts are in `docs/`.
+Bing ownership is verified using the site meta tag. The updated sitemap was submitted successfully; its last observed status is **Processing**, with no errors or warnings reported. See `docs/BING_WEBMASTER.md`. The final hosted form simulation passed at 06:05:46 UTC with six model/language checks, eight successes, six failures and double-click protection; zero real submissions.
