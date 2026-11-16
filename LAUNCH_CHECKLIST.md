@@ -8,23 +8,23 @@ Milestone: initial bilingual build and selected Precision identity, November 15,
 | Five original identity concepts | PASS | First round archived; five additional concepts implement the owner's no-.ca/integrated-descriptor instruction |
 | Approved identity direction | PASS | Owner selected Precision 01; suffix removed and descriptor integrated immediately below EEBD; EN/FR light/white/monochrome SVG/PNG assets and social cards created |
 | Complete paired core page drafts | PASS | 19 purposes × two languages; 38 pages plus localized 404s |
-| Build and internal link/asset crawl | PASS | Isolated checker: 45 HTML files, 1,597 internal references; labels, IDs, noindex, sitemap and private-source exclusion checks |
+| Build and internal link/asset crawl | PASS | Isolated checker: 45 HTML files, 1,601 internal references; labels, IDs, noindex, sitemap and private-source exclusion checks |
 | Unit/integration tests | PASS | 17 tests: route/content pairs, publication boundaries, product filters, six request contracts, validation, escaping, inactive forms, HTTP redirects/404/rejection |
-| Browser responsive/interaction checks | PASS | Chromium 158.0.8127.36: 152 route/width checks at 320/390/768/1440 px, both locales; six enquiry branches; twelve concept applications; menu Escape/focus; no-JavaScript inactive forms; zero page errors or failed resources. French/brand overflow found and fixed. |
+| Browser responsive/interaction checks | PASS | Chromium 158.0.8127.36: 152 route/width checks at 320/390/768/1440 px, both locales; six validation/review/edit journeys; twelve concept applications; menu Escape/focus; no-JavaScript inactive forms; zero page errors or failed resources. French/brand overflow found and fixed. |
 | Final selected-logo/favicon browser coverage | NOT TESTED | Selected Precision assets and SVG/PNG/ICO/Apple/manifest references exist; local Chromium checks recorded separately; actual host, Firefox/WebKit and real-device checks remain outstanding |
 | Qualified technical and French review | BLOCKED | Initial sources reviewed; no competent specialist sign-off claimed |
 | Supplier/model/variant evidence | BLOCKED | No approved commercial routes or populated saleable models |
 | Recall/notice process | PASS | Publication filter requires reviewed/cleared status; ABS notice noted in research. Actual stock clearance is not performed |
 | Training/service provider scope | BLOCKED | Availability, geography, language and credentials need actual arrangements |
-| Preview enquiry branching | PASS | Three localized structures, no upload, no HTML submission form, disabled action, no persistence |
-| Production validation/rate/bot/idempotency integration | BLOCKED | Validation contract only; no provider/backend configured |
+| Preview enquiry branching and review | PASS | Three localized branches, field errors, review/edit, disabled sending, no upload or browser persistence |
+| Production validation/rate/bot/idempotency integration | LOCAL PASS / HOST PENDING | PHP endpoint and private SQLite store implemented; 48 PHP-WASM checks, no live acceptance enabled |
 | Durable acceptance / notifications / inbox delivery | BLOCKED | None configured or tested; API preview explicitly rejects acceptance |
 | Phone/email routing | BLOCKED | Supplied phone not called; proposed mailbox not activated or tested |
-| Contracting entity / production privacy | BLOCKED | Actual identity, processor, recipients and retention unresolved; preview policy only |
+| Contracting entity / production privacy | PARTIAL | Superclean Canada Inc. confirmed; actual retention, delivery and production policy remain open |
 | Public pricing / stock / checkout / credentials | PASS | Not invented or emitted |
 | Noindex and draft sitemap | PASS | Preview metadata/header and empty sitemap; noindex is not access control |
 | Production build protection | PASS | Refuses unresolved readiness; detects links to unpublished destinations |
-| Hosting/custom domain/live HTTP checks | BLOCKED | No hosting project selected/created; domain not deployed |
+| Hosting/custom domain/live HTTP checks | IN PROGRESS | Existing WHC Pro account verified; EEBD domain attached to separate directory; holding page verified directly against origin; authoritative DNS/HTTPS pending |
 | Analytics/search-console/indexing | NOT APPLICABLE | Not configured, submitted or claimed |
 | Secrets/private requests excluded | PASS | No provider credentials or submissions; source modules are not copied to public output |
 | Private database backup/restore | NOT APPLICABLE | No live database or request store exists |

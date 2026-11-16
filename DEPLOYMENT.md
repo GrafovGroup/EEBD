@@ -4,7 +4,7 @@
 
 - Source: `https://github.com/GrafovGroup/EEBD.git`, branch `codex/initial-build`.
 - Baseline: `7da80d346ab1bacbe70447b1a185236f44ce4009`.
-- Hosting provider/project: undecided. Connected Sites owner listing was checked on November 15, 2026; no EEBD project was returned. No Site was created.
+- Hosting provider: WHC, selected by the owner. Existing Web Hosting Pro/cPanel account inspected through an owner-authenticated browser. No Sites project is used.
 - Domain: owned per owner input. HTTPS retrieval did not yield accessible content. DNS records, nameservers, MX/TXT and mailbox state have not been changed or established.
 - No production deployment, DNS change, mailbox test, analytics configuration or search-console submission has occurred.
 
@@ -32,7 +32,7 @@ Optional browser QA uses `scripts/browser-check.mjs` with an existing Playwright
 
 ## Deployment contract to complete
 
-Choose a real hosting destination, verify its static/server capabilities, and implement a private enquiry service appropriate to that host. Preserve one verified Site ID if Sites is selected; no hosting manifest is invented now. WHC compatibility must be established before assuming Node/server support.
+WHC is selected. Verify actual account capabilities and the private enquiry service before release. The WHC package below needs no hosted Node runtime.
 
 Production hosting must enforce HTTPS/canonical hostname, deliberate root and slash redirects, real localized 404 responses, MIME types, security headers and production indexing rules. `_headers` and `_redirects` in the generated preview are not evidence that a chosen host supports them. The development server currently enforces noindex and a restrictive CSP; the production policy must reflect the real form endpoint.
 
@@ -45,3 +45,27 @@ Before release, mark only approved complete routes as published/indexable. The g
 For each actual release record source remote/branch/commit, exact build, hosting project/version, deployed URL, audience, domain bindings and live checks. Preserve existing MX/TXT records during any authorized DNS change. Roll back to a verified prior deployed version or rebuild the recorded source commit; source backups do not replace private data backups.
 
 No deployed revision or rollback target exists yet. Source synchronization evidence is recorded in PROJECT_STATUS.md rather than inferred from a local commit.
+
+## WHC preparation — current milestone
+
+The owner selected existing WHC hosting and provided interactive access. The account shows Web Hosting Pro with cPanel, SSH/SFTP, PHP selection and cron. Confirm the **actual per-domain PHP version and extensions**, not just the presence of menu entries. Do not change an account-wide PHP setting that could affect other sites.
+
+`node scripts/package-whc.mjs` prepares `test-results/whc-preview/`:
+
+- `web-root/`: static output, the public PHP entrypoint and an Apache/LiteSpeed `.htaccess`. Preview access is denied by default; noindex alone is not privacy.
+- `eebd-private/`: PHP application, schema, config example and private data directory. Place this outside **every** document root; never extract the whole package into a public directory. Directory permissions 0700, files 0600, matching PHP worker ownership. Include all public roots in private configuration and set `EEBD_PRIVATE_DIR` to its absolute path on the host.
+- `manifest.json`: SHA-256 file inventory, base Git commit and dirty-source indicator. A dirty package is not an exact committed release.
+
+Required backend capabilities: PHP 8.3+, PDO SQLite, mbstring, local filesystem locking/durability, cron, and a verified PHP `mail()` transport authorized for the sender domain. No third-party PHP dependency is shipped. Configure `config.php` privately, generate a random secret, establish retention and recipient handling, then test with a controlled destination before enabling acceptance. The example is intentionally disabled and retention is unset.
+
+The endpoint checks exact origin, method, JSON size/type, signed timed tokens, honeypot, request/field validation, per-address and global rates, and idempotency. An accepted response follows a SQLite commit. The worker separately queues/retries notifications; `mail-accepted` is **not inbox delivery**. A crash between SMTP acceptance and recording it can repeat a notification; the stable reference and Message-ID identify it. The request itself is deduplicated. A cron exit code of 2 means pending notifications need monitoring. Pending requests are retained for investigation; delivered records follow the configured retention interval. Backup/mailbox retention and failed-request escalation must be agreed and reflected in the production privacy notice before launch.
+
+Worker command after installing privately: `php /absolute/private/directory/worker.php`, scheduled once per minute. Select the actual PHP 8.3+ binary in cPanel. Do not redirect errors into a publicly accessible log or discard monitoring. Restore-test the private database before accepting real enquiries. Only an authorized operator should inspect or export request rows.
+
+Local backend checks can run using an externally installed WordPress PHP-WASM runtime (tested packages `@php-wasm/node` and `@php-wasm/universal` 3.1.54):
+
+```sh
+EEBD_PHP_WASM_DIR=/absolute/path/to/node_modules node scripts/php-check.mjs
+```
+
+This validates PHP/SQLite logic with a fake mail transport. It does not establish WHC filesystem durability, real concurrent PHP workers, cron execution, SMTP acceptance, spam placement or inbox receipt.

@@ -93,7 +93,7 @@ test('preview forms have no submission action, uploads or success state',()=>{
     const html=renderPage('quote',locale);
     assert.equal(html.includes('<form'),false);
     assert.equal(html.includes('type="file"'),false);
-    assert.match(html,/<button class="button" disabled type="button">/);
+    assert.match(html,/data-send disabled/);
     assert.match(html,/data-request-type="equipment"/);
     assert.match(html,/data-request-type="training"/);
     assert.match(html,/data-request-type="service"/);
@@ -112,5 +112,5 @@ test('preview routing returns genuine 404s, redirects and rejects enquiry accept
     assert.equal((await fetch(origin+'/.env')).status,404);
     const submit=await fetch(origin+'/api/enquiries',{method:'POST',body:'sample-only'});assert.equal(submit.status,503);assert.equal((await submit.json()).accepted,false);
     assert.equal((await fetch(origin+'/en/',{method:'POST',body:'sample-only'})).status,405);
-  } finally {await new Promise(resolve=>server.close(resolve));}
+  } finally {server.closeAllConnections();await new Promise(resolve=>server.close(resolve));}
 });

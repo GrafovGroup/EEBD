@@ -10,6 +10,8 @@
     "build:production": "node scripts/build.mjs --production",
     "dev": "node scripts/dev.mjs",
     "test": "node --test tests/*.test.mjs",
-    "check": "node scripts/check.mjs"
+    "check": "node scripts/check.mjs",
+    "package:whc": "node scripts/package-whc.mjs",
+    "check:php": "node scripts/php-check.mjs"
   }
 }

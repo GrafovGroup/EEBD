@@ -15,7 +15,7 @@ for(const file of htmlFiles) {
   const ids=[...html.matchAll(/\sid="([^"]+)"/g)].map(m=>m[1]);
   assert.equal(new Set(ids).size,ids.length,`Duplicate id: ${file}`);
   assert.match(html,/<meta name="robots" content="noindex/);
-  assert.equal(/info@eebd\.ca|supplier verification pending|APPROVED_SUPPLIERS|contractingEntity/.test(html),false,`Private/unverified data: ${file}`);
+  assert.equal(/supplier verification pending|APPROVED_SUPPLIERS|contractingEntity/.test(html),false,`Private data: ${file}`);
   for(const match of html.matchAll(/<(?:a|link|script|img|iframe)\b[^>]*\b(?:href|src)="([^"]+)"/g)) {
     const href=match[1].replace(/&amp;/g,'&');
     if (/^(https?:|mailto:|tel:)/.test(href)) continue;
