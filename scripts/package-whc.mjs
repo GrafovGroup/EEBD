@@ -1,4 +1,4 @@
-import { writeFile, rm, readdir, readFile } from 'node:fs/promises';
+import { writeFile, rm, readdir, readFile, mkdir, copyFile } from 'node:fs/promises';
 import { resolve, relative } from 'node:path';
 import { createHash } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
@@ -14,8 +14,13 @@ export async function packageWhc({production=false}={}) {
   // Retire earlier generated PHP packages; Formspree receives submissions directly.
   await rm(privateDir,{recursive:true,force:true});
   await rm(resolve(web,'_headers'));await rm(resolve(web,'_redirects'));
-  // cPanel Apache/LiteSpeed candidate. Actual account capability still requires verification.
-  const htaccess=`Options -Indexes\nDirectoryIndex index.html\n${production?'':'# Private staging: replace this gate only with verified authenticated access.\nRequire all denied\n'}<IfModule mod_headers.c>\nHeader always set X-Content-Type-Options "nosniff"\nHeader always set Referrer-Policy "strict-origin-when-cross-origin"\nHeader always set Content-Security-Policy "${contentSecurityPolicy(production?'production':'preview')}"\n${production?'':'Header always set X-Robots-Tag "noindex, nofollow"\n'}</IfModule>\n<FilesMatch "^(\\.|config|schema|worker|app\\.php)|\\.(sqlite|log|json)$">\nRequire all denied\n</FilesMatch>\nRewriteEngine On\nRewriteRule ^\\.well-known/(?:acme-challenge|pki-validation)/ - [L]\n${production?'RewriteCond %{HTTPS} !=on [OR]\nRewriteCond %{HTTP_HOST} !^eebd\\.ca$ [NC]\nRewriteRule ^ https://eebd.ca%{REQUEST_URI} [R=308,L,NE]\n':''}RewriteRule ^$ /en/ [R=302,L]\nRewriteCond %{ENV:REDIRECT_STATUS} ^$\nRewriteRule ^(?:(?:en|fr)/404/(?:index\\.html)?|404\\.html)$ - [R=404,L]\nErrorDocument 404 /404.html\n<If "%{REQUEST_URI} =~ m#^/fr(?:/|$)#">\nErrorDocument 404 /fr/404/index.html\n</If>\n`;
+  // Keep error documents outside the routes that intentionally return 404.
+  // WHC LiteSpeed does not reliably expose REDIRECT_STATUS during ErrorDocument dispatch.
+  await mkdir(resolve(web,'assets/errors'),{recursive:true});
+  await copyFile(resolve(web,'en/404/index.html'),resolve(web,'assets/errors/404-en.html'));
+  await copyFile(resolve(web,'fr/404/index.html'),resolve(web,'assets/errors/404-fr.html'));
+  await writeFile(resolve(web,'fr/.htaccess'),'ErrorDocument 404 /assets/errors/404-fr.html\n');
+  const htaccess=`Options -Indexes\nDirectoryIndex index.html\n${production?'':'# Private staging: replace this gate only with verified authenticated access.\nRequire all denied\n'}<IfModule mod_headers.c>\nHeader always set X-Content-Type-Options "nosniff"\nHeader always set Referrer-Policy "strict-origin-when-cross-origin"\nHeader always set Content-Security-Policy "${contentSecurityPolicy(production?'production':'preview')}"\n${production?'':'Header always set X-Robots-Tag "noindex, nofollow"\n'}</IfModule>\n<FilesMatch "^(\\.|config|schema|worker|app\\.php)|\\.(sqlite|log|json)$">\nRequire all denied\n</FilesMatch>\nRewriteEngine On\nRewriteRule ^\\.well-known/(?:acme-challenge|pki-validation)/ - [L]\n${production?'RewriteCond %{HTTPS} !=on [OR]\nRewriteCond %{HTTP_HOST} !^eebd\\.ca$ [NC]\nRewriteRule ^ https://eebd.ca%{REQUEST_URI} [R=308,L,NE]\n':''}RewriteRule ^$ /en/ [R=302,L]\nRewriteRule ^(?:(?:en|fr)/404/(?:index\\.html)?|404\\.html)$ - [R=404,L]\nErrorDocument 404 /assets/errors/404-en.html\n`;
   await writeFile(resolve(web,'.htaccess'),htaccess);
   await writeFile(resolve(folder,'INSTALL.txt'),`EEBD.ca — ${production?'production candidate':'private preview package'}\n\nUpload only web-root/ to the EEBD document root.\nThe site submits directly to Formspree. No PHP, private database, mail worker or cron is needed.\nRead DEPLOYMENT.md for delivery evidence and remaining release checks.\nPreview web-root/.htaccess denies ALL access until authenticated staging is configured.\nPreview sending is disabled.\nNode is needed to build locally only.\n`);
   const files=[];

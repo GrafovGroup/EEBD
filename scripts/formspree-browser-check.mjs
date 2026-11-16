@@ -1,4 +1,4 @@
-// Isolated browser fixtures: no production build and no real Formspree request.
+// Local fixtures or live-host UI checks; provider requests are always intercepted.
 import assert from 'node:assert/strict';
 import { resolve } from 'node:path';
 import { writeFile } from 'node:fs/promises';
@@ -10,10 +10,14 @@ import { contentSecurityPolicy } from '../src/security.mjs';
 import { FORMSPREE_ENDPOINT } from '../public/assets/formspree.js';
 const {chromium}=await import(process.env.EEBD_PLAYWRIGHT_MODULE || 'playwright');
 const directory=resolve('test-results/formspree-browser-build');
-await build({outDir:directory});
-const server=previewServer(directory);
-await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
-const origin=`http://127.0.0.1:${server.address().port}`;
+const liveOrigin=process.env.EEBD_LIVE_URL ? new URL(process.env.EEBD_LIVE_URL).origin : null;
+let server;
+if(!liveOrigin) {
+  await build({outDir:directory});
+  server=previewServer(directory);
+  await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
+}
+const origin=liveOrigin || `http://127.0.0.1:${server.address().port}`;
 const browser=await chromium.launch({headless:true,executablePath:process.env.EEBD_CHROME_EXECUTABLE});
 const context=await browser.newContext({viewport:{width:390,height:844}});
 const page=await context.newPage();
@@ -30,7 +34,7 @@ await context.route('**/*',async route=>{
     return route.fulfill({status,contentType:'application/json',body:typeof result==='string'?result:JSON.stringify(result),headers:{'Access-Control-Allow-Origin':origin}});
   }
   if(url.origin!==origin) {unexpected.push(request.url());return route.abort();}
-  for(const locale of ['en','fr']) if([pathFor('quote',locale),pathFor('contact',locale)].includes(url.pathname)) {
+  for(const locale of ['en','fr']) if(!liveOrigin && [pathFor('quote',locale),pathFor('contact',locale)].includes(url.pathname)) {
     return route.fulfill({status:200,contentType:'text/html',body:renderPage(url.pathname===pathFor('contact',locale)?'contact':'quote',locale,'production'),headers:{'Content-Security-Policy':contentSecurityPolicy('production')}});
   }
   return route.continue();
@@ -70,7 +74,7 @@ try {
     assert.equal(await page.evaluate(()=>document.activeElement.hasAttribute('data-complete-heading')),true);
     assert.equal(await page.evaluate(()=>localStorage.length+sessionStorage.length),0);
     assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1),false);
-    if(type==='equipment')await page.screenshot({path:`test-results/formspree-confirmation-${locale}.png`,fullPage:true});
+    if(type==='equipment')await page.screenshot({path:`test-results/formspree-${liveOrigin?'live-':''}confirmation-${locale}.png`,fullPage:true});
   }
   for(const failure of ['invalid','rate','verification','server','malformed','network']) {
     scenario=failure;await prepare('fr','training');await page.locator('[data-send]').click();
@@ -85,8 +89,9 @@ try {
   await page.locator('[data-send]').evaluate(button=>{button.click();button.click();});
   await page.locator('[data-enquiry-complete]').waitFor({state:'visible'});assert.equal(calls.length,1,'Double click must not send twice');
   assert.deepEqual(unexpected,[]);assert.deepEqual(pageErrors,[]);
-  const report={browser:await browser.version(),successJourneys:8,failureJourneys:6,doubleClick:'PASS',externalRequests:0,realSubmissions:0,limits:'Mocked provider responses; account activation, CAPTCHA, recipient and inbox delivery not verified.'};
-  await writeFile('test-results/formspree-browser-report.json',JSON.stringify(report,null,2)+'\n');console.log(report);
+  const report={origin,checkedAt:new Date().toISOString(),browser:await browser.version(),successJourneys:8,failureJourneys:6,doubleClick:'PASS',externalRequests:0,realSubmissions:0,limits:'Provider responses are intercepted. This suite does not verify account settings or inbox delivery; those require separate evidence.'};
+  await writeFile(`test-results/formspree-${liveOrigin?'live-':''}browser-report.json`,JSON.stringify(report,null,2)+'\n');console.log(report);
 } finally {
-  await browser.close();server.closeAllConnections();await new Promise(resolve=>server.close(resolve));
+  await browser.close();
+  if(server) {server.closeAllConnections();await new Promise(resolve=>server.close(resolve));}
 }

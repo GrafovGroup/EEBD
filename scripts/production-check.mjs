@@ -19,7 +19,9 @@ assert.doesNotMatch(sitemap,/\/privacy\/|\/confidentialite\/|request-a-quote|dem
 const htaccess=await readFile(resolve(directory,'.htaccess'),'utf8');
 assert.match(htaccess,/connect-src https:\/\/formspree.io/);
 assert.doesNotMatch(htaccess,/X-Robots-Tag|EEBD_PRIVATE_DIR/);
-assert.match(htaccess,/REDIRECT_STATUS/);
+assert.match(htaccess,/ErrorDocument 404 \/assets\/errors\/404-en\.html/);
+assert.equal(await readFile(resolve(directory,'fr/.htaccess'),'utf8'),'ErrorDocument 404 /assets/errors/404-fr.html\n');
+for(const locale of ['en','fr'])assert.equal(await readFile(resolve(directory,`assets/errors/404-${locale}.html`),'utf8'),await readFile(resolve(directory,`${locale}/404/index.html`),'utf8'));
 const server=previewServer(directory);
 await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
 const origin=`http://127.0.0.1:${server.address().port}`;
