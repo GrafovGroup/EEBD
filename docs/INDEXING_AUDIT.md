@@ -1,5 +1,26 @@
 # Indexing audit — November 16, 2026
 
+## Latest check — approximately 16:59 UTC / 11:59 Toronto
+
+The live sitemap contains **92 canonical URLs**. All were technically audited and individually submitted to Bing's read-only URL Inspection tool during this check. Google's fresh inspection attempt returned **Quota exceeded**; its aggregate Page indexing report still says it is processing data. No current Google total can be established from those reports.
+
+| Engine | Current evidence | Limitations |
+| --- | --- | --- |
+| Google | Earlier inspections confirmed the English and French homepages indexed; 57 URLs were discovered/not indexed and five unknown to Google | These observations are from approximately 06:51–06:58 UTC, not this fresh check; 28 current sitemap URLs have no individual Google result. The quota blocks new inspections. |
+| Bing | **90 URLs discovered but not crawled; zero confirmed indexed** | Two URLs returned inspection-service errors after one retry each. Site Explorer's Indexed URLs report has no data. These errors are not a finding that the pages are blocked or indexed. |
+
+The two currently unverified Bing URLs are `/fr/soutien-technique/revue-registre-equipement/` and `/fr/couverture/montreal/`. The English Vancouver and French Dräger URLs that failed in the previous check now returned completed results: discovered but not crawled.
+
+All 92 live pages returned HTTP 200, allow Googlebot/Bingbot in robots.txt, have no blocking robots directives, use self-canonicals and matching reciprocal language alternates, and are reachable through HTML links within three clicks. There are no duplicate titles or descriptions in the current sitemap. Quote/privacy exclusions remain intentional. HTTP/www variants return permanent 308 redirects to the canonical HTTPS host; missing-page probes return actual 404s.
+
+Google's Manual actions and Security issues reports both say **No issues detected**. At 11:58 Toronto, Bing's live test of `/en/equipment/draeger-saver-cf10-n/` reported **URL can be indexed by Bing** and **No SEO/GEO issues found**. This live fetch establishes eligibility for that page, not actual indexing or a pass for every page.
+
+No confirmed technical blocker was found, so no public site code was changed. Bing's primary observed state is awaiting a first crawl. Initial crawling/reporting delay is consistent with the evidence, but is not proven to be the only reason for exclusion. The next useful check is after Google's daily quota resets and aggregate reporting populates; investigate any specific post-crawl exclusion reason then. Existing successful sitemap submissions and IndexNow acknowledgement remain in place. No repeated indexing requests or recurring monitoring were created during this audit.
+
+Private, ignored evidence: `test-results/eebd-indexing-audit-current-20261116.html` (searchable 92-page report), its matching CSV, `indexing-current-summary-20261116.json`, `bing-index-observations-current.json`, `indexability-audit-current-20261116.json`, and current quota/security/live-test screenshots. The CSV distinguishes historical Google timestamps from fresh Bing and technical checks.
+
+## Earlier 90-URL audit (historical)
+
 The sitemap has 90 indexable URLs. Sitemap discovery is separate from page indexing.
 
 ## Verified search-engine results

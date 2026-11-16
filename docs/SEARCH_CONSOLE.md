@@ -33,3 +33,7 @@ Resubmission of the updated sitemap succeeded with 90 discovered pages. Direct U
 At approximately 16:46 UTC / 11:46 Toronto, Google confirmed “Sitemap submitted successfully” for `https://eebd.ca/sitemap.xml`. The Sitemaps report shows **Success**, **92 discovered pages**, zero discovered videos, and submitted/last-read dates of November 16. The earlier 80- and 90-page counts above are historical.
 
 Live checks confirmed HTTP 200, valid XML, 92 unique canonical HTTPS URLs and the matching robots.txt sitemap declaration. Discovered pages are not an indexed-page count; no new URL Inspection audit was performed for this resubmission. Private evidence is stored in `test-results/google-sitemap-resubmitted-20261116.png`, `test-results/google-sitemap-success-20261116.png` and `test-results/search-resubmission-live-precheck.json`.
+
+## Indexing check at approximately 16:59 UTC
+
+A fresh URL Inspection attempt still returned the daily property quota error. Page indexing continues to show Processing data, so the earlier two indexed homepages are the last confirmed results, not a fresh count of all 92 pages. Manual actions and Security issues both report No issues detected. See `INDEXING_AUDIT.md` and the private per-page report for the dated evidence and unverified URLs.
