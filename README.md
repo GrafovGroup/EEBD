@@ -4,7 +4,7 @@ Canadian emergency escape breathing equipment: **equipment sales, product-specif
 
 ## Project status
 
-**The complete bilingual enquiry website is live at https://eebd.ca/ on WHC.** General contact and equipment/training/service forms use Formspree; the owner confirmed receipt of the authorized test. Source is backed up on `codex/initial-build`. The current release has 90 English/French pages, seven conceptual images, one real public-domain product photograph, three model guides, nine detailed enquiry topics and 14 Canadian city guides. Read [PROJECT_STATUS.md](PROJECT_STATUS.md) and [DECISIONS.md](DECISIONS.md) before resuming.
+**The complete bilingual enquiry website is live at https://eebd.ca/ on WHC.** General contact and equipment/training/service forms use Formspree; the owner confirmed receipt of the authorized test. Source is backed up on `codex/initial-build`. The current release has 94 English/French pages, seven conceptual images, one real public-domain product photograph, three model guides, nine detailed enquiry topics and 14 Canadian city guides. Read [PROJECT_STATUS.md](PROJECT_STATUS.md) and [DECISIONS.md](DECISIONS.md) before resuming.
 
 - **Repository:** https://github.com/GrafovGroup/EEBD.git
 - **Domain:** EEBD.ca — owned
@@ -84,7 +84,7 @@ and deployed, with exact remaining dependencies and no unsupported completion cl
 - Products, supply routes, training providers and service coverage still require actual arrangements.
 - Formspree `https://formspree.io/f/xrpqpylv`, notification to info@eebd.ca.
 - Authorized real test accepted and inbox receipt confirmed by the owner.
-- Google Search Console domain verified; its earlier sitemap processed with 80 discovered URLs. The current sitemap contains 86 URLs after the model additions. Analytics is not configured.
+- Google Search Console domain verified; its earlier sitemap processed with 80 discovered URLs. The current sitemap contains 90 URLs after the procurement additions. Analytics is not configured.
 
 The proposed phone remains unverified and is omitted from public pages. Verified email and forms provide the contact route.
 
@@ -95,3 +95,5 @@ This repository is the source destination for EEBD.ca. Preserve its history and 
 During the build, create or maintain the project records named in MASTER_PROMPT.md. Keep secrets, customer submissions, attachments, private supplier terms, and live production data out of Git. Record any separate hosting-source remote and the exact deployed revision.
 
 The November 16 model release adds researched model guides and a Canadian supplier shortlist. [Model research](docs/MODEL_RESEARCH.md), [supplier research](docs/CANADIAN_SUPPLIER_RESEARCH.md) and [unsent supplier drafts](docs/SUPPLIER_INTRO_DRAFTS.md) record the evidence and next steps. [Bing Webmaster Tools](docs/BING_WEBMASTER.md) is verified and the 86-URL sitemap is submitted (processing at last observation).
+
+The procurement update adds a bilingual model comparison, a purchasing-document checklist with CSV templates, optional bulk enquiry fields and expanded fleet/coastal guidance. The current public pages remain informational enquiries with availability confirmed separately.

@@ -73,3 +73,9 @@ The initial development watcher called an already-imported build module, retaini
 The owner requested Canadian supplier research, exact product models with real photographs/details, and Bing submission. Six candidate Canadian channels were researched without outreach. Three bilingual model-reference pages identify Ocenco M-20.2, Interspiro Spiroscape bar configurations and Dräger Saver CF10 N. These are informational enquiries, not verified saleable variants; the catalogue sale gates remain unchanged. Model identity carries into the quote form and its language equivalent.
 
 The owner confirmed no existing manufacturer photo permission. A public-domain CDC/NIOSH M-20.2 photograph is used with credit and non-endorsement. Interspiro/Dräger photos remain on their official sites, linked from the pages, until commercial reuse permission is obtained. Supplier introductions are drafted for review, not sent. Bing verification is scoped to EEBD.ca using its own site meta tag.
+
+## November 16, 2026 — procurement improvements
+
+The owner authorized implementation and live publication of the reviewed improvements, including model comparison, fleet procurement content and a bulk enquiry form. Tender documents are evidence for useful purchasing questions, not instructions to bid or contact third parties. No open-opportunity deadline, tender volume, accepted-equivalent status or DND supplier relationship is advertised.
+
+Published the comparison and document-checklist pages in both languages, blank CSV purchasing lists, optional bulk equipment fields, prominent model links, deeper fleet/coastal content and educational FAQs. Retained the existing verified Formspree endpoint. Supplier outreach remains deferred following the owner’s “I will do it later” response; no supplier email has been sent.

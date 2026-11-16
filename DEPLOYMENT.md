@@ -5,10 +5,10 @@
 The complete bilingual enquiry website is live at **https://eebd.ca/** on WHC. The root redirects to `/en/`; `/fr/` is available through the language switch. The domain has its own document root, separate from existing websites.
 
 - Repository: `https://github.com/GrafovGroup/EEBD.git`, branch `codex/initial-build`.
-- Deployed runtime source: **`30a44088149a521e31d4e98fd40ed339ab42ac44`**.
-- Activated November 16, 2026 at **06:04:05 UTC** (November 16, 01:04 Toronto).
-- Static package: **154 public files**, including two Apache configuration files; 152 readable files verified byte-for-byte over HTTPS.
-- Archive: `test-results/eebd-release-30a4408.tar.gz` (1,360,816 bytes); SHA-256 `cbc036687818d6a7cd75066064f1fdd479daed1ccbe4c8958ac7b883265a092a`.
+- Deployed runtime source: **`f57fbd4403f91f8c74039c12644e8314bc5fb02d`**.
+- Activated November 16, 2026 at **06:33:03 UTC** (November 16, 01:33 Toronto).
+- Static package: **160 public files**, including two Apache configuration files; 158 readable files verified byte-for-byte over HTTPS.
+- Archive: `test-results/eebd-release-f57fbd4.tar.gz` (1,374,839 bytes); SHA-256 `18bc2c5aaa09ba0dd303848c6999577cae0cffe288e8016082b0b26f32bfc597`.
 - `manifest.json` records every file hash, exact source commit and `sourceDirty:false`. Later documentation-only commits do not change the deployed runtime.
 
 Account identifiers, credentials, session URLs, host backup paths and submissions remain outside Git. Other hosted sites were not changed.
@@ -25,7 +25,7 @@ Live release checks:
 - `/` returns 302 to `/en/`; public pages return 200.
 - Missing URLs and direct error-page routes return HTTP 404 with the appropriate English/French page. Dedicated error assets avoid recursive error dispatch on WHC LiteSpeed; French directory configuration supplies the localized handler.
 - Security headers include nosniff, strict-origin referrer policy and a CSP allowing form AJAX only to Formspree. The preview's blanket noindex header is absent.
-- The sitemap contains 86 indexable URLs. Contact and quote forms work without React, external scripts, PHP or a Node service on WHC.
+- The sitemap contains 90 indexable URLs. Contact and quote forms work without React, external scripts, PHP or a Node service on WHC.
 - ACME/DCV directories and cgi-bin were preserved. Analytics is not configured. Google Search Console is verified and the sitemap submission processed successfully.
 
 ## Reproducible commands
@@ -95,3 +95,15 @@ The model release `30a4408` adds six paired model-reference pages and one attrib
 All 154 public files were verified before activation; all 152 readable files matched over HTTPS at 06:04:25 UTC. The hosted simulated form suite passed at 06:05:46 UTC: six model/language context checks, unknown-source rejection, eight successful journeys, six failure cases and double-click protection. Every Formspree response was intercepted; zero real submissions occurred.
 
 Bing Webmaster ownership was verified through the production meta tag. The 86-URL sitemap was submitted and the report showed **Processing**, with no errors or warnings reported at that point. This does not establish indexing. See `docs/BING_WEBMASTER.md`. The Google submission above records its earlier 80-URL processing result; the same public sitemap now includes the new model pages.
+
+## November 16 procurement release
+
+Runtime `f57fbd4403f91f8c74039c12644e8314bc5fb02d` was activated at 06:33:03 UTC with the model release retained as a complete private rollback backup. All 160 public files were hash-checked before activation; the 158 HTTP-readable files matched the release manifest over HTTPS at 06:33:36 UTC. Localized 404s and the absence of blanket noindex passed.
+
+This release adds bilingual comparison and procurement-checklist pages, English/French CSV purchasing-list downloads, optional bulk equipment fields, expanded fleet/coastal content and educational FAQs. The public sitemap now has 90 URLs. Google and Bing keep the existing sitemap URL; this deployment is not a new observation of indexing status.
+
+Local checks passed: 24 unit/integration tests, 101 preview HTML files and 4,194 internal references, 376 responsive page/width checks with no script/resource failures, and simulated form success/failure flows including both bulk languages and inactive-field exclusion. The live English/French CSV downloads, comparison styling and fleet disclosure passed. No additional real enquiry has been sent.
+
+WHC serves CSS with a seven-day cache lifetime. Shared CSS and entry-script URLs now use `site.assetVersion`; bump it when those assets change.
+
+The final live simulated form check passed at 06:35:51 UTC: six model/language checks, eight standard success journeys, two bulk journeys, inactive bulk-field exclusion, six failure states and double-click protection. All Formspree requests were intercepted; zero real submissions occurred.
