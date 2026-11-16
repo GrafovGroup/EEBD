@@ -26,10 +26,17 @@ Public address policy; exact equipment supply routes; training/service providers
 
 The initial development watcher called an already-imported build module, retaining stale page templates after source edits. It now launches a fresh Node build process on each rebuild. The server was restarted and the selected-identity review opened with a fresh URL so the visible page matches source.
 
-## November 15–16, 2026 — Business details and WHC
+## November 15, 2026 — Business details and WHC
 
 - Owner confirmed Superclean Canada Inc. as the legal business name and info@eebd.ca as the designated enquiry email. Address ownership/routing is not proof of delivery.
 - Owner chose existing WHC hosting, identified the account, signed in interactively and authorized connecting hosting and domain. Account identifiers, session URLs and credentials stay out of source.
 - No suppliers, trainers or service partners are arranged. Public draft copy now states that these arrangements are being established; no model catalogue or provider claims are added.
 - Enquiry UI now supports validation, review and editing in both languages. Preview sending remains disabled and personal entries remain in page memory only.
 - WHC candidate architecture: locally generated static pages plus a PHP endpoint, private SQLite store and cron notification worker. Production remains gated until actual host, mail and policy verification. No Node service is needed on the host.
+
+## November 15, 2026 — Domain connection and Formspree
+
+- Completed the authorized WHC DNS/HTTPS connection and published the separate bilingual holding page with the approved logo. Preserved nameservers and email records. Exact source, checks and rollback are in DEPLOYMENT.md.
+- Owner supplied `https://formspree.io/f/xrpqpylv` and directed use of the integration matching the site. Selected native Vanilla JavaScript/AJAX for the existing static review/edit flow.
+- Formspree supersedes the proposed private PHP endpoint, SQLite storage and cron notifications. Current WHC packages contain static files only. Historical PHP code and synthetic verification remain available in source/history.
+- The normal local preview still sends no data. Production rendering is wired to Formspree, but full release remains subject to actual delivery and content/privacy readiness. Provider acceptance and inbox receipt are distinct. Owner subsequently authorized one labelled test enquiry. It was submitted once and accepted by Formspree (HTTP 200, `ok:true`); no dashboard change was made. Inbox receipt remains unverified.

@@ -1,3 +1,4 @@
+import { contentSecurityPolicy } from '../src/security.mjs';
 import { createServer } from 'node:http';
 import { readFile, stat } from 'node:fs/promises';
 import { resolve, extname, sep } from 'node:path';
@@ -8,7 +9,7 @@ export function previewServer(directory=resolve('dist')) {
     res.setHeader('X-Robots-Tag','noindex, nofollow');
     res.setHeader('Referrer-Policy','strict-origin-when-cross-origin');
     res.setHeader('Cache-Control','no-store');
-    res.setHeader('Content-Security-Policy',"default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self'; connect-src 'none'; frame-src 'self'; frame-ancestors 'self'; form-action 'none'; base-uri 'self'; object-src 'none'");
+    res.setHeader('Content-Security-Policy',contentSecurityPolicy('preview'));
     let path;
     try {path=decodeURIComponent(new URL(req.url,'http://localhost').pathname);} catch {res.writeHead(400);res.end('Bad request');return;}
     if (path.startsWith('/api/')) {res.writeHead(503,{'Content-Type':'application/json'});res.end(JSON.stringify({accepted:false,error:'ENQUIRIES_NOT_CONFIGURED'}));return;}

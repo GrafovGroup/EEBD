@@ -1,3 +1,4 @@
+import { FORMSPREE_ENDPOINT } from '../public/assets/formspree.js';
 export const site = Object.freeze({
   name: 'EEBD.ca',
   origin: 'https://eebd.ca',
@@ -10,7 +11,8 @@ export const site = Object.freeze({
   hostingProvider: 'WHC',
   approvedConcept: 1,
   previewConcept: 1,
-  formEnabled: false,
+  formEnabled: true,
+  formProvider: Object.freeze({name:'Formspree',endpoint:FORMSPREE_ENDPOINT}),
   readiness: {
     identity: true,
     businessIdentity: true,

@@ -1,3 +1,4 @@
+import { submitEnquiry } from './formspree.js';
 (() => {
   'use strict';
   const root=document.querySelector('[data-enquiry]');
@@ -7,9 +8,8 @@
   const details=root.querySelector('[data-enquiry-details]'),review=root.querySelector('[data-enquiry-review]'),complete=root.querySelector('[data-enquiry-complete]');
   const errors=root.querySelector('[data-errors]'),status=root.querySelector('[data-submission-status]'),send=root.querySelector('[data-send]');
   const live=root.dataset.delivery==='enabled';
-  const endpoint='/api/enquiries.php';
-  let token=null, tokenTime=0, idempotencyKey=null, reviewedPayload=null, sending=false;
-  const activeFields=()=>[...details.querySelectorAll('input[name],select[name],textarea[name]')].filter(el=>!el.matches(':disabled')&&!['requestType','website'].includes(el.name));
+  let reviewedPayload=null, reviewedMessage='', submissionId=null, sending=false;
+  const activeFields=()=>[...details.querySelectorAll('input[name],select[name],textarea[name]')].filter(el=>!el.matches(':disabled')&&!['requestType','_gotcha'].includes(el.name));
   const label=el=>(el.labels?.[0]?.textContent || el.name).replace(/\s*\*\s*$/,'').trim();
   function step(name) {
     details.hidden=name!=='details';review.hidden=name!=='review';complete.hidden=name!=='complete';
@@ -54,27 +54,11 @@
     const div=document.createElement('div'),dt=document.createElement('dt'),dd=document.createElement('dd');
     dt.textContent=title;dd.textContent=value;div.append(dt,dd);return div;
   }
-  async function getToken() {
-    send.disabled=true;
-    status.textContent=t('Preparing secure submission…','Préparation de l’envoi sécurisé…');
-    try {
-      const response=await fetch(endpoint,{headers:{Accept:'application/json'},credentials:'same-origin',cache:'no-store',signal:AbortSignal.timeout(12000)});
-      const result=await response.json();
-      if(!response.ok || typeof result.token!=='string') throw new Error('unavailable');
-      token=result.token;tokenTime=Date.now();
-      // The server also enforces this interval; the UI never substitutes for server checks.
-      await new Promise(resolve=>setTimeout(resolve,2100));
-      if(review.hidden) return;
-      status.textContent='';send.disabled=false;
-    } catch {
-      token=null;status.textContent=t('Sending is unavailable. Your details are still here. Use “Send enquiry” to try again.','L’envoi est indisponible. Vos renseignements sont conservés dans cette page. Utilisez « Envoyer la demande » pour réessayer.');send.disabled=false;
-    }
-  }
   root.querySelector('[data-review]').disabled=false;
   root.querySelector('[data-review]').addEventListener('click',()=>{
     if(!validate()) return;
     const next=payload(),serialized=JSON.stringify(next);
-    if(serialized!==JSON.stringify(reviewedPayload)) idempotencyKey=crypto.randomUUID();
+    if(serialized!==JSON.stringify(reviewedPayload)) submissionId=crypto.randomUUID();
     reviewedPayload=next;
     const summary=root.querySelector('[data-summary]');summary.replaceChildren();
     summary.append(row(t('Enquiry type','Type de demande'),root.querySelector('[name="requestType"]:checked').labels[0].textContent.trim()));
@@ -84,37 +68,40 @@
       if(el.value) summary.append(row(label(el),value));
     }
     summary.append(row(t('Privacy information','Renseignements sur la confidentialité'),t('Acknowledged','Lecture confirmée')));
+    reviewedMessage=[...summary.children].map(el=>el.querySelector('dt').textContent+': '+el.querySelector('dd').textContent).join('\n\n');
     step('review');root.querySelector('[data-review-heading]').focus();
-    if(live) {if(!token || Date.now()-tokenTime>3300000) void getToken();else {send.disabled=false;status.textContent='';}}
+    if(live) {send.disabled=false;status.textContent='';}
     else status.textContent=t('Preview only. This enquiry has not been sent.','Aperçu seulement. Cette demande n’a pas été envoyée.');
   });
   root.querySelector('[data-edit]').addEventListener('click',()=>{if(sending)return;step('details');root.querySelector('#enquiry-title').focus();});
   root.querySelectorAll('[name="requestType"]').forEach(el=>el.addEventListener('change',clearErrors));
   send.addEventListener('click',async()=>{
     if(!live || sending || !reviewedPayload) return;
-    if(!token || Date.now()-tokenTime>3300000) {await getToken();return;}
     sending=true;send.disabled=true;root.querySelector('[data-edit]').disabled=true;review.setAttribute('aria-busy','true');
-    status.textContent=t('Saving your enquiry…','Enregistrement de votre demande…');
+    status.textContent=t('Sending your enquiry…','Envoi de votre demande…');
     try {
-      const response=await fetch(endpoint,{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json',Accept:'application/json'},
-        body:JSON.stringify({...reviewedPayload,token,idempotencyKey,website:root.querySelector('[name="website"]').value}),signal:AbortSignal.timeout(15000)});
-      const result=await response.json();
-      if(response.status===202 && result.accepted===true && /^EEBD-[A-F0-9]{16}$/.test(result.reference)) {
-        root.querySelector('[data-reference]').textContent=result.reference;step('complete');root.querySelector('[data-complete-heading]').focus();
-        // Remove contact data after durable acceptance; keep only the reference on screen.
+      const result=await submitEnquiry({
+        ...reviewedPayload.fields,name:reviewedPayload.fields.contact,
+        message:reviewedMessage,_subject:`EEBD.ca — ${reviewedPayload.requestType} — ${reviewedPayload.locale}`,
+        requestType:reviewedPayload.requestType,locale:reviewedPayload.locale,sourcePath:reviewedPayload.sourcePath,
+        privacyAcknowledgement:reviewedPayload.privacyAcknowledgement,optionalMarketingConsent:false,
+        submissionId,_gotcha:root.querySelector('[name="_gotcha"]').value,
+      },{signal:AbortSignal.timeout(15000)});
+      if(result.kind==='accepted') {
+        step('complete');root.querySelector('[data-complete-heading]').focus();
+        // Clear contact data only after the provider confirms acceptance.
         details.querySelectorAll('input:not([type="radio"]),textarea,select').forEach(el=>{if(el.type==='checkbox')el.checked=false;else el.value='';});
-        root.querySelector('[data-summary]').replaceChildren();reviewedPayload=null;return;
+        root.querySelector('[data-summary]').replaceChildren();reviewedPayload=null;reviewedMessage='';submissionId=null;return;
       }
-      if(response.status===422 && result.errors) {
-        step('details');
-        const invalid=activeFields().filter(el=>Object.hasOwn(result.errors,el.name)).map(el=>[el,t('Check this field and try again.','Vérifiez ce champ et réessayez.')]);
-        showErrors(invalid);if(!invalid.length)root.querySelector('#enquiry-title').focus();return;
+      if(result.kind==='invalid') {
+        const invalid=activeFields().filter(el=>result.fields.includes(el.name) || (el.name==='contact' && result.fields.includes('name'))).map(el=>[el,t('Check this field and try again.','Vérifiez ce champ et réessayez.')]);
+        if(invalid.length) {step('details');showErrors(invalid);return;}
       }
-      if(result.error==='TOKEN_EXPIRED') {token=null;status.textContent=t('The review session expired. Select “Send enquiry” to prepare it again; your details are still here.','La session a expiré. Sélectionnez « Envoyer la demande » pour la renouveler; vos renseignements sont conservés.');}
-      else if(response.status===429) status.textContent=t('Too many attempts. Please wait a few minutes before retrying. Your details are still here.','Trop de tentatives. Veuillez patienter quelques minutes avant de réessayer. Vos renseignements sont conservés.');
+      if(result.kind==='rate-limit') status.textContent=t('Too many attempts. Please wait a few minutes before retrying. Your details are still here.','Trop de tentatives. Veuillez patienter quelques minutes avant de réessayer. Vos renseignements sont conservés.');
+      else if(result.kind==='verification') status.textContent=t('The form service requires an additional verification that is currently unavailable. Your details are still here; please try again later.','Le service de formulaires exige une vérification supplémentaire qui est actuellement indisponible. Vos renseignements sont conservés; veuillez réessayer plus tard.');
       else throw new Error('unconfirmed');
     } catch {
-      status.textContent=t('We could not confirm that your enquiry was saved. Your details are still here. Retry to check the same request without creating a duplicate.','Nous ne pouvons pas confirmer l’enregistrement de votre demande. Vos renseignements sont conservés. Réessayez pour vérifier la même demande sans créer de doublon.');
+      status.textContent=t('We could not confirm submission. Your details are still here. Please wait before trying again; resending may create a duplicate.','Nous ne pouvons pas confirmer l’envoi. Vos renseignements sont conservés. Veuillez patienter avant de réessayer; un nouvel envoi pourrait créer un doublon.');
     } finally {sending=false;send.disabled=false;root.querySelector('[data-edit]').disabled=false;review.removeAttribute('aria-busy');}
   });
 })();

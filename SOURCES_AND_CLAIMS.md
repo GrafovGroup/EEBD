@@ -56,9 +56,17 @@ An exact-name web search for EEBD.ca did not return a clear established competin
 
 The site language does not establish instructor or manufacturer-document language availability. Original manuals are not translated or republished as manufacturer-approved instructions.
 
-## WHC implementation references — November 16, 2026
+## WHC implementation references — November 15, 2026
 
 - [WHC: Change PHP version, including one-domain setup](https://help.whc.ca/en/articles/625808-how-do-i-change-my-php-version). Account-wide selectors can affect other websites; verify a domain-specific runtime.
 - [WHC: Publish a site from your computer](https://clients.whc.ca/en/knowledgebase/1712/Publish-a-Site-From-your-Computer.html). File Manager and SFTP are supported deployment routes.
 - [WordPress Playground: PHP in Node.js](https://wordpress.github.io/wordpress-playground/developers/local-development/php-wasm-node/). Used only for isolated local PHP tests; not a production website dependency.
 - Direct owner-authenticated WHC observations are recorded in DEPLOYMENT.md. No credential, session URL, customer message or private contact registry data is included in public source.
+
+## Formspree integration references — November 15, 2026
+
+- Owner supplied the form endpoint; this establishes the selected provider, not notification recipient or inbox delivery.
+- [Formspree AJAX guide](https://help.formspree.io/articles/building-your-form/submit-forms-with-javascript-ajax/) and [official transport source](https://github.com/formspree/formspree-js/blob/main/packages/formspree-core/src/core.ts): native JSON POST with an application/json Accept header fits the existing static JavaScript review flow. The optional SDK is not required by this implementation.
+- [Official response types](https://github.com/formspree/formspree-js/blob/main/packages/formspree-core/src/submission.ts): provider success includes a string `next`; local confirmation does not follow the returned URL.
+- [Honeypot](https://help.formspree.io/articles/building-your-form/honeypot-spam-filtering), [domain restriction](https://help.formspree.io/articles/form-and-project-settings/restrict-to-domain) and [reCAPTCHA settings](https://help.formspree.io/articles/form-and-project-settings/recaptcha-settings): `_gotcha` is recognized; domain restriction uses the origin/referrer; actual account controls must be verified. No claim of configured CAPTCHA or guaranteed spam prevention.
+- These references do not establish the owner's plan limits, data retention, notification destination or mailbox receipt. No provider account credentials are included in source.
