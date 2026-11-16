@@ -1,6 +1,6 @@
 export const ui = {
   en: {
-    skip: 'Skip to content', preview: 'DESIGN PREVIEW · IDENTITY NOT YET SELECTED · ENQUIRIES INACTIVE', concepts: 'VIEW 5 BRAND CONCEPTS',
+    skip: 'Skip to content', preview: 'DESIGN PREVIEW · ENQUIRIES INACTIVE', concepts: 'VIEW SELECTED LOGO',
     utility: 'ESCAPE EQUIPMENT. CLEAR REQUIREMENTS.', menu: 'Menu', close: 'Close menu', nav: 'Main navigation', languages: 'Language',
     quote: 'Request a quote', explore: 'Explore equipment', learn: 'Explore this service', home: 'Home',
     descriptor: 'Emergency escape breathing devices', footerLine: 'Equipment. Training. Service support.',
@@ -14,7 +14,7 @@ export const ui = {
     details: 'WHAT TO PREPARE', related: 'Continue exploring', contactNote: 'Contact routing is being prepared. No enquiry can be sent from this preview.',
   },
   fr: {
-    skip: 'Aller au contenu', preview: 'APERÇU · IDENTITÉ À CHOISIR · ENVOI DES DEMANDES DÉSACTIVÉ', concepts: 'VOIR LES 5 CONCEPTS',
+    skip: 'Aller au contenu', preview: 'APERÇU · ENVOI DES DEMANDES DÉSACTIVÉ', concepts: 'VOIR LE LOGO CHOISI',
     utility: 'ÉQUIPEMENT D’ÉVACUATION. BESOINS BIEN DÉFINIS.', menu: 'Menu', close: 'Fermer le menu', nav: 'Navigation principale', languages: 'Langue',
     quote: 'Demander une soumission', explore: 'Voir l’équipement', learn: 'Découvrir ce service', home: 'Accueil',
     descriptor: 'Appareils respiratoires pour l’évacuation d’urgence', footerLine: 'Équipement. Formation. Soutien technique.',

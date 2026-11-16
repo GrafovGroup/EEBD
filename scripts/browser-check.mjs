@@ -29,10 +29,10 @@ try {
     await page.setViewportSize({width,height:1000});
     await page.goto(origin+'/brand-concepts/',{waitUntil:'networkidle'});
     assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1),false,`Brand overflow ${width}`);
-    assert.equal(await page.locator('iframe').count(),10);
+    assert.equal(await page.locator('iframe').count(),2);
     await page.screenshot({path:`test-results/brand-review-${width}.png`,fullPage:false});
-    for(let concept=6;concept<=10;concept++) {
-      await page.goto(`${origin}/en/?concept=${concept}`,{waitUntil:'load'});
+    for(const concept of [1,6,7,8,9,10]) {
+      await page.goto(`${origin}/en/?concept=${concept}&application=1`,{waitUntil:'load'});
       assert.equal(await page.locator('html').getAttribute('data-concept'),String(concept));
       assert.equal(await page.locator('.brand-logo').getAttribute('src'),`/assets/brand/concept-${concept}-light.svg`);
       assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1),false,`Concept ${concept} overflow ${width}`);
@@ -79,7 +79,7 @@ try {
   assert.equal(await nojsPage.locator('[data-enquiry] button').isDisabled(),true);
   await nojs.close();
   assert.deepEqual(errors,[]);assert.deepEqual(failures,[]);
-  const report={browser:await browser.version(),responsiveChecks,widths:[320,390,768,1440],locales:['en-CA','fr-CA'],enquiryBranches:6,conceptApplications:10,menuEscapeFocus:'PASS',noJavaScript:'PASS',pageErrors:errors,failedResources:failures,navigation,limitations:'Chromium only; local unthrottled timing, not a Core Web Vitals or accessibility certification. Forms inactive; no delivery tests.'};
+  const report={browser:await browser.version(),responsiveChecks,widths:[320,390,768,1440],locales:['en-CA','fr-CA'],enquiryBranches:6,conceptApplications:12,menuEscapeFocus:'PASS',noJavaScript:'PASS',pageErrors:errors,failedResources:failures,navigation,limitations:'Chromium only; local unthrottled timing, not a Core Web Vitals or accessibility certification. Forms inactive; no delivery tests.'};
   await writeFile('test-results/browser-report.json',JSON.stringify(report,null,2));
   console.log(JSON.stringify(report,null,2));
 } finally {await browser.close();}

@@ -38,6 +38,8 @@ export async function build({ mode='preview', outDir=resolve('dist') }={}) {
     await writeFile(resolve(outDir,'brand-concepts','index.html'),renderBrandReview());
     await mkdir(resolve(outDir,'brand-concepts','round-one'),{recursive:true});
     await writeFile(resolve(outDir,'brand-concepts','round-one','index.html'),renderBrandReview(1));
+    await mkdir(resolve(outDir,'brand-concepts','round-two'),{recursive:true});
+    await writeFile(resolve(outDir,'brand-concepts','round-two','index.html'),renderBrandReview(2));
   }
   const pairs=Object.fromEntries(selected.flatMap(record=>locales.map(l=>[record.paths[l],record.paths])));
   await writeFile(resolve(outDir,'assets','routes.js'),`window.eebdRoutePairs=${JSON.stringify(pairs)};`);

@@ -1,6 +1,10 @@
 import { watch } from 'node:fs';
-import { build } from './build.mjs';
+import { execFile } from 'node:child_process';
+import { promisify } from 'node:util';
 import { previewServer } from './server.mjs';
+const execute=promisify(execFile);
+// Each build runs in a fresh process so edited ES modules are reloaded.
+const build=()=>execute(process.execPath,['scripts/build.mjs']);
 await build();
 const port=Number(process.env.PORT || 4173);
 const server=previewServer();

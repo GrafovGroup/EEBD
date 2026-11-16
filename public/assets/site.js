@@ -4,7 +4,8 @@
   const params = new URLSearchParams(location.search);
   const preview = document.documentElement.dataset.mode === 'preview';
   const concept = params.get('concept');
-  if (preview && /^(?:[1-9]|10)$/.test(concept || '')) {
+  const exploring=!document.documentElement.dataset.approvedConcept || params.get('application')==='1';
+  if (preview && exploring && /^(?:[1-9]|10)$/.test(concept || '')) {
     document.documentElement.dataset.concept = concept;
     for (const [selector,mode] of [['.brand-logo','light'],['.footer-logo','dark']]) {
       document.querySelectorAll(selector).forEach(img=>{ img.src=`/assets/brand/concept-${concept}-${mode}${document.documentElement.lang==='fr-CA'?'-fr':''}.svg`; });

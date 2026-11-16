@@ -13,7 +13,7 @@ The owner has authorized implementation. A local bilingual development preview, 
 - **Baseline:** Grafov Group Universal Codex Website Launch Master Prompt v2.0
 - **Languages:** Canadian English and Québec-appropriate French
 - **Primary audience:** commercial marine buyers, with selected industrial applications and fleet procurement
-- **Branding:** ten concepts prepared across two rounds; current options 06–10 include the full descriptor beneath EEBD with no .ca; no identity selected yet
+- **Branding:** Precision concept 01 selected; full descriptor immediately beneath EEBD inside the logo, with no .ca; two exploration rounds retained
 
 ## Run the local review
 
