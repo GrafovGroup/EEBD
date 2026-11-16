@@ -82,7 +82,7 @@ import { submitEnquiry } from './formspree.js';
     try {
       const result=await submitEnquiry({
         ...reviewedPayload.fields,name:reviewedPayload.fields.contact,
-        message:reviewedMessage,_subject:`EEBD.ca — ${reviewedPayload.requestType} — ${reviewedPayload.locale}`,
+        message:reviewedMessage,_subject:`EEBD.ca — ${reviewedPayload.requestType} — ${reviewedPayload.locale}${reviewedPayload.fields.model?' — '+reviewedPayload.fields.model.replace(/[\r\n]/g,' ').slice(0,100):''}`,
         requestType:reviewedPayload.requestType,locale:reviewedPayload.locale,sourcePath:reviewedPayload.sourcePath,
         privacyAcknowledgement:reviewedPayload.privacyAcknowledgement,optionalMarketingConsent:false,
         submissionId,_gotcha:root.querySelector('[name="_gotcha"]').value,

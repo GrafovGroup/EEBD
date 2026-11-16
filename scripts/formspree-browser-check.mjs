@@ -5,6 +5,7 @@ import { writeFile } from 'node:fs/promises';
 import { build } from './build.mjs';
 import { previewServer } from './server.mjs';
 import { renderPage } from '../src/render.mjs';
+import { models } from '../src/models.mjs';
 import { pathFor } from '../src/routes.mjs';
 import { contentSecurityPolicy } from '../src/security.mjs';
 import { FORMSPREE_ENDPOINT } from '../public/assets/formspree.js';
@@ -61,6 +62,17 @@ async function prepare(locale,type) {
   await page.locator('[data-review]').click();
 }
 try {
+  for(const model of models)for(const locale of ['en','fr']) {
+    await page.goto(origin+pathFor('quote',locale)+'?type=equipment&source='+encodeURIComponent(pathFor(model.id,locale)));
+    assert.equal(await page.locator('#equipment-model').inputValue(),model.name);
+    const other=locale==='en'?'fr':'en';
+    await page.locator('.language-switch a[lang="'+other+'-CA"]').click();
+    await page.waitForLoadState('load');
+    assert.equal(new URL(page.url()).searchParams.get('source'),pathFor(model.id,other));
+    assert.equal(await page.locator('#equipment-model').inputValue(),model.name);
+  }
+  await page.goto(origin+pathFor('quote','en')+'?source=https://outside.invalid/forged-model');
+  assert.equal(await page.locator('#equipment-model').inputValue(),'');
   for(const locale of ['en','fr'])for(const type of ['equipment','training','service','general']) {
     scenario='success';await prepare(locale,type);await page.locator('[data-send]').click();
     await page.locator('[data-enquiry-complete]').waitFor({state:'visible'});
@@ -68,6 +80,7 @@ try {
     assert.equal(sent.email,'buyer@example.invalid');assert.equal(sent.name,'Synthetic Buyer');assert.equal(sent.requestType,type);assert.equal(sent.locale,locale+'-CA');
     assert.equal(sent.sourcePath,pathFor(sourceRoute,locale));assert.equal(sent._gotcha,'');assert.equal(sent.optionalMarketingConsent,false);
     assert.ok(sent.message.includes('<script>literal model name</script>'));
+    if(type!=='general')assert.ok(sent._subject.endsWith(' — <script>literal model name</script>'));
     assert.match(sent.submissionId,/^[a-f0-9-]{36}$/);
     if(type!=='training')assert.equal(sent.participants,undefined);
     if(type!=='service')assert.equal(sent.issue,undefined);
@@ -90,7 +103,7 @@ try {
   await page.locator('[data-send]').evaluate(button=>{button.click();button.click();});
   await page.locator('[data-enquiry-complete]').waitFor({state:'visible'});assert.equal(calls.length,1,'Double click must not send twice');
   assert.deepEqual(unexpected,[]);assert.deepEqual(pageErrors,[]);
-  const report={origin,sourceRoute,checkedAt:new Date().toISOString(),browser:await browser.version(),successJourneys:8,failureJourneys:6,doubleClick:'PASS',externalRequests:0,realSubmissions:0,limits:'Provider responses are intercepted. This suite does not verify account settings or inbox delivery; those require separate evidence.'};
+  const report={origin,sourceRoute,checkedAt:new Date().toISOString(),browser:await browser.version(),modelContextChecks:models.length*2,unknownModelSourceIgnored:true,successJourneys:8,failureJourneys:6,doubleClick:'PASS',externalRequests:0,realSubmissions:0,limits:'Provider responses are intercepted. This suite does not verify account settings or inbox delivery; those require separate evidence.'};
   await writeFile(`test-results/formspree-${liveOrigin?'live-':''}browser-report.json`,JSON.stringify(report,null,2)+'\n');console.log(report);
 } finally {
   await browser.close();

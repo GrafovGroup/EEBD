@@ -1,5 +1,6 @@
 import { cities } from './cities.mjs';
 import { offerings } from './offerings.mjs';
+import { models } from './models.mjs';
 const definitions = [
   ['home', '', '', 'Home', 'Accueil'],
   ['equipment', 'equipment', 'equipement', 'Equipment', 'Équipement'],
@@ -22,6 +23,7 @@ const definitions = [
   ['privacy', 'privacy', 'confidentialite', 'Privacy', 'Confidentialité'],
 ];
 definitions.push(...offerings.map(o=>[o.id,o.paths.en,o.paths.fr,o.labels.en,o.labels.fr]),...cities.map(c=>[c.id,`coverage/${c.slug}`,`couverture/${c.slug}`,c.name.en,c.name.fr]));
+definitions.push(...models.map(m=>[m.id,`equipment/${m.slug}`,`equipement/${m.slug}`,m.name,m.name]));
 export const routes = definitions.map(([id, en, fr, enLabel, frLabel]) => ({
   id, paths: { en: `/en/${en ? `${en}/` : ''}`, fr: `/fr/${fr ? `${fr}/` : ''}` },
   labels: { en: enLabel, fr: frLabel }, status: 'published', indexable: !['quote','privacy'].includes(id),

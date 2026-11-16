@@ -78,3 +78,9 @@ The site language does not establish instructor or manufacturer-document languag
 - Hosting privacy references: [WHC English privacy policy](https://whc.ca/legal/privacy-policy/) and [French policy](https://whc.ca/mentions-legales/politique-de-confidentialite).
 - Authenticated account observation confirmed info@eebd.ca as the notification recipient, enabled form/archive/Formshield and existing disabled CAPTCHA. Required contact/email/message validation and the eebd.ca project-domain restriction were configured. No other project or CAPTCHA setting was changed; plan limits were not audited.
 - The earlier authorized real test and owner-confirmed receipt support the notification route. Final hosted UI checks intercepted all provider requests and sent no new message. This evidence supersedes earlier notes that the account settings and destination were uninspected.
+
+## Exact model research — November 16, 2026
+
+The earlier absence of model information is superseded by three bilingual informational reference pages. There are still no verified saleable product/variant records. See `docs/MODEL_RESEARCH.md` for exact current sources, specification conflicts and safety-notice limits; `docs/CANADIAN_SUPPLIER_RESEARCH.md` for six prospective channels; and `docs/IMAGE_ASSETS.md` for the public-domain photograph provenance.
+
+M-20.2 NIOSH/European ratings remain distinct; Spiroscape bar configurations are not conflated with US variants; CF10 N part 4042056 uses the 2026 manufacturer product sheet rather than broader family approval language. The current Saver CF notice requires exact-model/serial clarification. No blanket Canadian approval, stock, partnership, price or recall clearance is asserted. The owner's new instruction authorizes publication of model information, not invention of supplier agreements.

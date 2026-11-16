@@ -47,6 +47,11 @@
   // This is an in-flow disclosure, not a modal. It does not lock page scrolling or trap focus.
   const enquiry=document.querySelector('[data-enquiry]');
   if (enquiry) {
+    const modelContext=window.eebdModelContext || {};
+    const source=params.get('source');
+    if(source && Object.hasOwn(modelContext,source)) {
+      enquiry.querySelectorAll('input[name="model"]').forEach(input=>{input.value=modelContext[source];});
+    }
     const types=[...enquiry.querySelectorAll('[name="requestType"]')].map(input=>input.value);
     const selected=types.includes(params.get('type'))?params.get('type'):types[0];
     enquiry.querySelector(`input[name="requestType"][value="${selected}"]`).checked=true;

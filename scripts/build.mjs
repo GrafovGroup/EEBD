@@ -1,6 +1,7 @@
 import { cp, mkdir, rm, writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { resolve } from 'node:path';
+import { models } from '../src/models.mjs';
 import { imagePath } from '../src/images.mjs';
 import { contentSecurityPolicy } from '../src/security.mjs';
 import { site, assertProductionReady } from '../src/config.mjs';
@@ -34,7 +35,7 @@ export async function build({ mode='preview', outDir=resolve('dist') }={}) {
     await writeFile(resolve(outDir,locale,'404','index.html'),renderPage('404',locale,mode));
   }
   await writeFile(resolve(outDir,'404.html'),renderPage('404','en',mode));
-  await writeFile(resolve(outDir,'index.html'),'<!doctype html><html lang="en-CA"><head><meta charset="utf-8"><meta name="robots" content="noindex"><meta name="viewport" content="width=device-width, initial-scale=1"><title>EEBD.ca — English / Français</title><link rel="stylesheet" href="/assets/site.css"><link rel="icon" href="/assets/favicon.svg"></head><body><main class="wrap page-hero"><h1>EEBD.ca</h1><p>Emergency escape breathing devices / Appareils respiratoires pour l’évacuation d’urgence</p><p><a class="button" href="/en/" lang="en-CA">English</a> <a class="button" href="/fr/" lang="fr-CA">Français</a></p></main></body></html>');
+  await writeFile(resolve(outDir,'index.html'),'<!doctype html><html lang="en-CA"><head><meta charset="utf-8"><meta name="robots" content="noindex"><meta name="msvalidate.01" content="'+esc(site.bingVerification)+'"><meta name="viewport" content="width=device-width, initial-scale=1"><title>EEBD.ca — English / Français</title><link rel="stylesheet" href="/assets/site.css"><link rel="icon" href="/assets/favicon.svg"></head><body><main class="wrap page-hero"><h1>EEBD.ca</h1><p>Emergency escape breathing devices / Appareils respiratoires pour l’évacuation d’urgence</p><p><a class="button" href="/en/" lang="en-CA">English</a> <a class="button" href="/fr/" lang="fr-CA">Français</a></p></main></body></html>');
   if (mode==='preview') {
     await mkdir(resolve(outDir,'brand-concepts'),{recursive:true});
     await writeFile(resolve(outDir,'brand-concepts','index.html'),renderBrandReview());
@@ -44,7 +45,8 @@ export async function build({ mode='preview', outDir=resolve('dist') }={}) {
     await writeFile(resolve(outDir,'brand-concepts','round-two','index.html'),renderBrandReview(2));
   }
   const pairs=Object.fromEntries(selected.flatMap(record=>locales.map(l=>[record.paths[l],record.paths])));
-  await writeFile(resolve(outDir,'assets','routes.js'),`window.eebdRoutePairs=${JSON.stringify(pairs)};`);
+  const modelContext=Object.fromEntries(models.flatMap(m=>locales.map(l=>[routes.find(r=>r.id===m.id).paths[l],m.name])));
+  await writeFile(resolve(outDir,'assets','routes.js'),`window.eebdRoutePairs=${JSON.stringify(pairs)};window.eebdModelContext=${JSON.stringify(modelContext)};`);
   const sitemap=mode==='production'?sitemapRoutes(selected).flatMap(r=>locales.map(l=>`<url><loc>${esc(site.origin+r.paths[l])}</loc>${locales.map(alt=>`<xhtml:link rel="alternate" hreflang="${alt}-CA" href="${esc(site.origin+r.paths[alt])}"/>`).join('')}<image:image><image:loc>${esc(site.origin+imagePath(r.id))}</image:loc></image:image></url>`)).join(''):'';
   await writeFile(resolve(outDir,'sitemap.xml'),`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">${sitemap}</urlset>`);
   await writeFile(resolve(outDir,'robots.txt'),`User-agent: *\nAllow: /\n${mode==='production'?`Sitemap: ${site.origin}/sitemap.xml\n`:''}`);

@@ -52,3 +52,13 @@ The root redirects to /en/ with HTTP 302. Both language choices are visible and 
 Nine detailed enquiry topics and fourteen city guides extend the core pages. Geographic pages contain sourced local context and original procurement guidance; they do not represent local branches or confirmed supply. Seven generated conceptual images are assigned by context.
 
 Production excludes brand-review utilities. Saleable model pages are not generated without model-specific commercial and technical evidence. The production sitemap has 80 canonical URLs, 80 image references and 160 language links; development previews remain noindex with an empty sitemap. Google Search Console has processed the production sitemap successfully.
+
+## Model reference additions — November 16, 2026
+
+| Model | English | French |
+| --- | --- | --- |
+| Ocenco M-20.2 | `/en/equipment/ocenco-m-20-2/` | `/fr/equipement/ocenco-m-20-2/` |
+| Interspiro Spiroscape (bar) | `/en/equipment/interspiro-spiroscape/` | `/fr/equipement/interspiro-spiroscape/` |
+| Dräger Saver CF10 N | `/en/equipment/draeger-saver-cf10-n/` | `/fr/equipement/draeger-saver-cf10-n/` |
+
+These six indexable reference pages bring the website to 90 public content/form pages and 86 sitemap URLs. They are linked from equipment and relevant category pages, with reciprocal language routes and model context in quotation enquiries.

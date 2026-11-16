@@ -1,5 +1,6 @@
 import { cities } from './cities.mjs';
 import { offerings } from './offerings.mjs';
+import { models } from './models.mjs';
 export const ui = {
   en: {
     skip: 'Skip to content', preview: 'DESIGN PREVIEW · ENQUIRIES INACTIVE', concepts: 'VIEW SELECTED LOGO',
@@ -240,6 +241,7 @@ export const pages = {
 
 
 for(const item of offerings) pages[item.id]={en:item.en,fr:item.fr};
+for(const model of models) pages[model.id]=Object.fromEntries(['en','fr'].map(locale=>[locale,{...model[locale],requestType:'equipment',sources:model.sources}]));
 for(const city of cities) pages[city.id]=Object.fromEntries(['en','fr'].map(locale=>{
   const c=city[locale],fr=locale==='fr';
   return [locale,{...c,eyebrow:`${city.name[locale].toUpperCase()} · ${city.province[locale].toUpperCase()}`,requestType:'equipment',

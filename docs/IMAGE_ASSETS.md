@@ -24,3 +24,14 @@ The remaining six prompts use this shared specification, inserting the subject f
 | river-port | a conceptual large Canadian river cargo port, freighter alongside terminal silos and gantry cranes, low shoreline and soft cloud layers, navy water and subtle orange accents; no identifiable real city or named vessel, no logos |
 
 Route assignments and bilingual descriptions are maintained in `src/images.mjs`. Reuse across related pages is intentional. A city image is a regional illustration rather than a location photograph.
+
+## Real product reference photograph — November 16, 2026
+
+`public/assets/images/ocenco-m202-niosh.webp` is a faithful format conversion of the 626 × 469 embedded photograph in Figure 1, PDF page 3 of CDC/NIOSH PPE CASE P2018-0105 (2018). It is a historical model-identification photograph, not EEBD.ca inventory or a new manufacturer batch image. The device depiction was not edited or generated.
+
+- Source record explicitly labelled Public Domain: https://stacks.cdc.gov/view/cdc/137510
+- Source PDF: https://stacks.cdc.gov/view/cdc/137510/cdc_137510_DS1.pdf
+- Reuse terms: https://www.cdc.gov/other/agencymaterials.html
+- Caption credits CDC/NIOSH, gives the year, links to the free original in a new window and states non-endorsement by CDC/HHS/the U.S. Government. No agency logo is used.
+- English/French alt text identifies the opened and closed M-20.2 units. The source photograph is retained at its native resolution; no invented detail or generative upscaling.
+- No manufacturer product photograph was copied for Interspiro or Dräger. Their model pages link to official photos/documentation, and retain clearly captioned conceptual workplace imagery. The owner confirmed no existing photo permission on November 16. Commercial image permission is an outstanding supplier question.

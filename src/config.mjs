@@ -2,6 +2,7 @@ import { FORMSPREE_ENDPOINT } from '../public/assets/formspree.js';
 export const site = Object.freeze({
   name: 'EEBD.ca',
   origin: 'https://eebd.ca',
+  bingVerification: '8540AF3FE8C8197267E84BBE602115F7',
   phone: '(833) 696-9996',
   phoneTel: '+18336969996',
   phoneVerified: false,
