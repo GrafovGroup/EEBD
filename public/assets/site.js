@@ -44,6 +44,22 @@
     if (event.relatedTarget && !nav.contains(event.relatedTarget) && event.relatedTarget!==toggle) closeMenu();
   });
   media.addEventListener('change',()=>closeMenu());
+  const mobileEnquiry=document.querySelector('[data-mobile-enquiry]');
+  if(mobileEnquiry) {
+    const hero=document.querySelector('main .page-hero'),footer=document.querySelector('.site-footer');
+    let scheduled=false;
+    function updateMobileEnquiry() {
+      scheduled=false;
+      const consentOpen=document.querySelector('[data-analytics-consent]:not([hidden])');
+      const editing=document.activeElement?.matches('input,textarea,select,[contenteditable="true"]');
+      const show=innerWidth<=700 && hero?.getBoundingClientRect().bottom<0 && footer?.getBoundingClientRect().top>innerHeight && toggle?.getAttribute('aria-expanded')!=='true' && !consentOpen && !editing;
+      mobileEnquiry.hidden=!show;
+    }
+    function scheduleMobileEnquiry(){if(!scheduled){scheduled=true;requestAnimationFrame(updateMobileEnquiry);}}
+    for(const name of ['scroll','resize','analytics-consent-change'])window.addEventListener(name,scheduleMobileEnquiry,{passive:true});
+    for(const name of ['focusin','focusout','click'])document.addEventListener(name,scheduleMobileEnquiry);
+    updateMobileEnquiry();
+  }
   // This is an in-flow disclosure, not a modal. It does not lock page scrolling or trap focus.
   const enquiry=document.querySelector('[data-enquiry]');
   if (enquiry) {

@@ -24,6 +24,7 @@ const origin=liveOrigin || `http://127.0.0.1:${server.address().port}`;
 const browser=await chromium.launch({headless:true,executablePath:process.env.EEBD_CHROME_EXECUTABLE});
 const context=await browser.newContext({viewport:{width:390,height:844},reducedMotion:'reduce'});
 context.setDefaultTimeout(12000);
+await context.addInitScript(()=>localStorage.setItem('eebd.analytics-consent.v1',JSON.stringify({value:'denied',at:Date.now()})));
 const page=await context.newPage();
 let calls=[],scenario='success',unexpected=[];
 const pageErrors=[];page.on('pageerror',error=>pageErrors.push(error.message));
@@ -90,7 +91,7 @@ try {
     if(type!=='service')assert.equal(sent.issue,undefined);
     assert.equal(await page.locator('#common-email').inputValue(),'');
     assert.equal(await page.evaluate(()=>document.activeElement.hasAttribute('data-complete-heading')),true);
-    assert.equal(await page.evaluate(()=>localStorage.length+sessionStorage.length),0);
+    assert.deepEqual(await page.evaluate(()=>Object.keys(localStorage)),['eebd.analytics-consent.v1']);assert.equal(await page.evaluate(()=>sessionStorage.length),0);
     assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1),false);
     if(type==='equipment')await page.screenshot({path:`test-results/formspree-${liveOrigin?'live-':''}confirmation-${locale}.png`,fullPage:true});
   }

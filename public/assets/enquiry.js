@@ -9,6 +9,8 @@ import { submitEnquiry } from './formspree.js';
   const errors=root.querySelector('[data-errors]'),status=root.querySelector('[data-submission-status]'),send=root.querySelector('[data-send]');
   const live=root.dataset.delivery==='enabled';
   let reviewedPayload=null, reviewedMessage='', submissionId=null, sending=false;
+  const track=(method,...args)=>{try{window.eebdAnalytics?.[method]?.(...args);}catch{}};
+  for(const name of ['input','change'])details.addEventListener(name,event=>{if(event.isTrusted && event.target.matches('input:not([name="_gotcha"]),select,textarea'))track('start',root.querySelector('[name="requestType"]:checked').value);});
   const activeFields=()=>[...details.querySelectorAll('input[name],select[name],textarea[name]')].filter(el=>!el.matches(':disabled')&&!['requestType','_gotcha'].includes(el.name));
   const label=el=>(el.labels?.[0]?.textContent || el.name).replace(/\s*\*\s*$/,'').trim();
   function step(name) {
@@ -89,6 +91,7 @@ import { submitEnquiry } from './formspree.js';
         submissionId,_gotcha:root.querySelector('[name="_gotcha"]').value,
       },{signal:AbortSignal.timeout(15000)});
       if(result.kind==='accepted') {
+        track('accepted',reviewedPayload.requestType,submissionId);
         step('complete');root.querySelector('[data-complete-heading]').focus();
         // Clear contact data only after the provider confirms acceptance.
         details.querySelectorAll('input:not([type="radio"]),textarea,select').forEach(el=>{if(el.type==='checkbox')el.checked=false;else el.value='';});

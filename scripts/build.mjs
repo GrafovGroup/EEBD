@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url';
 import { resolve } from 'node:path';
 import { models } from '../src/models.mjs';
 import { imagePath } from '../src/images.mjs';
+import {indexNowKey} from '../src/indexnow.mjs';
 import { contentSecurityPolicy } from '../src/security.mjs';
 import { site, assertProductionReady } from '../src/config.mjs';
 import { includedRoutes, sitemapRoutes, locales, routes } from '../src/routes.mjs';
@@ -26,6 +27,7 @@ export async function build({ mode='preview', outDir=resolve('dist') }={}) {
   await rm(outDir,{recursive:true,force:true});
   await mkdir(outDir,{recursive:true});
   await cp('public',outDir,{recursive:true,filter:source=>mode!=='production'||(!source.endsWith('/review.js')&&(!source.includes('concept-')||source.includes(`concept-${site.approvedConcept}-`)))});
+  if(mode==='production')await writeFile(resolve(outDir,indexNowKey+'.txt'),indexNowKey+'\n');
   for(const page of rendered) {
     const directory=resolve(outDir,'.'+page.path);
     await mkdir(directory,{recursive:true});

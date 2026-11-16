@@ -37,7 +37,7 @@ test('preview remains unable to send; production rendering names Formspree and h
     assert.match(live,/name="_gotcha"/);assert.doesNotMatch(live,/data-reference|api\/enquiries/);
   }
   assert.match(contentSecurityPolicy('preview'),/connect-src 'none'/);
-  assert.match(contentSecurityPolicy('production'),/connect-src https:\/\/formspree.io;/);
+  assert.match(contentSecurityPolicy('production'),/connect-src https:\/\/formspree.io /);
 });
 test('WHC package ships only static files and the Formspree host policy',async()=>{
   const result=await packageWhc();
