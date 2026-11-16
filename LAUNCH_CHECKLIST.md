@@ -1,6 +1,6 @@
 # Launch checklist
 
-Updated November 16, 2026 (America/Toronto), under the owner's explicit full-site launch instruction. Deployed runtime: `8b95aaff87bc26c4d466f232e7b04dfcae371884`.
+Updated November 16, 2026 (America/Toronto), under the owner's explicit full-site launch instruction. Deployed runtime: `2e1f4494be14b2fae08aaf89b14ba50c65c978f3`.
 
 | Check | Status | Evidence / limitation |
 | --- | --- | --- |
@@ -19,7 +19,7 @@ Updated November 16, 2026 (America/Toronto), under the owner's explicit full-sit
 | Content/offer boundaries | PASS | Broad technical sources reviewed; arrangements explicitly pending; no stock, pricing, credentials or saleable models asserted |
 | Model/provider evidence | FUTURE COMMERCIAL WORK | Actual suppliers, trainers and service partners remain unarranged; evidence required before offering specific models/capabilities |
 | HTTPS and canonical redirects | PASS | Trusted root/www certificate; HTTP/www 308 preserves path/query; root 302 to English |
-| Final host files | PASS | All 160 public files hash-verified on host; 158 readable files matched over HTTPS |
+| Final host files | PASS | All 162 public files hash-verified on host; 160 readable files matched over HTTPS |
 | Error pages | PASS | English/French HTTP 404 bodies and direct error routes verified after correcting LiteSpeed recursion |
 | Search metadata | PASS | 90 indexable sitemap URLs; reciprocal alternates/canonicals; quote/privacy noindex; review utilities excluded |
 | Secrets and submissions excluded | PASS | No credentials, customer messages, private source or database in public output/Git |
@@ -49,3 +49,9 @@ Browser checks are not WCAG certification or real-user performance evidence. Loc
 - PASS: Optional equipment fields survive review/edit/submission and are excluded from service/training branches. Fleet links open the bulk section.
 - PASS: Live versioned assets, CSV downloads, 90 sitemap URLs and 158 public file hashes.
 - The final live simulated form check passed at 06:35:51 UTC: six model/language checks, eight standard success journeys, two bulk journeys, inactive bulk-field exclusion, six failure states and double-click protection. All Formspree requests were intercepted; zero real submissions occurred.
+
+## Homepage image and layout follow-through
+
+- PASS: Owner-requested footer and English homepage title, 25% larger navigation and full-width containers with responsive padding.
+- PASS: Generated EEBD-use homepage image in both languages; four responsive widths tested per language; optimized image variants, localized descriptions and generated-image caption.
+- See `docs/INDEXING_AUDIT.md` for indexed URLs, current report/inspection limits and completed metadata corrections.

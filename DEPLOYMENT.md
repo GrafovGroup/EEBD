@@ -5,10 +5,10 @@
 The complete bilingual enquiry website is live at **https://eebd.ca/** on WHC. The root redirects to `/en/`; `/fr/` is available through the language switch. The domain has its own document root, separate from existing websites.
 
 - Repository: `https://github.com/GrafovGroup/EEBD.git`, branch `codex/initial-build`.
-- Deployed runtime source: **`8b95aaff87bc26c4d466f232e7b04dfcae371884`**.
-- Activated November 16, 2026 at **07:03:32 UTC** (November 16, 02:03 Toronto).
-- Static package: **160 public files**, including two Apache configuration files; 158 readable files verified byte-for-byte over HTTPS.
-- Archive: `test-results/eebd-release-8b95aaf.tar.gz` (1,375,284 bytes); SHA-256 `f6ae134bd062ed9459ae9ff0409d85a231a684d6661a993b61c93f7d317f1a76`.
+- Deployed runtime source: **`2e1f4494be14b2fae08aaf89b14ba50c65c978f3`**.
+- Activated November 16, 2026 at **07:14:32 UTC** (November 16, 02:14 Toronto).
+- Static package: **162 public files**, including two Apache configuration files; 160 readable files verified byte-for-byte over HTTPS.
+- Archive: `test-results/eebd-release-2e1f449.tar.gz` (1,498,094 bytes); SHA-256 `ef180aedac576e492fec4ba0b530866ffc1fb11b2314722ec280f2912c0d0023`.
 - `manifest.json` records every file hash, exact source commit and `sourceDirty:false`. Later documentation-only commits do not change the deployed runtime.
 
 Account identifiers, credentials, session URLs, host backup paths and submissions remain outside Git. Other hosted sites were not changed.
@@ -113,3 +113,7 @@ The final live simulated form check passed at 06:35:51 UTC: six model/language c
 Navigation labels and the header enquiry button are 25% larger at their existing breakpoints. Containers use the full viewport width with responsive side padding. The owner supplied the exact new footer notice; the English homepage title is `Emergency Escape Breathing Device | EEBD.CA`. Five overlong meta descriptions were rewritten and eight homepage image instances now have localized descriptions.
 
 Validation: 752 rendered route/viewport combinations at 320, 390, 768, 1024, 1200, 1440, 1920 and 2560 px; no page errors or horizontal page overflow. All 160 public files were verified on WHC and 158 readable files matched release hashes over HTTPS at 07:04 UTC. All 90 sitemap pages remain HTTP 200, indexable, self-canonical and reachable within three HTML link steps. Quote and privacy exclusions remain intentional. See `docs/INDEXING_AUDIT.md` for actual search-index evidence and its limits.
+
+## EEBD-in-use hero release — November 16, 07:14 UTC
+
+The owner requested a generated image of EEBD use in place of the homepage boat. Both language homepages now use the original generated ship-corridor scene, with 1200 × 800 and 640 × 427 WebP assets and localized alt text. The generated-image caption remains visible. Open Graph and sitemap image references follow the new homepage image. Other marine-context images are retained. The prompt and reference roles are documented in `docs/EEBD_HERO_PROMPT.md`. Eight targeted homepage checks covered both languages at 390, 768, 1440 and 1920 px. No form code changed. The previous layout release remains backed up.

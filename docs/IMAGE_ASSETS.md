@@ -35,3 +35,7 @@ Route assignments and bilingual descriptions are maintained in `src/images.mjs`.
 - Caption credits CDC/NIOSH, gives the year, links to the free original in a new window and states non-endorsement by CDC/HHS/the U.S. Government. No agency logo is used.
 - English/French alt text identifies the opened and closed M-20.2 units. The source photograph is retained at its native resolution; no invented detail or generative upscaling.
 - No manufacturer product photograph was copied for Interspiro or Dräger. Their model pages link to official photos/documentation, and retain clearly captioned conceptual workplace imagery. The owner confirmed no existing photo permission on November 16. Commercial image permission is an outstanding supplier question.
+
+## Generated EEBD-use homepage hero — November 16
+
+The owner supplied EEBD-use examples and requested a realistic generated replacement for the homepage vessel image. `eebd-in-use.webp` and `eebd-in-use-small.webp` depict a generic maritime worker wearing an escape hood connected to a carried air pouch. Both homepages use the new image and retain the generated-image caption; no supplier or model identity is asserted. The built-in tool prompt and reference roles are in `EEBD_HERO_PROMPT.md`.
