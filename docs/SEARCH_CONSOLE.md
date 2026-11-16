@@ -1,0 +1,25 @@
+# Google Search Console
+
+The owner explicitly requested setup and sitemap submission. On November 15, 2026 (America/Toronto), the eebd.ca Domain property was created in the existing signed-in Google account and verified through a root DNS TXT record at WHC. No password, API key or service account was required. The verification TXT record must remain in DNS.
+
+- [EEBD.ca Search Console](https://search.google.com/search-console?resource_id=sc-domain%3Aeebd.ca)
+- [Sitemaps report](https://search.google.com/search-console/sitemaps?resource_id=sc-domain%3Aeebd.ca)
+- [Public sitemap](https://eebd.ca/sitemap.xml)
+
+The submitted sitemap was **processed successfully**, with **80 discovered pages** and a last-read date of November 15, 2026. This result was observed at 04:55:55 UTC November 16. The temporary initial fetch status resolved during processing. There was no unresolved sitemap error at that observation.
+
+The property covers the domain's protocols and subdomains; the website still canonically redirects to HTTPS without www. The sitemap includes only the 80 indexable page URLs, with matching image and language references. The four exclusions are the two quote pages and two privacy pages; contact pages are indexable.
+
+Google controls crawling, indexing and ranking. Discovered URLs are not proof of indexed pages or search position. This setup adds no Google Analytics code, cookies or advertising tags to the website.
+
+## Official references
+
+- [Property types](https://support.google.com/webmasters/answer/34592)
+- [Verify site ownership](https://support.google.com/webmasters/answer/9008080)
+- [Sitemaps report and status meanings](https://support.google.com/webmasters/answer/7451001)
+- [Build and submit a sitemap](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap)
+- [Search spam policies](https://developers.google.com/search/docs/essentials/spam-policies): city guides are useful local-context pages, not cloned keyword pages or invented branches.
+
+Private screenshots, the exact verification token and timestamps are retained in ignored local records. Do not commit Google sessions or account credentials.
+
+Google also accepted individual indexing requests for https://eebd.ca/en/ and https://eebd.ca/fr/, confirming each was added to a priority crawl queue. At inspection, both were discovered but not yet indexed. The requests were submitted once per homepage; no repeated bulk requests were made.

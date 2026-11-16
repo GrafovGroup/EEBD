@@ -4,7 +4,7 @@ Canadian emergency escape breathing equipment: **equipment sales, product-specif
 
 ## Project status
 
-**The complete bilingual enquiry website is live at https://eebd.ca/ on WHC.** General contact and equipment/training/service forms use Formspree; the owner confirmed receipt of the authorized test. Source is backed up on `codex/initial-build`. Read [PROJECT_STATUS.md](PROJECT_STATUS.md) and [DECISIONS.md](DECISIONS.md) before resuming.
+**The complete bilingual enquiry website is live at https://eebd.ca/ on WHC.** General contact and equipment/training/service forms use Formspree; the owner confirmed receipt of the authorized test. Source is backed up on `codex/initial-build`. The current release has 84 English/French pages, seven original editorial images, nine detailed enquiry topics and 14 Canadian city guides. Read [PROJECT_STATUS.md](PROJECT_STATUS.md) and [DECISIONS.md](DECISIONS.md) before resuming.
 
 - **Repository:** https://github.com/GrafovGroup/EEBD.git
 - **Domain:** EEBD.ca — owned
@@ -84,7 +84,7 @@ and deployed, with exact remaining dependencies and no unsupported completion cl
 - Products, supply routes, training providers and service coverage still require actual arrangements.
 - Formspree `https://formspree.io/f/xrpqpylv`, notification to info@eebd.ca.
 - Authorized real test accepted and inbox receipt confirmed by the owner.
-- Analytics and search-console submission not configured.
+- Google Search Console domain verified; sitemap processed with 80 discovered URLs. Analytics is not configured.
 
 The proposed phone remains unverified and is omitted from public pages. Verified email and forms provide the contact route.
 

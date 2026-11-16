@@ -57,3 +57,13 @@ The initial development watcher called an already-imported build module, retaini
 - Corrected LiteSpeed custom-error recursion found during live verification by giving error documents dedicated asset URLs and the French directory its own handler. All 87 packaged public files were verified on the host; all 85 readable files matched their hashes over HTTPS. Canonical redirects, localized 404 bodies, security headers and 34-URL sitemap passed.
 - Actual-host UI tests passed eight bilingual success journeys, six failure journeys and double-click protection using intercepted Formspree responses. No additional live enquiry was sent. The earlier single authorized submission and owner-confirmed inbox receipt remain the end-to-end delivery evidence.
 - Archived the previous live directory and earlier holding page privately, with manifest/timestamp records. Other hosted websites and mail records were preserved. Documentation updates after this runtime commit do not imply a new deployment.
+
+## November 15, 2026 — Enriched pages and Google discovery
+
+- Owner requested relevant imagery on each page, more detailed services/products, major Canadian city coverage especially coastal cities, and Search Console verification/sitemap submission. This authorizes publication of the expanded site and the required domain-verification record.
+- Added seven built-in generated conceptual images with responsive WebP variants, localized descriptions and visible captions. The images do not portray actual equipment models, staff, stock or offices. Preserved the approved logo.
+- Added nine detailed bilingual enquiry topics and fourteen paired city guides. Sources establish local context; pages contain distinct planning questions. No unverified saleable product records, service qualifications or local branches were introduced.
+- Deployed runtime `c77f1ab0b1a77986631ee410cfe86869781c6726` on WHC at 04:54:44 UTC November 16. Verified 147 host files, 145 public HTTP hashes, 336 responsive page checks, 23 unit/integration checks and 3,664 internal references.
+- Created the eebd.ca Google Search Console Domain property using the owner's existing signed-in account. Added one TXT verification record through WHC; Google verified ownership. Submitted the live sitemap, which Google processed successfully with 80 discovered URLs. Search discovery does not establish rankings or complete indexing.
+- No additional real Formspree enquiry was sent. Prior authorized inbox receipt remains valid delivery evidence; current browser checks use intercepted provider responses.
+- Google accepted one individual indexing request for each English/French homepage and added both to a priority crawl queue. Actual indexing remains pending.

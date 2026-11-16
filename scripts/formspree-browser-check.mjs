@@ -10,6 +10,7 @@ import { contentSecurityPolicy } from '../src/security.mjs';
 import { FORMSPREE_ENDPOINT } from '../public/assets/formspree.js';
 const {chromium}=await import(process.env.EEBD_PLAYWRIGHT_MODULE || 'playwright');
 const directory=resolve('test-results/formspree-browser-build');
+const sourceRoute=process.env.EEBD_TEST_SOURCE_ROUTE || 'training';
 const liveOrigin=process.env.EEBD_LIVE_URL ? new URL(process.env.EEBD_LIVE_URL).origin : null;
 let server;
 if(!liveOrigin) {
@@ -41,7 +42,7 @@ await context.route('**/*',async route=>{
 });
 async function prepare(locale,type) {
   calls=[];
-  await page.goto(origin+pathFor(type==='general'?'contact':'quote',locale)+'?type='+type+'&source='+encodeURIComponent(pathFor('training',locale)));
+  await page.goto(origin+pathFor(type==='general'?'contact':'quote',locale)+'?type='+type+'&source='+encodeURIComponent(pathFor(sourceRoute,locale)));
   await page.locator('[data-review]').click();
   assert.equal(await page.locator('[data-errors]').isVisible(),true);
   for(const [name,value] of Object.entries(type==='general'?{contact:'Synthetic Buyer',email:'buyer@example.invalid'}:{contact:'Synthetic Buyer',organization:'Example Test Organization',email:'buyer@example.invalid',location:'Ontario',timing:'Flexible'}))await page.locator('#common-'+name).fill(value);
@@ -65,7 +66,7 @@ try {
     await page.locator('[data-enquiry-complete]').waitFor({state:'visible'});
     assert.equal(calls.length,1);const sent=calls[0];
     assert.equal(sent.email,'buyer@example.invalid');assert.equal(sent.name,'Synthetic Buyer');assert.equal(sent.requestType,type);assert.equal(sent.locale,locale+'-CA');
-    assert.equal(sent.sourcePath,pathFor('training',locale));assert.equal(sent._gotcha,'');assert.equal(sent.optionalMarketingConsent,false);
+    assert.equal(sent.sourcePath,pathFor(sourceRoute,locale));assert.equal(sent._gotcha,'');assert.equal(sent.optionalMarketingConsent,false);
     assert.ok(sent.message.includes('<script>literal model name</script>'));
     assert.match(sent.submissionId,/^[a-f0-9-]{36}$/);
     if(type!=='training')assert.equal(sent.participants,undefined);
@@ -89,7 +90,7 @@ try {
   await page.locator('[data-send]').evaluate(button=>{button.click();button.click();});
   await page.locator('[data-enquiry-complete]').waitFor({state:'visible'});assert.equal(calls.length,1,'Double click must not send twice');
   assert.deepEqual(unexpected,[]);assert.deepEqual(pageErrors,[]);
-  const report={origin,checkedAt:new Date().toISOString(),browser:await browser.version(),successJourneys:8,failureJourneys:6,doubleClick:'PASS',externalRequests:0,realSubmissions:0,limits:'Provider responses are intercepted. This suite does not verify account settings or inbox delivery; those require separate evidence.'};
+  const report={origin,sourceRoute,checkedAt:new Date().toISOString(),browser:await browser.version(),successJourneys:8,failureJourneys:6,doubleClick:'PASS',externalRequests:0,realSubmissions:0,limits:'Provider responses are intercepted. This suite does not verify account settings or inbox delivery; those require separate evidence.'};
   await writeFile(`test-results/formspree-${liveOrigin?'live-':''}browser-report.json`,JSON.stringify(report,null,2)+'\n');console.log(report);
 } finally {
   await browser.close();

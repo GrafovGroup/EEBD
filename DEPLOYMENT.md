@@ -5,10 +5,10 @@
 The complete bilingual enquiry website is live at **https://eebd.ca/** on WHC. The root redirects to `/en/`; `/fr/` is available through the language switch. The domain has its own document root, separate from existing websites.
 
 - Repository: `https://github.com/GrafovGroup/EEBD.git`, branch `codex/initial-build`.
-- Deployed runtime source: **`df778613444e4e7c1cb4cf9064a8e57f4c889e5e`**.
-- Activated November 16, 2026 at **04:33:14 UTC** (November 15, 23:33 Toronto).
-- Static package: **87 public files**, including two Apache configuration files; 85 readable files verified byte-for-byte over HTTPS.
-- Archive: `test-results/eebd-release-df77861.tar.gz`; SHA-256 `e3f8a0a242d0b1437ed82288c7a2574449e3573f852e1b3221287c5e92f60acb`.
+- Deployed runtime source: **`c77f1ab0b1a77986631ee410cfe86869781c6726`**.
+- Activated November 16, 2026 at **04:54:44 UTC** (November 15, 23:54 Toronto).
+- Static package: **147 public files**, including two Apache configuration files; 145 readable files verified byte-for-byte over HTTPS.
+- Archive: `test-results/eebd-release-c77f1ab.tar.gz`; SHA-256 `b6fd9f6b458e10915f67b8082654ee842066e492f721c6ab0ff069fea320481a`.
 - `manifest.json` records every file hash, exact source commit and `sourceDirty:false`. Later documentation-only commits do not change the deployed runtime.
 
 Account identifiers, credentials, session URLs, host backup paths and submissions remain outside Git. Other hosted sites were not changed.
@@ -25,8 +25,8 @@ Live release checks:
 - `/` returns 302 to `/en/`; public pages return 200.
 - Missing URLs and direct error-page routes return HTTP 404 with the appropriate English/French page. Dedicated error assets avoid recursive error dispatch on WHC LiteSpeed; French directory configuration supplies the localized handler.
 - Security headers include nosniff, strict-origin referrer policy and a CSP allowing form AJAX only to Formspree. The preview's blanket noindex header is absent.
-- The sitemap contains 34 indexable URLs. Contact and quote forms work without React, external scripts, PHP or a Node service on WHC.
-- ACME/DCV directories and cgi-bin were preserved. Analytics and search-console submission were not configured.
+- The sitemap contains 80 indexable URLs. Contact and quote forms work without React, external scripts, PHP or a Node service on WHC.
+- ACME/DCV directories and cgi-bin were preserved. Analytics is not configured. Google Search Console is verified and the sitemap submission processed successfully.
 
 ## Reproducible commands
 
@@ -58,7 +58,7 @@ Authenticated dashboard inspection confirmed notification destination **info@eeb
 
 ## Release and rollback
 
-Deployment used the owner's authenticated cPanel Terminal. The original archive was transferred in chunks and hash-verified, then staged outside the document root. Every packaged public file was checked against the manifest before activation. The WHC-specific error-page correction was staged from the live directory, verified against the final clean-source manifest and activated by directory rename. Existing ACME/DCV and cgi-bin directories were carried forward.
+Deployment used the owner's authenticated cPanel Terminal. The enriched release archive was uploaded through cPanel File Manager to a private deployment folder, hash-verified and staged outside the document root. The previous runtime files were checked against their manifest before replacement. Every packaged public file was checked against the manifest before activation. The clean-source package was activated by directory rename, retaining the already verified WHC-specific error-page configuration. Existing ACME/DCV and cgi-bin directories were carried forward.
 
 Private backups outside the web root retain the previous full-site directory and the earlier holding page, along with deployment timestamps and manifests. Their exact locations are in ignored local connection records and private host deployment records. To roll back, stage the selected backup, verify its recorded hashes, preserve current certificate-validation files, then swap only EEBD's document-root directory; retain the displaced release for recovery. Do not change other sites or mail records.
 
@@ -73,7 +73,17 @@ Browser QA uses an externally installed Playwright/Chromium, not a site dependen
 ```sh
 node scripts/production-check.mjs
 node scripts/formspree-browser-check.mjs
-EEBD_LIVE_URL=https://eebd.ca node scripts/formspree-browser-check.mjs
+EEBD_LIVE_URL=https://eebd.ca EEBD_TEST_SOURCE_ROUTE=cityHalifax node scripts/formspree-browser-check.mjs
 ```
 
 The live form command loads actual hosted pages/assets but intercepts every Formspree request. It cannot send test emails. Eight bilingual success journeys, six failure journeys and double-click protection passed on the actual host. Reports and screenshots remain in ignored `test-results/`. Mocked UI checks and the separate authorized inbox test provide different evidence; neither is a promise of future service uptime.
+
+## Search Console — November 15, 2026
+
+Created and verified the **Domain property `eebd.ca`** in the owner's signed-in Google account. Added only Google's root TXT verification record, TTL 300, through WHC. Existing web, nameserver and mail records were preserved. Keep the verification record in DNS; its exact value and account-specific evidence remain in ignored local records.
+
+Submitted **https://eebd.ca/sitemap.xml** after the enriched deployment. Search Console reported **Sitemap processed successfully**, last read November 15, 2026, with **80 discovered pages** at 04:55:55 UTC November 16. The initial transient “Couldn't fetch” state resolved to successful processing; no workaround or alternate sitemap was needed.
+
+The sitemap contains 80 canonical page URLs, 80 image references and 160 reciprocal language links. Public HTTP checks returned 200 with application/xml, including a Googlebot user-agent check. Google controls crawl/indexing timing and ranking; discovery is not an indexing guarantee. No analytics tracking code was added. See `docs/SEARCH_CONSOLE.md` for the account-independent access link and references.
+
+Google also accepted individual indexing requests for https://eebd.ca/en/ and https://eebd.ca/fr/, confirming each was added to a priority crawl queue. At inspection, both were discovered but not yet indexed. The requests were submitted once per homepage; no repeated bulk requests were made.
