@@ -1,6 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { routes, includedRoutes, sitemapRoutes, pathFor } from '../src/routes.mjs';
+import { cities } from '../src/cities.mjs';
+import { offerings } from '../src/offerings.mjs';
 import { pages, home } from '../src/content.mjs';
 import { site, assertProductionReady } from '../src/config.mjs';
 import { saleableProducts } from '../src/catalogue.mjs';
@@ -29,8 +31,8 @@ test('draft, planned and withdrawn routes cannot enter production or the sitemap
   assert.equal(includedRoutes('preview',records).length,3);
   assert.equal(includedRoutes('production',records).length,2);
   assert.equal(sitemapRoutes(records).length,1);
-  assert.equal(includedRoutes('production').length,19);
-  assert.equal(sitemapRoutes().length,17);
+  assert.equal(includedRoutes('production').length,19+cities.length+offerings.length);
+  assert.equal(sitemapRoutes().length,17+cities.length+offerings.length);
 });
 test('production requires verified launch evidence while keeping unarranged supply explicit',()=>{
   assert.doesNotThrow(()=>assertProductionReady());

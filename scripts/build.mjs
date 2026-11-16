@@ -1,6 +1,7 @@
 import { cp, mkdir, rm, writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { resolve } from 'node:path';
+import { imagePath } from '../src/images.mjs';
 import { contentSecurityPolicy } from '../src/security.mjs';
 import { site, assertProductionReady } from '../src/config.mjs';
 import { includedRoutes, sitemapRoutes, locales, routes } from '../src/routes.mjs';
@@ -44,8 +45,8 @@ export async function build({ mode='preview', outDir=resolve('dist') }={}) {
   }
   const pairs=Object.fromEntries(selected.flatMap(record=>locales.map(l=>[record.paths[l],record.paths])));
   await writeFile(resolve(outDir,'assets','routes.js'),`window.eebdRoutePairs=${JSON.stringify(pairs)};`);
-  const sitemap=mode==='production'?sitemapRoutes(selected).flatMap(r=>locales.map(l=>`<url><loc>${esc(site.origin+r.paths[l])}</loc></url>`)).join(''):'';
-  await writeFile(resolve(outDir,'sitemap.xml'),`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${sitemap}</urlset>`);
+  const sitemap=mode==='production'?sitemapRoutes(selected).flatMap(r=>locales.map(l=>`<url><loc>${esc(site.origin+r.paths[l])}</loc>${locales.map(alt=>`<xhtml:link rel="alternate" hreflang="${alt}-CA" href="${esc(site.origin+r.paths[alt])}"/>`).join('')}<image:image><image:loc>${esc(site.origin+imagePath(r.id))}</image:loc></image:image></url>`)).join(''):'';
+  await writeFile(resolve(outDir,'sitemap.xml'),`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">${sitemap}</urlset>`);
   await writeFile(resolve(outDir,'robots.txt'),`User-agent: *\nAllow: /\n${mode==='production'?`Sitemap: ${site.origin}/sitemap.xml\n`:''}`);
   // Preview is not private because of robots controls. Keep it on loopback or authenticated hosting.
   await writeFile(resolve(outDir,'_headers'),`/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n  Content-Security-Policy: ${contentSecurityPolicy(mode)}\n${mode==='preview'?'  X-Robots-Tag: noindex, nofollow\n':''}`);

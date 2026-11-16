@@ -3,7 +3,7 @@ import { readFile,writeFile,readdir } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { packageWhc } from './package-whc.mjs';
 import { previewServer } from './server.mjs';
-import { routes } from '../src/routes.mjs';
+import { routes, sitemapRoutes } from '../src/routes.mjs';
 const result=await packageWhc({production:true}),directory=resolve(result.folder,'web-root');
 const files=[];
 async function walk(dir){for(const e of await readdir(dir,{withFileTypes:true})){const p=resolve(dir,e.name);if(e.isDirectory())await walk(p);else files.push(p);}}
@@ -14,7 +14,7 @@ for(const file of files.filter(p=>p.endsWith('.html'))) {
   assert.doesNotMatch(html,/\/brand-concepts\/|\/assets\/review\.js|type="file"/);
 }
 const sitemap=await readFile(resolve(directory,'sitemap.xml'),'utf8');
-assert.equal((sitemap.match(/<url>/g)||[]).length,34);
+assert.equal((sitemap.match(/<url>/g)||[]).length,sitemapRoutes().length*2);
 assert.doesNotMatch(sitemap,/\/privacy\/|\/confidentialite\/|request-a-quote|demander-une-soumission|404|brand-concepts/);
 const htaccess=await readFile(resolve(directory,'.htaccess'),'utf8');
 assert.match(htaccess,/connect-src https:\/\/formspree.io/);
@@ -40,6 +40,10 @@ try {
       assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1),false,route.paths[locale]+' at '+width);
       assert.equal(await page.locator('meta[name="robots"]').getAttribute('content'),route.indexable?'index, follow':'noindex, nofollow');
       assert.equal(await page.locator('.preview-bar').count(),0);
+      assert.equal(await page.locator('main .editorial-image').count(),1);
+      assert.equal(await page.locator('main .editorial-image img').evaluate(img=>img.complete && img.naturalWidth>0),true);
+      const schema=JSON.parse(await page.locator('script[type="application/ld+json"]').textContent());
+      assert.equal(schema['@graph'].find(item=>item['@type']==='WebPage').url,'https://eebd.ca'+route.paths[locale]);
       responsiveChecks++;
     }
   }
@@ -50,6 +54,6 @@ try {
   await page.keyboard.press('Escape');assert.equal(await page.locator('.menu-toggle').getAttribute('aria-expanded'),'false');
   await page.screenshot({path:'test-results/production-home-fr-mobile.png',fullPage:true});
   assert.deepEqual(errors,[]);assert.deepEqual(failures,[]);
-  const report={responsiveChecks,publicPages:38,indexablePages:34,browser:await browser.version(),pageErrors:errors,failedResources:failures,limitations:'Local Chromium only. Apache redirects and production response headers must be checked on WHC. No form submission sent.'};
+  const report={responsiveChecks,publicPages:routes.length*2,indexablePages:sitemapRoutes().length*2,browser:await browser.version(),pageErrors:errors,failedResources:failures,limitations:'Local Chromium only. Apache redirects and production response headers must be checked on WHC. No form submission sent.'};
   await writeFile('test-results/production-check.json',JSON.stringify(report,null,2)+'\n');console.log(report);
 } finally {await browser.close();server.closeAllConnections();await new Promise(resolve=>server.close(resolve));}

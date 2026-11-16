@@ -1,3 +1,5 @@
+import { cities } from './cities.mjs';
+import { offerings } from './offerings.mjs';
 const definitions = [
   ['home', '', '', 'Home', 'Accueil'],
   ['equipment', 'equipment', 'equipement', 'Equipment', 'Équipement'],
@@ -19,6 +21,7 @@ const definitions = [
   ['quote', 'request-a-quote', 'demander-une-soumission', 'Request a quote', 'Demander une soumission'],
   ['privacy', 'privacy', 'confidentialite', 'Privacy', 'Confidentialité'],
 ];
+definitions.push(...offerings.map(o=>[o.id,o.paths.en,o.paths.fr,o.labels.en,o.labels.fr]),...cities.map(c=>[c.id,`coverage/${c.slug}`,`couverture/${c.slug}`,c.name.en,c.name.fr]));
 export const routes = definitions.map(([id, en, fr, enLabel, frLabel]) => ({
   id, paths: { en: `/en/${en ? `${en}/` : ''}`, fr: `/fr/${fr ? `${fr}/` : ''}` },
   labels: { en: enLabel, fr: frLabel }, status: 'published', indexable: !['quote','privacy'].includes(id),
