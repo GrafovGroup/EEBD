@@ -22,7 +22,7 @@ export async function build({ mode='preview', outDir=resolve('dist') }={}) {
   if (outDir!==resolve('dist') && !outDir.startsWith(resolve('test-results')+'/')) throw new Error('Unsafe output path');
   await rm(outDir,{recursive:true,force:true});
   await mkdir(outDir,{recursive:true});
-  await cp('public',outDir,{recursive:true,filter:source=>mode!=='production'||!source.includes('concept-')||source.includes(`concept-${site.approvedConcept}-`)});
+  await cp('public',outDir,{recursive:true,filter:source=>mode!=='production'||(!source.endsWith('/review.js')&&(!source.includes('concept-')||source.includes(`concept-${site.approvedConcept}-`)))});
   for(const page of rendered) {
     const directory=resolve(outDir,'.'+page.path);
     await mkdir(directory,{recursive:true});

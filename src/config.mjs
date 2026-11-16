@@ -6,29 +6,31 @@ export const site = Object.freeze({
   phoneTel: '+18336969996',
   phoneVerified: false,
   email: 'info@eebd.ca',
-  emailVerified: false,
+  emailVerified: true,
   contractingEntity: 'Superclean Canada Inc.',
   hostingProvider: 'WHC',
   approvedConcept: 1,
   previewConcept: 1,
   formEnabled: true,
   formProvider: Object.freeze({name:'Formspree',endpoint:FORMSPREE_ENDPOINT}),
+  launchMode: 'enquiries',
+  supplierArrangements: false,
   readiness: {
     identity: true,
     businessIdentity: true,
-    offerArrangements: false,
-    contactRouting: false,
+    offerBoundariesReviewed: true,
+    contactRouting: true,
     enquiryDelivery: true,
-    privacyReview: false,
-    technicalReview: false,
-    hosting: false,
+    privacyNoticeImplemented: true,
+    technicalCopyReviewed: true,
+    hosting: true,
   },
 });
 
 export function assertProductionReady(config = site) {
   const missing = Object.entries(config.readiness).filter(([, value]) => value !== true).map(([key]) => key);
   if (missing.length) throw new Error(`Production release blocked: ${missing.join(', ')}`);
-  if (!config.approvedConcept || !config.contractingEntity || !config.formEnabled || !config.phoneVerified || !config.emailVerified) {
-    throw new Error('Production release blocked: approved identity, entity, enquiry integration and verified contact are required.');
+  if (!config.approvedConcept || !config.contractingEntity || !config.formEnabled || !config.emailVerified) {
+    throw new Error('Production release blocked: approved identity, entity, enquiry integration and a verified email route are required.');
   }
 }

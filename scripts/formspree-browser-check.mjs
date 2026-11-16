@@ -30,20 +30,21 @@ await context.route('**/*',async route=>{
     return route.fulfill({status,contentType:'application/json',body:typeof result==='string'?result:JSON.stringify(result),headers:{'Access-Control-Allow-Origin':origin}});
   }
   if(url.origin!==origin) {unexpected.push(request.url());return route.abort();}
-  for(const locale of ['en','fr']) if(url.pathname===pathFor('quote',locale)) {
-    return route.fulfill({status:200,contentType:'text/html',body:renderPage('quote',locale,'production'),headers:{'Content-Security-Policy':contentSecurityPolicy('production')}});
+  for(const locale of ['en','fr']) if([pathFor('quote',locale),pathFor('contact',locale)].includes(url.pathname)) {
+    return route.fulfill({status:200,contentType:'text/html',body:renderPage(url.pathname===pathFor('contact',locale)?'contact':'quote',locale,'production'),headers:{'Content-Security-Policy':contentSecurityPolicy('production')}});
   }
   return route.continue();
 });
 async function prepare(locale,type) {
   calls=[];
-  await page.goto(origin+pathFor('quote',locale)+'?type='+type+'&source='+encodeURIComponent(pathFor('training',locale)));
+  await page.goto(origin+pathFor(type==='general'?'contact':'quote',locale)+'?type='+type+'&source='+encodeURIComponent(pathFor('training',locale)));
   await page.locator('[data-review]').click();
   assert.equal(await page.locator('[data-errors]').isVisible(),true);
-  for(const [name,value] of Object.entries({contact:'Synthetic Buyer',organization:'Example Test Organization',email:'buyer@example.invalid',location:'Ontario',timing:'Flexible'}))await page.locator('#common-'+name).fill(value);
+  for(const [name,value] of Object.entries(type==='general'?{contact:'Synthetic Buyer',email:'buyer@example.invalid'}:{contact:'Synthetic Buyer',organization:'Example Test Organization',email:'buyer@example.invalid',location:'Ontario',timing:'Flexible'}))await page.locator('#common-'+name).fill(value);
   const group=page.locator('[data-request-type="'+type+'"]');
-  await group.locator('[name="model"]').fill('<script>literal model name</script>');
-  for(const input of await group.locator('input[required],textarea[required]').all())if(await input.getAttribute('name')!=='model')await input.fill('Synthetic requirement');
+  if(type==='general')await group.locator('[name="message"]').fill('<script>literal model name</script>');
+  else await group.locator('[name="model"]').fill('<script>literal model name</script>');
+  for(const input of await group.locator('input[required],textarea[required]').all())if(!['model','message'].includes(await input.getAttribute('name')))await input.fill('Synthetic requirement');
   for(const select of await group.locator('select[required]').all())await select.selectOption({index:1});
   await page.locator('[name="privacyAcknowledgement"]').check();
   await page.locator('[data-review]').click();
@@ -55,7 +56,7 @@ async function prepare(locale,type) {
   await page.locator('[data-review]').click();
 }
 try {
-  for(const locale of ['en','fr'])for(const type of ['equipment','training','service']) {
+  for(const locale of ['en','fr'])for(const type of ['equipment','training','service','general']) {
     scenario='success';await prepare(locale,type);await page.locator('[data-send]').click();
     await page.locator('[data-enquiry-complete]').waitFor({state:'visible'});
     assert.equal(calls.length,1);const sent=calls[0];
@@ -84,7 +85,7 @@ try {
   await page.locator('[data-send]').evaluate(button=>{button.click();button.click();});
   await page.locator('[data-enquiry-complete]').waitFor({state:'visible'});assert.equal(calls.length,1,'Double click must not send twice');
   assert.deepEqual(unexpected,[]);assert.deepEqual(pageErrors,[]);
-  const report={browser:await browser.version(),successJourneys:6,failureJourneys:6,doubleClick:'PASS',externalRequests:0,realSubmissions:0,limits:'Mocked provider responses; account activation, CAPTCHA, recipient and inbox delivery not verified.'};
+  const report={browser:await browser.version(),successJourneys:8,failureJourneys:6,doubleClick:'PASS',externalRequests:0,realSubmissions:0,limits:'Mocked provider responses; account activation, CAPTCHA, recipient and inbox delivery not verified.'};
   await writeFile('test-results/formspree-browser-report.json',JSON.stringify(report,null,2)+'\n');console.log(report);
 } finally {
   await browser.close();server.closeAllConnections();await new Promise(resolve=>server.close(resolve));

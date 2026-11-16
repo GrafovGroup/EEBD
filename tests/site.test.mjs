@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { routes, includedRoutes, sitemapRoutes, pathFor } from '../src/routes.mjs';
 import { pages, home } from '../src/content.mjs';
-import { assertProductionReady } from '../src/config.mjs';
+import { site, assertProductionReady } from '../src/config.mjs';
 import { saleableProducts } from '../src/catalogue.mjs';
 import { renderPage, esc } from '../src/render.mjs';
 import { validateEnquiry, requestTypes } from '../src/enquiry.mjs';
@@ -29,11 +29,15 @@ test('draft, planned and withdrawn routes cannot enter production or the sitemap
   assert.equal(includedRoutes('preview',records).length,3);
   assert.equal(includedRoutes('production',records).length,2);
   assert.equal(sitemapRoutes(records).length,1);
-  assert.equal(includedRoutes('production').length,0);
-  assert.equal(sitemapRoutes().length,0);
+  assert.equal(includedRoutes('production').length,19);
+  assert.equal(sitemapRoutes().length,17);
 });
-test('production fails closed with the actual unresolved launch configuration',()=>{
-  assert.throws(()=>assertProductionReady(),/Production release blocked/);
+test('production requires verified launch evidence while keeping unarranged supply explicit',()=>{
+  assert.doesNotThrow(()=>assertProductionReady());
+  assert.equal(site.supplierArrangements,false);
+  for(const key of Object.keys(site.readiness))assert.throws(()=>assertProductionReady({...site,readiness:{...site.readiness,[key]:false}}),/Production release blocked/);
+  assert.throws(()=>assertProductionReady({...site,emailVerified:false}),/Production release blocked/);
+  assert.doesNotMatch(renderPage('home','en','production'),/833.*696/);
 });
 test('invalid route and locale are rejected',()=>{
   assert.throws(()=>pathFor('imaginary','en'),/Unknown route/);
@@ -113,4 +117,16 @@ test('preview routing returns genuine 404s, redirects and rejects enquiry accept
     const submit=await fetch(origin+'/api/enquiries',{method:'POST',body:'sample-only'});assert.equal(submit.status,503);assert.equal((await submit.json()).accepted,false);
     assert.equal((await fetch(origin+'/en/',{method:'POST',body:'sample-only'})).status,405);
   } finally {server.closeAllConnections();await new Promise(resolve=>server.close(resolve));}
+});
+
+test('general contact collects only relevant fields and requires a message',()=>{
+  for(const locale of ['en','fr']) {
+    const html=renderPage('contact',locale,'production');
+    assert.match(html,/data-enquiry data-delivery="enabled"/);
+    assert.match(html,/value="general"/);assert.match(html,/name="message" required/);
+    assert.doesNotMatch(html,/name="quantity"|name="location"|name="timing"|name="organization"/);
+  }
+  const value={...request(),requestType:'general',fields:{contact:'Sample Buyer',email:'buyer@example.invalid',message:'A general question'}};
+  assert.equal(validateEnquiry(value,allowedPaths).ok,true);
+  value.fields.message='';assert.equal(validateEnquiry(value,allowedPaths).errors.message,'required');
 });

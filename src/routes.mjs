@@ -21,7 +21,7 @@ const definitions = [
 ];
 export const routes = definitions.map(([id, en, fr, enLabel, frLabel]) => ({
   id, paths: { en: `/en/${en ? `${en}/` : ''}`, fr: `/fr/${fr ? `${fr}/` : ''}` },
-  labels: { en: enLabel, fr: frLabel }, status: 'draft', indexable: false,
+  labels: { en: enLabel, fr: frLabel }, status: 'published', indexable: !['quote','privacy'].includes(id),
 }));
 export const locales = ['en', 'fr'];
 export const localeTags = { en: 'en-CA', fr: 'fr-CA' };

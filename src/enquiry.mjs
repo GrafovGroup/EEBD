@@ -1,5 +1,6 @@
 export const requestTypes = ['equipment', 'training', 'service'];
 export const fieldDefinitions = {
+  message: { en: 'Message', fr: 'Message', required: true, max: 2000, type: 'textarea' },
   contact: { en: 'Contact name', fr: 'Nom de la personne-ressource', required: true, max: 120, autocomplete: 'name' },
   organization: { en: 'Organization', fr: 'Organisation', required: true, max: 160, autocomplete: 'organization' },
   email: { en: 'Email', fr: 'Courriel', required: true, max: 254, type: 'email', autocomplete: 'email' },
@@ -32,13 +33,13 @@ export function validateEnquiry(input, allowedPaths = []) {
   const errors = {};
   if (!input || typeof input !== 'object' || Array.isArray(input)) return { ok: false, errors: { request: 'invalid' } };
   const type = input.requestType;
-  if (!requestTypes.includes(type)) errors.requestType = 'invalid';
+  if (![...requestTypes,'general'].includes(type)) errors.requestType = 'invalid';
   if (!['en-CA','fr-CA'].includes(input.locale)) errors.locale = 'invalid';
   if (!allowedPaths.includes(input.sourcePath)) errors.sourcePath = 'invalid';
   if (input.privacyAcknowledgement !== true) errors.privacyAcknowledgement = 'required';
   // Product references must be resolved against a verified catalogue before being supported.
   if (input.productId || input.variantId) errors.productId = 'unsupported';
-  const fields = [...commonFields,...(specificFields[type] || []),'notes'];
+  const fields = type==='general'?['contact','email','phone','message']:[...commonFields,...(specificFields[type] || []),'notes'];
   const clean = {};
   for (const name of fields) {
     const def=fieldDefinitions[name];
@@ -53,8 +54,9 @@ export function validateEnquiry(input, allowedPaths = []) {
   }
   return Object.keys(errors).length ? { ok: false, errors } : {
     ok: true, value: { requestType:type, locale:input.locale, sourcePath:input.sourcePath,
-      contact: { name:clean.contact, email:clean.email, phone:clean.phone }, organization:clean.organization,
+      message: { en: 'Message', fr: 'Message', required: true, max: 2000, type: 'textarea' },
+  contact: { name:clean.contact, email:clean.email, phone:clean.phone }, organization:clean.organization,
       location:clean.location, timing:clean.timing, requestSpecificFields:Object.fromEntries((specificFields[type]||[]).map(k=>[k,clean[k]])),
-      notes:clean.notes, privacyAcknowledgement:true, optionalMarketingConsent:input.optionalMarketingConsent === true },
+      notes:clean.notes, message:clean.message, privacyAcknowledgement:true, optionalMarketingConsent:input.optionalMarketingConsent === true },
   };
 }

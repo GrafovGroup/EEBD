@@ -47,8 +47,8 @@
   // This is an in-flow disclosure, not a modal. It does not lock page scrolling or trap focus.
   const enquiry=document.querySelector('[data-enquiry]');
   if (enquiry) {
-    const types=['equipment','training','service'];
-    const selected=types.includes(params.get('type'))?params.get('type'):'equipment';
+    const types=[...enquiry.querySelectorAll('[name="requestType"]')].map(input=>input.value);
+    const selected=types.includes(params.get('type'))?params.get('type'):types[0];
     enquiry.querySelector(`input[name="requestType"][value="${selected}"]`).checked=true;
     function updateFields() {
       const current=enquiry.querySelector('input[name="requestType"]:checked').value;
