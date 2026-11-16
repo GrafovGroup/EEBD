@@ -4,8 +4,8 @@ Updated November 16, 2026 (America/Toronto). **The bilingual enquiry website is 
 
 ## Published release
 
-- Runtime source: `58722ad821b2393af9aaeb576c17ab3b421d1a51`, branch `codex/initial-build` in `GrafovGroup/EEBD`. Later documentation-only commits do not change the deployed runtime.
-- Activated November 16 at 07:41:53 UTC / 02:41 Toronto, with a full previous-release backup. Archive, checksum and rollback details are in DEPLOYMENT.md.
+- Runtime source: `fae7ee2716ab42158ff897f2d3a6f0b6539f5cb8`, branch `codex/initial-build` in `GrafovGroup/EEBD`. Later documentation-only commits do not change the deployed runtime.
+- Activated November 16 at 15:31:28 UTC / 10:31 Toronto, with a full previous-release backup. Archive, checksum and rollback details are in DEPLOYMENT.md.
 - 48 paired page purposes: **96 public content/form pages**, **92 indexable sitemap URLs**, plus localized error pages.
 - Three bilingual model guides: Ocenco M-20.2, Interspiro Spiroscape bar configurations, and Dräger Saver CF10 N (4042056). Specification tables, source documents, model limitations and model-aware enquiries are implemented. Language switching preserves model context.
 - These are reference/enquiry pages. Suppliers, trainers and service partners remain unarranged. No stock, prices, authorized-dealer status, blanket Canadian approval or recall clearance is invented; saleable catalogue records remain empty.
@@ -20,9 +20,9 @@ Updated November 16, 2026 (America/Toronto). **The bilingual enquiry website is 
 
 ## Verification
 
-24 unit/integration tests passed. Preview checks covered 112 HTML files and 4,939 internal references. The current content passed 384 route/width combinations (96 pages at 320/390/768/1440 px), with no page errors or horizontal overflow. The four homepage alternatives passed 40 language/width checks from 320 to 2560 px. The photo audit confirms 48 unique asset paths and file hashes, one main photo per route, and no public AI-generation/conceptual wording.
+24 unit/integration tests passed. Preview checks covered 112 HTML files and 4,941 internal references. The preceding full-site release passed 384 route/width combinations (96 pages at 320/390/768/1440 px), with no page errors or horizontal overflow. The four homepage alternatives passed 40 language/width checks from 320 to 2560 px. The selected Immersive homepage then passed 10 checks across both languages at 320, 390, 768, 1440 and 2560 px, including all hero links, active enquiry UI, mobile menu, titles, canonical URLs and absence of overflow or browser errors. The photo audit confirms 48 unique asset paths and file hashes, one main photo per route, and no public AI-generation/conceptual wording.
 
-All 255 public files were verified on the host; all 253 readable files matched release SHA-256 hashes over HTTPS at 07:42:41 UTC. Localized 404s, the Bing tag and the 92-URL XML sitemap passed. The live technical crawl found no indexability blockers; this does not claim search-engine indexing. Existing HTTPS/canonical routing and privacy controls remain unchanged.
+All 255 public files were verified on the host; all 253 readable files matched release SHA-256 hashes over HTTPS at 15:31:44 UTC. Localized 404s, the Bing tag and the 92-URL XML sitemap passed. The live technical crawl found no indexability blockers; this does not claim search-engine indexing. Existing HTTPS/canonical routing and privacy controls remain unchanged.
 
 The simulated form suite checks all three model prefills in both languages, translated model context, rejected unknown source context, eight successful form journeys, six failure states and double-click protection. Provider requests are intercepted; no new real enquiry is sent. The earlier single authorized real test was accepted and the owner confirmed inbox receipt. Formspree's authenticated workflow identifies info@eebd.ca as the notification destination.
 
@@ -48,6 +48,6 @@ Published the separate bilingual comparison at `/en/resources/eebd-vs-scba/` and
 
 The owner clarified that every English/French page pair should have a separate photo. The 48 pairs now have 48 distinct photos; bilingual counterparts share their one asset. Homepage card and training photos that repeated other pages were replaced with typographic panels. The Ocenco source credit remains. No unlicensed supplier photographs were added, and no supplier enquiry was sent.
 
-Four complete homepage alternatives are live for review at `https://eebd.ca/homepage-options/`: 01 Immersive, 02 Editorial, 03 Procurement and 04 Technical. Each has EN/FR pages and is noindex, outside the sitemap. The current homepage remains selected until the owner chooses an alternative. The gallery uses screenshots of the alternatives; those screenshots and the alternatives’ shared homepage image are review material, not duplicate editorial images assigned to distinct page purposes.
+Four complete homepage alternatives are live for review at `https://eebd.ca/homepage-options/`: 01 Immersive, 02 Editorial, 03 Procurement and 04 Technical. Each has EN/FR pages and is noindex, outside the sitemap. The owner selected 01 Immersive, which is now the live homepage in both languages without the review toolbar. The gallery identifies this selection. The gallery uses screenshots of the alternatives; those screenshots and the alternatives’ shared homepage image are review material, not duplicate editorial images assigned to distinct page purposes.
 
 Final Formspree browser simulation completed at 07:37:59 UTC: six model-context checks, eight standard successes, two bulk journeys, six error states and duplicate-click protection; zero real submissions. The earlier owner-confirmed real inbox test remains the delivery evidence.

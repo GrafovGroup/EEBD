@@ -5,10 +5,10 @@
 The complete bilingual enquiry website is live at **https://eebd.ca/** on WHC. The root redirects to `/en/`; `/fr/` is available through the language switch. The domain has its own document root, separate from existing websites.
 
 - Repository: `https://github.com/GrafovGroup/EEBD.git`, branch `codex/initial-build`.
-- Deployed runtime source: **`58722ad821b2393af9aaeb576c17ab3b421d1a51`**.
-- Activated November 16, 2026 at **07:41:53 UTC** (November 16, 02:41 Toronto).
+- Deployed runtime source: **`fae7ee2716ab42158ff897f2d3a6f0b6539f5cb8`**.
+- Activated November 16, 2026 at **15:31:28 UTC** (November 16, 10:31 Toronto).
 - Static package: **255 public files**, including two Apache configuration files; 253 readable files verified byte-for-byte over HTTPS.
-- Archive: `test-results/eebd-release-58722ad.tar.gz` (6,037,668 bytes); SHA-256 `b3364f106377bd08cb68404352a3923981589f462ff4eb2959a187cdec183386`.
+- Archive: `test-results/eebd-release-fae7ee2.tar.gz` (6,037,114 bytes); SHA-256 `8c260f2a6bd3f438fc11c17fd3a2fda5b33146cccadb52cb9bfc43ba27ae681e`.
 - `manifest.json` records every file hash, exact source commit and `sourceDirty:false`. Later documentation-only commits do not change the deployed runtime.
 
 Account identifiers, credentials, session URLs, host backup paths and submissions remain outside Git. Other hosted sites were not changed.
@@ -117,3 +117,9 @@ Validation: 752 rendered route/viewport combinations at 320, 390, 768, 1024, 120
 ## EEBD-in-use hero release — November 16, 07:14 UTC
 
 The owner requested a generated image of EEBD use in place of the homepage boat. Both language homepages now use the original generated ship-corridor scene, with 1200 × 800 and 640 × 427 WebP assets and localized alt text. The generated-image caption remains visible. Open Graph and sitemap image references follow the new homepage image. Other marine-context images are retained. The prompt and reference roles are documented in `docs/EEBD_HERO_PROMPT.md`. Eight targeted homepage checks covered both languages at 390, 768, 1440 and 1920 px. No form code changed. The previous layout release remains backed up.
+
+## November 16 — Immersive homepage selected
+
+The owner selected option 01, Immersive, and explicitly requested live publication. Both language homepages now use its full-width hero without the review toolbar. The exact English title, footer, approved logo, remaining homepage sections and Formspree enquiry implementation are retained. The noindex gallery marks option 01 as live.
+
+Ten targeted responsive checks passed across both languages at five widths from 320 to 2560 px, including hero links, enabled enquiry UI and metadata. All 24 unit/integration tests, 112 preview documents, 4,941 internal references and the 48-photo uniqueness audit passed. The release activated at 15:31:28 UTC; all 255 host files passed manifest checks and all 253 readable files matched HTTPS hashes at 15:31:44 UTC. The preceding full release is retained privately for rollback. No new real enquiry was sent.

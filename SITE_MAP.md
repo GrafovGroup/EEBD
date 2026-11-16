@@ -71,4 +71,4 @@ These six indexable reference pages bring the website to 90 public content/form 
 | Procurement checklist | `/en/resources/procurement-checklist/` | `/fr/ressources/liste-verification-approvisionnement/` |
 | EEBD vs. SCBA | `/en/resources/eebd-vs-scba/` | `/fr/ressources/eebd-vs-ari/` |
 
-Current total: 48 paired purposes, 96 public content/form pages and 92 sitemap URLs. Quote and privacy pages remain noindex. The separate `/homepage-options/` gallery and its eight EN/FR design previews are noindex and outside the route registry/sitemap. They do not replace the selected homepage.
+Current total: 48 paired purposes, 96 public content/form pages and 92 sitemap URLs. Quote and privacy pages remain noindex. The separate `/homepage-options/` gallery and its eight EN/FR design previews are noindex and outside the route registry/sitemap. Option 01, Immersive, is selected for the live English/French homepages; these separate review URLs remain available for comparison.

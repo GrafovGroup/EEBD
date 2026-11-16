@@ -86,3 +86,9 @@ Published the comparison and document-checklist pages in both languages, blank C
 - Published 39 new selected images; with nine retained unique images, all 48 page purposes now have individual photography. Only paired languages share each editorial asset. Retained internal prompts/provenance and CDC/NIOSH attribution. Did not use unlicensed manufacturer photographs.
 - Published sourced EN/FR EEBD-versus-SCBA guides and four full homepage alternatives in a noindex review gallery. The selected homepage remains unchanged pending the owner’s design choice.
 - Published runtime `58722ad821b2393af9aaeb576c17ab3b421d1a51` at 07:41:53 UTC, with rollback backup, 255 host-file checks and 253 matching public HTTPS hashes.
+
+## November 16 — Immersive becomes the live homepage
+
+- Owner explicitly selected option 01, Immersive, for live publication. Set the homepage variant to 1 for both languages; the public homepages omit the review toolbar. Marked the selection in the existing noindex gallery.
+- Retained approved logo, exact English browser title and footer, the single homepage photo, all lower-page content and existing Formspree flows.
+- Published runtime `fae7ee2716ab42158ff897f2d3a6f0b6539f5cb8` at 15:31:28 UTC after 24 unit/integration checks, 112-document/4,941-reference static checks, the 48-photo audit and 10 targeted responsive checks. All 253 readable public files matched release hashes over HTTPS. Previous runtime retained for rollback; no supplier messages or real test enquiries sent.

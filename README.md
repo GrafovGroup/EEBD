@@ -98,4 +98,4 @@ The November 16 model release adds researched model guides and a Canadian suppli
 
 The procurement update adds a bilingual model comparison, a purchasing-document checklist with CSV templates, optional bulk enquiry fields and expanded fleet/coastal guidance. The current public pages remain informational enquiries with availability confirmed separately.
 
-The four homepage alternatives are available at https://eebd.ca/homepage-options/ for owner review; the current homepage remains selected. Image uniqueness can be checked with `node scripts/image-audit.mjs`.
+Option 01, Immersive, is the selected live homepage in English and French. The four alternatives remain available at https://eebd.ca/homepage-options/ for comparison, with option 01 marked as live. Image uniqueness can be checked with `node scripts/image-audit.mjs`.
