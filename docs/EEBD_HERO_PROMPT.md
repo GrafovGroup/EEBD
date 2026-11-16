@@ -1,6 +1,6 @@
 # EEBD-in-use homepage image
 
-Created November 16, 2026 with the built-in image-generation tool, using the owner's supplied photographs as equipment/context references. This is an original AI-generated illustration, not a photograph of EEBD.ca personnel, a particular supplier model, inventory or a documented emergency. The website retains its generated-image caption.
+Created November 16, 2026 with the built-in image-generation tool, using the owner's supplied photographs as equipment/context references. This is an original AI-generated illustration, not a photograph of EEBD.ca personnel, a particular supplier model, inventory or a documented emergency. The owner subsequently requested removal of public AI-generation wording; provenance remains recorded internally.
 
 Published assets: `public/assets/images/eebd-in-use.webp` (1200 × 800) and `public/assets/images/eebd-in-use-small.webp` (640 × 427). Format conversion/resizing only; the source generation is preserved in ignored local output. Both homepages use this image; the earlier marine image remains on other relevant pages.
 

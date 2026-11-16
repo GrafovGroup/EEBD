@@ -18,6 +18,7 @@ const definitions = [
   ['resources', 'resources', 'ressources', 'Resources', 'Ressources'],
   ['quoteGuide', 'resources/equipment-quote-checklist', 'ressources/preparer-une-demande', 'Prepare an equipment enquiry', 'Préparer une demande d’équipement'],
   ['procurementDocs', 'resources/procurement-checklist', 'ressources/liste-verification-approvisionnement', 'Procurement checklist & template', 'Liste de vérification et modèle d’achat'],
+  ['eebdScba', 'resources/eebd-vs-scba', 'ressources/eebd-vs-ari', 'EEBD vs. SCBA', 'EEBD ou ARI / SCBA'],
   ['escapeGuide', 'resources/understanding-eebds', 'ressources/comprendre-les-eebd', 'Understanding escape equipment', 'Comprendre l’équipement d’évacuation'],
   ['about', 'about', 'a-propos', 'About', 'À propos'],
   ['contact', 'contact', 'contact', 'Contact', 'Contact'],

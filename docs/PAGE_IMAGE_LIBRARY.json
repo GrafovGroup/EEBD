@@ -1,0 +1,353 @@
+[
+  {
+    "id": "equipment",
+    "source": "/Users/dg/.codex/generated_images/01a1e21b-876d-7232-af6b-68ecb3c31097/exec-7917e90e-91cc-429a-8d65-1cc401b000df.png",
+    "asset": "page-equipment",
+    "generator": "built-in image_gen",
+    "output": "public/assets/images/page-equipment.webp",
+    "smallOutput": "public/assets/images/page-equipment-small.webp",
+    "sha256": "2b6a2c6ff164e457088335d0057489301145436dc2d671b8c4f966ec4f7f45f0"
+  },
+  {
+    "id": "comparison",
+    "source": "/Users/dg/.codex/generated_images/01a1e21b-876d-7232-af6b-68ecb3c31097/exec-abdb0979-d16e-41c7-b4f6-613130ab77ed.png",
+    "asset": "page-comparison",
+    "generator": "built-in image_gen",
+    "output": "public/assets/images/page-comparison.webp",
+    "smallOutput": "public/assets/images/page-comparison-small.webp",
+    "sha256": "5208fb401cb6fccca434b6c3aa0e9cf3ddac703d4dae10267d29efff994d4c7d"
+  },
+  {
+    "id": "marineEquipment",
+    "source": "/Users/dg/.codex/generated_images/01a1e21b-876d-7232-af6b-68ecb3c31097/exec-eb7f48b9-e1fe-4122-9154-f6400aab223f.png",
+    "asset": "page-marine-equipment",
+    "generator": "built-in image_gen",
+    "output": "public/assets/images/page-marine-equipment.webp",
+    "smallOutput": "public/assets/images/page-marine-equipment-small.webp",
+    "sha256": "03104221a01e26dfe0cbbda222c33a6646419e123c2c7dccd17f851097e6fd68"
+  },
+  {
+    "id": "industrialEquipment",
+    "source": "/Users/dg/.codex/generated_images/01a1e21b-876d-7232-af6b-68ecb3c31097/exec-8acdc9e4-f058-4af1-a5d5-a25bd1d172d6.png",
+    "asset": "page-industrial-equipment",
+    "generator": "built-in image_gen",
+    "output": "public/assets/images/page-industrial-equipment.webp",
+    "smallOutput": "public/assets/images/page-industrial-equipment-small.webp",
+    "sha256": "3ae0b24268ea05f63eca4832e0228c91046a22571d7638e49aefb471bb75966e"
+  },
+  {
+    "id": "accessories",
+    "source": "/Users/dg/.codex/generated_images/01a1e21b-876d-7232-af6b-68ecb3c31097/exec-8c2511c2-a070-452b-b913-b5e13d90f760.png",
+    "asset": "page-accessories",
+    "generator": "built-in image_gen",
+    "output": "public/assets/images/page-accessories.webp",
+    "smallOutput": "public/assets/images/page-accessories-small.webp",
+    "sha256": "fc6a68ee6041ff75f60ffa01ce9cf9d1b0eebd830cf57fbe973af9cd7f605c94"
+  },
+  {
+    "id": "industrial",
+    "source": "/Users/dg/.codex/generated_images/01a1e21b-876d-7232-af6b-68ecb3c31097/exec-85f50966-2537-4fa6-b16c-79c044a15fac.png",
+    "asset": "page-industrial",
+    "generator": "built-in image_gen",
+    "output": "public/assets/images/page-industrial.webp",
+    "smallOutput": "public/assets/images/page-industrial-small.webp",
+    "sha256": "cf73c4ab7e31a67776467f78f93401948e8dcc607ec30488b066bfb20d51159e"
+  },
+  {
+    "id": "quoteGuide",
+    "source": "/Users/dg/.codex/generated_images/01a1e21b-876d-7232-af6b-68ecb3c31097/exec-b1f3f180-d058-4338-97d5-fd17b8f875d6.png",
+    "asset": "page-quote-guide",
+    "generator": "built-in image_gen",
+    "output": "public/assets/images/page-quote-guide.webp",
+    "smallOutput": "public/assets/images/page-quote-guide-small.webp",
+    "sha256": "802fd78067d92bf81e6ce927bcfd27541fef37176fe697e4e20fe79cea0a7b05"
+  },
+  {
+    "id": "procurementDocs",
+    "source": "/Users/dg/.codex/generated_images/01a1e21b-876d-7232-af6b-68ecb3c31097/exec-d403633d-4600-45e1-a991-66ceb8ce05cb.png",
+    "asset": "page-procurement-docs",
+    "generator": "built-in image_gen",
+    "output": "public/assets/images/page-procurement-docs.webp",
+    "smallOutput": "public/assets/images/page-procurement-docs-small.webp",
+    "sha256": "8652a9b6a7c0caaa5d6d976193b7e9e213e32f0a25e3088f11dba1d05c107cf6"
+  },
+  {
+    "id": "escapeGuide",
+    "source": "/Users/dg/.codex/generated_images/01a1e21b-876d-7232-af6b-68ecb3c31097/exec-89d47d7f-a9e2-4780-9cc7-c12bc41e0b96.png",
+    "asset": "page-escape-guide",
+    "generator": "built-in image_gen",
+    "output": "public/assets/images/page-escape-guide.webp",
+    "smallOutput": "public/assets/images/page-escape-guide-small.webp",
+    "sha256": "e651f2656a37da9a7513ae38dc8da46330ce67eab094f9bcd2b1b67486f626aa"
+  },
+  {
+    "id": "about",
+    "source": "/Users/dg/.codex/generated_images/01a1e21b-876d-7232-af6b-68ecb3c31097/exec-0d5c8450-4887-4c22-9095-1c326763deaf.png",
+    "asset": "page-about",
+    "generator": "built-in image_gen",
+    "output": "public/assets/images/page-about.webp",
+    "smallOutput": "public/assets/images/page-about-small.webp",
+    "sha256": "ab2c69097b11548f416e2da2142702a6dfbee71e8bc998fb2e84eb571c0abb8b"
+  },
+  {
+    "id": "contact",
+    "source": "/Users/dg/.codex/generated_images/01a1e21b-876d-7232-af6b-68ecb3c31097/exec-c528b4d6-5aee-4e96-b145-f97af860923e.png",
+    "asset": "page-contact",
+    "generator": "built-in image_gen",
+    "output": "public/assets/images/page-contact.webp",
+    "smallOutput": "public/assets/images/page-contact-small.webp",
+    "sha256": "cc31aade448e47b74a50b6b63b5fda4abad80c5f4e8f9992f703d9046bff8c37"
+  },
+  {
+    "id": "quote",
+    "source": "/Users/dg/.codex/generated_images/01a1e21b-876d-7232-af6b-68ecb3c31097/exec-9d865036-7c1d-4fda-b225-ee9c9a29e237.png",
+    "asset": "page-quote",
+    "generator": "built-in image_gen",
+    "output": "public/assets/images/page-quote.webp",
+    "smallOutput": "public/assets/images/page-quote-small.webp",
+    "sha256": "57a15e6292b5df650cb6d05eebc51fbb9976ccf6f6eb69605f5ec153606aa98c"
+  },
+  {
+    "id": "privacy",
+    "source": "/Users/dg/.codex/generated_images/01a1e21b-876d-7232-af6b-68ecb3c31097/exec-ce5478be-df74-433c-b139-07037ecdc81c.png",
+    "asset": "page-privacy",
+    "generator": "built-in image_gen",
+    "output": "public/assets/images/page-privacy.webp",
+    "smallOutput": "public/assets/images/page-privacy-small.webp",
+    "sha256": "d28dea40a3ff248f62bd319508d5b866cb9034865226dfd8defd3b74c23066b2"
+  },
+  {
+    "id": "compressedAir",
+    "source": "/Users/dg/.codex/generated_images/01a1e21b-876d-7232-af6b-68ecb3c31097/exec-3beeabdc-2a94-4c6c-8dfd-6bd87e3d409a.png",
+    "asset": "page-compressed-air",
+    "generator": "built-in image_gen",
+    "output": "public/assets/images/page-compressed-air.webp",
+    "smallOutput": "public/assets/images/page-compressed-air-small.webp",
+    "sha256": "99a612b0f4e17e564aea7ab841337d3b1b4a5b1260d3871011d27815dc921146"
+  },
+  {
+    "id": "oxygenEscape",
+    "source": "/Users/dg/.codex/generated_images/01a1e21b-876d-7232-af6b-68ecb3c31097/exec-c369e4ba-6c20-49e8-9002-be2917429aa7.png",
+    "asset": "page-oxygen-escape",
+    "generator": "built-in image_gen",
+    "output": "public/assets/images/page-oxygen-escape.webp",
+    "smallOutput": "public/assets/images/page-oxygen-escape-small.webp",
+    "sha256": "d37c61f167e26ed7a813076d5d5030bae720aae842fd63e2053c3b247e78a32b"
+  },
+  {
+    "id": "stowage",
+    "source": "/Users/dg/.codex/generated_images/01a1e21b-876d-7232-af6b-68ecb3c31097/exec-1b55f906-9ee4-4a46-bc8a-8df2ca947d34.png",
+    "asset": "page-stowage",
+    "generator": "built-in image_gen",
+    "output": "public/assets/images/page-stowage.webp",
+    "smallOutput": "public/assets/images/page-stowage-small.webp",
+    "sha256": "225acff9ad470275c96be6a6c6d6caccb24d8b6a554e6570addb36ebdeab71ee"
+  },
+  {
+    "id": "familiarization",
+    "source": "/Users/dg/.codex/generated_images/01a1e21b-876d-7232-af6b-68ecb3c31097/exec-2821dd58-2847-4640-9e16-5be8c3c88484.png",
+    "asset": "page-familiarization",
+    "generator": "built-in image_gen",
+    "output": "public/assets/images/page-familiarization.webp",
+    "smallOutput": "public/assets/images/page-familiarization-small.webp",
+    "sha256": "37b267d3216881d0721bec381e776ec20a11ae875cd2ca402fe4fd12149fa5f5"
+  },
+  {
+    "id": "crewRefreshers",
+    "source": "/Users/dg/.codex/generated_images/01a1e21b-876d-7232-af6b-68ecb3c31097/exec-5d0a6c12-fc81-47aa-81be-28aea9b6ce62.png",
+    "asset": "page-crew-refreshers",
+    "generator": "built-in image_gen",
+    "output": "public/assets/images/page-crew-refreshers.webp",
+    "smallOutput": "public/assets/images/page-crew-refreshers-small.webp",
+    "sha256": "cf29153ee7d7ff87b8e9b7bd3f2d669482d2d2ffc7f176ae4d9b85b86545b626"
+  },
+  {
+    "id": "registerReview",
+    "source": "/Users/dg/.codex/generated_images/01a1e21b-876d-7232-af6b-68ecb3c31097/exec-8d4a5211-2175-4465-84cf-03c586ef9af2.png",
+    "asset": "page-register-review",
+    "generator": "built-in image_gen",
+    "output": "public/assets/images/page-register-review.webp",
+    "smallOutput": "public/assets/images/page-register-review-small.webp",
+    "sha256": "3bac37ced9ff484adb9ad09c9de1a6be5d8065a3aafa75e15d6bc43032b56b93"
+  },
+  {
+    "id": "inspectionCoordination",
+    "source": "/Users/dg/.codex/generated_images/01a1e21b-876d-7232-af6b-68ecb3c31097/exec-60a38389-3145-4823-82af-e7893ac38d58.png",
+    "asset": "page-inspection-coordination",
+    "generator": "built-in image_gen",
+    "output": "public/assets/images/page-inspection-coordination.webp",
+    "smallOutput": "public/assets/images/page-inspection-coordination-small.webp",
+    "sha256": "7cb2c90e0a87b5d5dec08e92ede36e3430ca7eab39a51abcb69317ac8058a197"
+  },
+  {
+    "id": "replacementPlanning",
+    "source": "/Users/dg/.codex/generated_images/01a1e21b-876d-7232-af6b-68ecb3c31097/exec-a229d266-3668-4d95-bca7-29c8c5ad3f81.png",
+    "asset": "page-replacement-planning",
+    "generator": "built-in image_gen",
+    "output": "public/assets/images/page-replacement-planning.webp",
+    "smallOutput": "public/assets/images/page-replacement-planning-small.webp",
+    "sha256": "5bbe7b907a37ffbcd114226b90b8854ba03bfc5c250f701071f282e25abe1888"
+  },
+  {
+    "id": "fleetProcurement",
+    "source": "/Users/dg/.codex/generated_images/01a1e21b-876d-7232-af6b-68ecb3c31097/exec-cd68bf79-6513-4bee-9eb9-b5e4ac70cb13.png",
+    "asset": "page-fleet-procurement",
+    "generator": "built-in image_gen",
+    "output": "public/assets/images/page-fleet-procurement.webp",
+    "smallOutput": "public/assets/images/page-fleet-procurement-small.webp",
+    "sha256": "93b5bcc4fa01aacb9665742e252b5b06723bc7b9a4846a57b9a107f77997366a"
+  },
+  {
+    "id": "cityVancouver",
+    "source": "/Users/dg/.codex/generated_images/01a1e21b-876d-7232-af6b-68ecb3c31097/exec-dda59a70-7822-47a4-83da-85d07b57f7d5.png",
+    "asset": "page-city-vancouver",
+    "generator": "built-in image_gen",
+    "output": "public/assets/images/page-city-vancouver.webp",
+    "smallOutput": "public/assets/images/page-city-vancouver-small.webp",
+    "sha256": "9fd121a82af5f9cf0f37624fedd392dab26d9f5a6c3fbb02b68af0b97c3780db"
+  },
+  {
+    "id": "cityVictoria",
+    "source": "/Users/dg/.codex/generated_images/01a1e21b-876d-7232-af6b-68ecb3c31097/exec-7d296d4f-7185-4488-967c-640199fadf15.png",
+    "asset": "page-city-victoria",
+    "generator": "built-in image_gen",
+    "output": "public/assets/images/page-city-victoria.webp",
+    "smallOutput": "public/assets/images/page-city-victoria-small.webp",
+    "sha256": "2ef41d4f474dc75d9046ad8c195b921677978b75994820d7d361eadf74c2a33a"
+  },
+  {
+    "id": "cityPrinceRupert",
+    "source": "/Users/dg/.codex/generated_images/01a1e21b-876d-7232-af6b-68ecb3c31097/exec-96f187ec-d99b-4cd8-a37c-feb94f49ea0c.png",
+    "asset": "page-city-prince-rupert",
+    "generator": "built-in image_gen",
+    "output": "public/assets/images/page-city-prince-rupert.webp",
+    "smallOutput": "public/assets/images/page-city-prince-rupert-small.webp",
+    "sha256": "7fc5552b8e43b1fda0cb6cebce26111cd188db802348f241c2fa506e8bb5dd1b"
+  },
+  {
+    "id": "cityHalifax",
+    "source": "/Users/dg/.codex/generated_images/01a1e21b-876d-7232-af6b-68ecb3c31097/exec-26c1db16-a54e-49d5-a6fb-3ea9dc4258ca.png",
+    "asset": "page-city-halifax",
+    "generator": "built-in image_gen",
+    "output": "public/assets/images/page-city-halifax.webp",
+    "smallOutput": "public/assets/images/page-city-halifax-small.webp",
+    "sha256": "00a0c579c36cf74913ba4f988f5644810afce62b97b2039099b55538900cdc4c"
+  },
+  {
+    "id": "citySaintJohn",
+    "source": "/Users/dg/.codex/generated_images/01a1e21b-876d-7232-af6b-68ecb3c31097/exec-59faa96d-3dc6-4d6a-a6e7-7a975fd362ac.png",
+    "asset": "page-city-saint-john",
+    "generator": "built-in image_gen",
+    "output": "public/assets/images/page-city-saint-john.webp",
+    "smallOutput": "public/assets/images/page-city-saint-john-small.webp",
+    "sha256": "3b6d32ccfcc41e6bc841b4ed81d303c333da8c35a68333f897bda1febd7bd9b0"
+  },
+  {
+    "id": "cityStJohns",
+    "source": "/Users/dg/.codex/generated_images/01a1e21b-876d-7232-af6b-68ecb3c31097/exec-79f498c8-05ae-43f5-a0a4-b29ac6c2c9c8.png",
+    "asset": "page-city-st-johns",
+    "generator": "built-in image_gen",
+    "output": "public/assets/images/page-city-st-johns.webp",
+    "smallOutput": "public/assets/images/page-city-st-johns-small.webp",
+    "sha256": "66ada3b5c3bc668d9015fae2eae9898911fcf23fe634a37506e1bf408c81023d"
+  },
+  {
+    "id": "citySydney",
+    "source": "/Users/dg/.codex/generated_images/01a1e21b-876d-7232-af6b-68ecb3c31097/exec-7eb974a3-a030-472f-b51d-44bd90d445e5.png",
+    "asset": "page-city-sydney",
+    "generator": "built-in image_gen",
+    "output": "public/assets/images/page-city-sydney.webp",
+    "smallOutput": "public/assets/images/page-city-sydney-small.webp",
+    "sha256": "9994124ae0cf03006611bd28b8b63c27bcd449b9178bd7ab363550950335462a"
+  },
+  {
+    "id": "cityMontreal",
+    "source": "/Users/dg/.codex/generated_images/01a1e21b-876d-7232-af6b-68ecb3c31097/exec-d7c41b06-afda-49fc-aa50-ec412e51ea04.png",
+    "asset": "page-city-montreal",
+    "generator": "built-in image_gen",
+    "output": "public/assets/images/page-city-montreal.webp",
+    "smallOutput": "public/assets/images/page-city-montreal-small.webp",
+    "sha256": "eefcbe2f6fc27b97c46daca4f44ee2748e4cd5ce7e6ea6e511ba455db6803596"
+  },
+  {
+    "id": "cityQuebecCity",
+    "source": "/Users/dg/.codex/generated_images/01a1e21b-876d-7232-af6b-68ecb3c31097/exec-89f7fa2d-e760-40f3-b3de-4029319c3de8.png",
+    "asset": "page-city-quebec-city",
+    "generator": "built-in image_gen",
+    "output": "public/assets/images/page-city-quebec-city.webp",
+    "smallOutput": "public/assets/images/page-city-quebec-city-small.webp",
+    "sha256": "630d80c78d9317aece01d70ae4c3498656345fef1ffed66c57cfac3e67db6be6"
+  },
+  {
+    "id": "cityToronto",
+    "source": "/Users/dg/.codex/generated_images/01a1e21b-876d-7232-af6b-68ecb3c31097/exec-be0ad956-924e-45b6-9cd3-be2a376d1f72.png",
+    "asset": "page-city-toronto",
+    "generator": "built-in image_gen",
+    "output": "public/assets/images/page-city-toronto.webp",
+    "smallOutput": "public/assets/images/page-city-toronto-small.webp",
+    "sha256": "ea41d703d6d0c8b4b8e244094afce834bf09ee6f17dfef2fc50c5bc0e17f24e6"
+  },
+  {
+    "id": "cityHamilton",
+    "source": "/Users/dg/.codex/generated_images/01a1e21b-876d-7232-af6b-68ecb3c31097/exec-46221953-aead-4638-a474-172ccf89cd42.png",
+    "asset": "page-city-hamilton",
+    "generator": "built-in image_gen",
+    "output": "public/assets/images/page-city-hamilton.webp",
+    "smallOutput": "public/assets/images/page-city-hamilton-small.webp",
+    "sha256": "4ff1d35173a7ae82e6d69f8377d4dfe4571c48c0f77d667ee7e653cf93913beb"
+  },
+  {
+    "id": "cityCalgary",
+    "source": "/Users/dg/.codex/generated_images/01a1e21b-876d-7232-af6b-68ecb3c31097/exec-28658e4c-b826-44b5-b993-5a0ef95692e2.png",
+    "asset": "page-city-calgary",
+    "generator": "built-in image_gen",
+    "output": "public/assets/images/page-city-calgary.webp",
+    "smallOutput": "public/assets/images/page-city-calgary-small.webp",
+    "sha256": "927cb7aac92b285f35c09bb077c19dcc294d1b245001c1816044bdbb6b39b5aa"
+  },
+  {
+    "id": "cityEdmonton",
+    "source": "/Users/dg/.codex/generated_images/01a1e21b-876d-7232-af6b-68ecb3c31097/exec-4566caa0-4822-4d50-93d6-a48e5064306d.png",
+    "asset": "page-city-edmonton",
+    "generator": "built-in image_gen",
+    "output": "public/assets/images/page-city-edmonton.webp",
+    "smallOutput": "public/assets/images/page-city-edmonton-small.webp",
+    "sha256": "1546b8f54490b5fe29684276cd2f96fe47c486467fb62da1e33cbe1ae43cfaab"
+  },
+  {
+    "id": "cityWinnipeg",
+    "source": "/Users/dg/.codex/generated_images/01a1e21b-876d-7232-af6b-68ecb3c31097/exec-a83d1ac2-c1dc-4580-8ec3-5aba91eef793.png",
+    "asset": "page-city-winnipeg",
+    "generator": "built-in image_gen",
+    "output": "public/assets/images/page-city-winnipeg.webp",
+    "smallOutput": "public/assets/images/page-city-winnipeg-small.webp",
+    "sha256": "b34ba351761a963f1645f2792fa652675ea2be72767450985fdeb71d592d7247"
+  },
+  {
+    "id": "modelSpiroscape",
+    "source": "/Users/dg/.codex/generated_images/01a1e21b-876d-7232-af6b-68ecb3c31097/exec-94d3af85-872a-4660-b29a-75a1875a8f7c.png",
+    "asset": "page-model-spiroscape",
+    "generator": "built-in image_gen",
+    "output": "public/assets/images/page-model-spiroscape.webp",
+    "smallOutput": "public/assets/images/page-model-spiroscape-small.webp",
+    "sha256": "352379f1c6f9d1fb09a9ecd8008bde9640258b3a35ffab12bf6349022c20613e"
+  },
+  {
+    "id": "modelSaverCF10",
+    "source": "/Users/dg/.codex/generated_images/01a1e21b-876d-7232-af6b-68ecb3c31097/exec-5b542981-5aa4-44a5-a89c-9e964ece06f9.png",
+    "asset": "page-model-saver-c-f10",
+    "generator": "built-in image_gen",
+    "output": "public/assets/images/page-model-saver-c-f10.webp",
+    "smallOutput": "public/assets/images/page-model-saver-c-f10-small.webp",
+    "sha256": "984dcb9c4ddaf4f4b9bac9ef91448f11c6abb0173b9518e4de473dfb8ca76a5f"
+  },
+  {
+    "id": "eebdScba",
+    "source": "/Users/dg/.codex/generated_images/01a1e21b-876d-7232-af6b-68ecb3c31097/exec-1367df18-155b-4e55-9fca-31ddf4cc7659.png",
+    "asset": "page-eebd-scba",
+    "generator": "built-in image_gen",
+    "output": "public/assets/images/page-eebd-scba.webp",
+    "smallOutput": "public/assets/images/page-eebd-scba-small.webp",
+    "sha256": "bb8f0ac36f31e1ee02c95b609deae66f5a248d7e0c651e974d4604fb9058f038"
+  }
+]

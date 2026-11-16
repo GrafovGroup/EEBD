@@ -1,3 +1,4 @@
+import { escapeComparison } from './escape-comparison.mjs';
 import { cities } from './cities.mjs';
 import { offerings } from './offerings.mjs';
 import { models } from './models.mjs';
@@ -14,7 +15,7 @@ export const ui = {
     quoteTitle: 'Have a model number or an equipment list?', quoteText: 'Bring the specification. We’ll help define the next conversation.',
     quoteButton: 'Prepare your enquiry', back: 'Back to resources', notFound: 'This page is off course.',
     notFoundText: 'The address may have changed. Explore the equipment categories or return to the homepage.',
-    returnHome: 'Return home', illustration: 'Conceptual illustration, not an actual vessel or product.',
+    returnHome: 'Return home', illustration: 'Emergency escape equipment',
     details: 'WHAT TO PREPARE', related: 'Continue exploring', contactNote: 'Use the form below to contact Superclean Canada Inc. about EEBD.ca.',
   },
   fr: {
@@ -28,7 +29,7 @@ export const ui = {
     quoteTitle: 'Vous avez un numéro de modèle ou une liste d’équipement?', quoteText: 'Présentez vos spécifications pour orienter la prochaine étape.',
     quoteButton: 'Préparer votre demande', back: 'Retour aux ressources', notFound: 'Cette page est introuvable.',
     notFoundText: 'L’adresse a peut-être changé. Consultez les catégories d’équipement ou revenez à l’accueil.',
-    returnHome: 'Retour à l’accueil', illustration: 'Illustration conceptuelle; aucun navire ni produit réel n’est représenté.',
+    returnHome: 'Retour à l’accueil', illustration: 'Équipement d’évacuation d’urgence',
     details: 'À PRÉPARER', related: 'Poursuivre votre recherche', contactNote: 'Utilisez le formulaire ci-dessous pour joindre Superclean Canada Inc. au sujet d’EEBD.ca.',
   },
 };
@@ -253,3 +254,8 @@ for(const city of cities) pages[city.id]=Object.fromEntries(['en','fr'].map(loca
     sources:city.sources.map(s=>[s.title,s.url]),related:['marineEquipment','training','service','coverage']}];
 }));
 enhanceProcurementContent(pages);
+
+pages.eebdScba = escapeComparison;
+for (const id of ['resources','escapeGuide','equipment','comparison']) for (const locale of ['en','fr']) {
+  if (!pages[id][locale].related.includes('eebdScba')) pages[id][locale].related.unshift('eebdScba');
+}

@@ -32,8 +32,8 @@ test('draft, planned and withdrawn routes cannot enter production or the sitemap
   assert.equal(includedRoutes('preview',records).length,3);
   assert.equal(includedRoutes('production',records).length,2);
   assert.equal(sitemapRoutes(records).length,1);
-  assert.equal(includedRoutes('production').length,21+cities.length+offerings.length+models.length);
-  assert.equal(sitemapRoutes().length,19+cities.length+offerings.length+models.length);
+  assert.equal(includedRoutes('production').length,22+cities.length+offerings.length+models.length);
+  assert.equal(sitemapRoutes().length,20+cities.length+offerings.length+models.length);
 });
 test('production requires verified launch evidence while keeping unarranged supply explicit',()=>{
   assert.doesNotThrow(()=>assertProductionReady());

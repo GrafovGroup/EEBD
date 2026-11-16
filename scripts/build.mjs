@@ -1,3 +1,4 @@
+import { renderHomeGallery, homeOptions } from '../src/home-options.mjs';
 import { cp, mkdir, rm, writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { resolve } from 'node:path';
@@ -6,7 +7,7 @@ import { imagePath } from '../src/images.mjs';
 import { contentSecurityPolicy } from '../src/security.mjs';
 import { site, assertProductionReady } from '../src/config.mjs';
 import { includedRoutes, sitemapRoutes, locales, routes } from '../src/routes.mjs';
-import { renderPage, renderBrandReview, esc } from '../src/render.mjs';
+import { renderPage, renderBrandReview, renderHomeOption, esc } from '../src/render.mjs';
 
 export async function build({ mode='preview', outDir=resolve('dist') }={}) {
   if (!['preview','production'].includes(mode)) throw new Error('Unknown build mode');
@@ -43,6 +44,14 @@ export async function build({ mode='preview', outDir=resolve('dist') }={}) {
     await writeFile(resolve(outDir,'brand-concepts','round-one','index.html'),renderBrandReview(1));
     await mkdir(resolve(outDir,'brand-concepts','round-two'),{recursive:true});
     await writeFile(resolve(outDir,'brand-concepts','round-two','index.html'),renderBrandReview(2));
+  }
+  // Review pages remain outside the indexable route registry and sitemap.
+  await mkdir(resolve(outDir,'homepage-options'),{recursive:true});
+  await writeFile(resolve(outDir,'homepage-options','index.html'),renderHomeGallery());
+  for(const option of homeOptions)for(const locale of locales) {
+    const folder=resolve(outDir,'homepage-options',String(option.id),locale);
+    await mkdir(folder,{recursive:true});
+    await writeFile(resolve(folder,'index.html'),renderHomeOption(option.id,locale));
   }
   const pairs=Object.fromEntries(selected.flatMap(record=>locales.map(l=>[record.paths[l],record.paths])));
   const modelContext=Object.fromEntries(models.flatMap(m=>locales.map(l=>[routes.find(r=>r.id===m.id).paths[l],m.name])));

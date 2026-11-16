@@ -2,7 +2,7 @@
 
 Created November 15, 2026 with the built-in image-generation tool. Final site assets are in `public/assets/images/`, with 1200 px and 640 px WebP versions. The original generations remain in ignored local output and the tool's generation directory. WebP encoding/resizing changes file size and dimensions only.
 
-Images illustrate contexts, not EEBD.ca premises, personnel, inventory, specific products or a photographed city. Every page's main image carries a conceptual-image caption and localized alt text. Generated illustrations do not establish model-specific operating instructions, certification or manufacturer approval. No certification marks or manufacturer logos are fabricated. The approved Precision logo is unchanged.
+Images illustrate contexts, not EEBD.ca premises, personnel, inventory, specific products or a photographed city. The owner requested removal of public AI-generation and conceptual-image wording on November 16; localized descriptions now identify visible subjects. Internal provenance remains documented here. Generated illustrations do not establish model-specific operating instructions, certification or manufacturer approval. No certification marks or manufacturer logos are fabricated. The approved Precision logo is unchanged.
 
 ## Prompts
 
@@ -23,7 +23,7 @@ The remaining six prompts use this shared specification, inserting the subject f
 | atlantic-harbour | a conceptual Atlantic Canadian working harbour with fishing and offshore support vessels, rocky headland in the distance, deep blue-grey water and muted orange dock accents; no identifiable real port or named vessels, no logos |
 | river-port | a conceptual large Canadian river cargo port, freighter alongside terminal silos and gantry cranes, low shoreline and soft cloud layers, navy water and subtle orange accents; no identifiable real city or named vessel, no logos |
 
-Route assignments and bilingual descriptions are maintained in `src/images.mjs`. Reuse across related pages is intentional. A city image is a regional illustration rather than a location photograph.
+Route assignments and bilingual descriptions are maintained in `src/images.mjs`. Each of the 48 bilingual page purposes has its own unique image. Only English/French counterparts and the four homepage design alternatives share their page-purpose image. Homepage category and training panels use text rather than repeating another page’s photo. A city scene does not establish a local branch or document an actual incident.
 
 ## Real product reference photograph — November 16, 2026
 
@@ -34,8 +34,16 @@ Route assignments and bilingual descriptions are maintained in `src/images.mjs`.
 - Reuse terms: https://www.cdc.gov/other/agencymaterials.html
 - Caption credits CDC/NIOSH, gives the year, links to the free original in a new window and states non-endorsement by CDC/HHS/the U.S. Government. No agency logo is used.
 - English/French alt text identifies the opened and closed M-20.2 units. The source photograph is retained at its native resolution; no invented detail or generative upscaling.
-- No manufacturer product photograph was copied for Interspiro or Dräger. Their model pages link to official photos/documentation, and retain clearly captioned conceptual workplace imagery. The owner confirmed no existing photo permission on November 16. Commercial image permission is an outstanding supplier question.
+- No manufacturer product photograph was copied for Interspiro or Dräger. Their model pages link to official photos/documentation, and use separate documentation-workspace images. The owner confirmed no existing photo permission on November 16. Commercial image permission is an outstanding supplier question.
 
 ## Generated EEBD-use homepage hero — November 16
 
-The owner supplied EEBD-use examples and requested a realistic generated replacement for the homepage vessel image. `eebd-in-use.webp` and `eebd-in-use-small.webp` depict a generic maritime worker wearing an escape hood connected to a carried air pouch. Both homepages use the new image and retain the generated-image caption; no supplier or model identity is asserted. The built-in tool prompt and reference roles are in `EEBD_HERO_PROMPT.md`.
+The owner supplied EEBD-use examples and requested a realistic generated replacement for the homepage vessel image. `eebd-in-use.webp` and `eebd-in-use-small.webp` depict a generic maritime worker wearing an escape hood connected to a carried air pouch. Both homepages use the new image without a public generation caption, as subsequently requested by the owner; no supplier or model identity is asserted. The built-in tool prompt and reference roles are in `EEBD_HERO_PROMPT.md`.
+
+## Unique page library and comparison — November 16
+
+39 new images were selected using the built-in image-generation tool. Together with the existing hero, seven context images and the CDC/NIOSH photograph, these provide 48 distinct main images for 96 EN/FR content/form pages. Each new image has optimized 1200 × 800 and 640 × 427 WebP files. The original prompts and selected revision prompts are recorded in PAGE_IMAGE_PROMPTS.json; PAGE_IMAGE_LIBRARY.json records source generations and output paths.
+
+The EEBD-versus-SCBA image depicts generic equipment configurations. It is paired with accessible HTML explanations; it is not a manufacturer diagram or donning instruction. The comparison distinguishes escape-only equipment from entry-and-escape SCBA, avoiding universal duration, cylinder-size, training exemption or shipboard-count claims. Sources are linked on both language pages.
+
+Run `node scripts/image-audit.mjs` to check per-page asset ownership, unique file hashes, localized alt descriptions, no duplicated body photographs and removal of public generation wording. Review-gallery thumbnails show webpage screenshots; they are design previews, not additional editorial photo placements. The logo remains shared branding.
