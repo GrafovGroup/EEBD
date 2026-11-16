@@ -18,3 +18,9 @@ Reference: https://www2.bing.com/webmasters/help/add-and-verify-site-12184f8b . 
 ## November 16 resubmission and indexing audit
 
 Bing processed the 90-URL sitemap successfully, then accepted the requested resubmission for processing. The initial 86-URL observation above is historical. Later direct inspections found 37 URLs discovered but not crawled; the remaining URLs are not individually verified. The homepage and comparison-page live tests passed. Homepage metadata/image notices were corrected and the fresh live test reported no SEO/GEO issues. Explicit indexing requests were accepted for the English homepage, comparison and fleet procurement pages. A French-homepage request returned a Bing server error. See `INDEXING_AUDIT.md`; discovery and request acceptance do not confirm indexing.
+
+## November 16, 2026 — latest sitemap resubmission
+
+The owner-requested resubmission of `https://eebd.ca/sitemap.xml` was accepted at approximately 16:46 UTC / 11:46 Toronto. Bing initially showed Processing and had returned to **Success** by 16:49 UTC, with **92 discovered URLs**, one known sitemap, zero errors and zero warnings. Submission and crawl dates both read November 16. These are sitemap-processing results, not confirmation that all URLs are indexed.
+
+IndexNow verification separately succeeded at **16:48:15 UTC**: `https://api.indexnow.org/indexnow` returned **HTTP 200** for the eight revised English/French URLs. Bing's IndexNow dashboard still showed its introductory screen, so API acceptance is the verification evidence. See `ANALYTICS_AND_INDEXNOW.md`. Private screenshots: `test-results/bing-sitemap-resubmitted-20261116.png` and `test-results/bing-sitemap-success-20261116.png`.

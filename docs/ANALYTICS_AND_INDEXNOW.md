@@ -32,6 +32,12 @@ Deployment files are packaged under `deployment/`, outside `web-root/`. Upload t
 
 Official protocol: https://www.indexnow.org/documentation
 
+### Verification completed November 16, 2026
+
+The initial eight-URL notification at 16:29:40 UTC returned HTTP 202 while ownership validation was pending. At the owner's request, one verification retry at **16:48:15 UTC / 11:48:15 Toronto** returned **HTTP 200**, with an empty response body and no Retry-After header. The public key file also returned HTTP 200 with the exact expected contents. IndexNow now accepts the site's submissions; this does not establish whether the pages are indexed.
+
+The successful batch contained the comparison, project procurement, resources hub and equipment quote checklist pages in English and French. Its private receipt is `test-results/indexnow-verification-recheck.json`. The hosting ledger was reconciled with this acknowledgement so subsequent deployments do not resend these same changes; the earlier state was backed up privately. Bing's IndexNow dashboard had not yet populated when checked. Both search consoles separately accepted the 92-URL sitemap resubmission and reported Success.
+
 ## Property configuration verified November 16, 2026
 
 `generate_lead` is a key event, counted once per event, without a default monetary value. Event-scoped custom dimensions are registered for enquiry type, source page, quote-button location and site language. The reports snapshot uses the Marketing performance template; Reports → Generate leads and Realtime show enquiry activity as it arrives. Event and user data retention are two months with activity resets off. Google signals and user-provided data collection are off; ads personalization is disallowed in all 307 regions. Initial traffic includes release-verification visits, not actual leads.
