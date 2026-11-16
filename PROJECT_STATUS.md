@@ -41,3 +41,7 @@ Do not mark draft pages as published merely to bypass the guard. Do not populate
 Continue WHC domain/hosting connection and enquiry integration. The owner has supplied business identity and interactive WHC access. Identity selection is complete; do not reopen it. Routine implementation choices do not require renewed permission. Form delivery and commercial readiness remain unresolved.
 
 PHP verification: 48 checks passed in PHP 8.3.33 (WordPress WASM), with SQLite and fake mail only. Real WHC mail acceptance, inbox receipt, cron, concurrent workers and privacy/retention approval remain unverified. A separate bilingual, noindex holding page is prepared and its content was verified byte-for-byte against the WHC origin. This is not publication of the full site.
+
+WHC follow-up: the same 48 checks also passed natively on WHC EA-PHP 8.3.36 with PDO SQLite and mbstring, using only synthetic requests and a fake notification transport. The domain was added successfully with a separate document root. The holding page is installed and origin-verified; authoritative DNS still points to parking and HTTPS is pending. WHC’s DNS editor is read-only at the current 698 px browser width; owner was asked to widen it. Email forwarding versus a separate mailbox is awaiting the owner’s choice. No actual email has been sent.
+
+Latest source backup for the enquiry/WHC preparation milestone: `5dd72e5ba73a4aa68b51768942bd9d67de3c576c` on `codex/initial-build`; the connector tree matched the staged local tree exactly. Later documentation-only commits record host verification.

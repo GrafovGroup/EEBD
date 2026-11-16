@@ -55,3 +55,10 @@ An exact-name web search for EEBD.ca did not return a clear established competin
 | Service support | Soutien technique |
 
 The site language does not establish instructor or manufacturer-document language availability. Original manuals are not translated or republished as manufacturer-approved instructions.
+
+## WHC implementation references — November 16, 2026
+
+- [WHC: Change PHP version, including one-domain setup](https://help.whc.ca/en/articles/625808-how-do-i-change-my-php-version). Account-wide selectors can affect other websites; verify a domain-specific runtime.
+- [WHC: Publish a site from your computer](https://clients.whc.ca/en/knowledgebase/1712/Publish-a-Site-From-your-Computer.html). File Manager and SFTP are supported deployment routes.
+- [WordPress Playground: PHP in Node.js](https://wordpress.github.io/wordpress-playground/developers/local-development/php-wasm-node/). Used only for isolated local PHP tests; not a production website dependency.
+- Direct owner-authenticated WHC observations are recorded in DEPLOYMENT.md. No credential, session URL, customer message or private contact registry data is included in public source.

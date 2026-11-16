@@ -17,7 +17,7 @@ Milestone: initial bilingual build and selected Precision identity, November 15,
 | Recall/notice process | PASS | Publication filter requires reviewed/cleared status; ABS notice noted in research. Actual stock clearance is not performed |
 | Training/service provider scope | BLOCKED | Availability, geography, language and credentials need actual arrangements |
 | Preview enquiry branching and review | PASS | Three localized branches, field errors, review/edit, disabled sending, no upload or browser persistence |
-| Production validation/rate/bot/idempotency integration | LOCAL PASS / HOST PENDING | PHP endpoint and private SQLite store implemented; 48 PHP-WASM checks, no live acceptance enabled |
+| Production validation/rate/bot/idempotency integration | LOCAL PASS / HOST PENDING | PHP endpoint and private SQLite store implemented; 48 PHP-WASM checks plus the same 48 checks on WHC EA-PHP 8.3.36, no live acceptance enabled |
 | Durable acceptance / notifications / inbox delivery | BLOCKED | None configured or tested; API preview explicitly rejects acceptance |
 | Phone/email routing | BLOCKED | Supplied phone not called; proposed mailbox not activated or tested |
 | Contracting entity / production privacy | PARTIAL | Superclean Canada Inc. confirmed; actual retention, delivery and production policy remain open |
