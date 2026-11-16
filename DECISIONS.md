@@ -50,3 +50,10 @@ The initial development watcher called an already-imported build module, retaini
 - Added general contact forms in both languages, alongside equipment/training/service enquiries. Published a privacy notice describing the actual Formspree archive/email data flow and cross-border processing. No invented automatic retention schedule or legal clearance.
 - The unverified phone number is omitted from public pages. Verified email and the functioning form supply the contact route.
 - Local release checks: 23 tests, 152 responsive page checks, eight mocked successful form journeys, six failure journeys and double-click protection. Final WHC checks and deployment evidence are recorded after publication.
+
+## November 15, 2026 — Full website live
+
+- Published the complete English/French enquiry website on WHC under the owner's explicit instruction. Final runtime source: `df778613444e4e7c1cb4cf9064a8e57f4c889e5e`.
+- Corrected LiteSpeed custom-error recursion found during live verification by giving error documents dedicated asset URLs and the French directory its own handler. All 87 packaged public files were verified on the host; all 85 readable files matched their hashes over HTTPS. Canonical redirects, localized 404 bodies, security headers and 34-URL sitemap passed.
+- Actual-host UI tests passed eight bilingual success journeys, six failure journeys and double-click protection using intercepted Formspree responses. No additional live enquiry was sent. The earlier single authorized submission and owner-confirmed inbox receipt remain the end-to-end delivery evidence.
+- Archived the previous live directory and earlier holding page privately, with manifest/timestamp records. Other hosted websites and mail records were preserved. Documentation updates after this runtime commit do not imply a new deployment.

@@ -4,7 +4,7 @@ Canadian emergency escape breathing equipment: **equipment sales, product-specif
 
 ## Project status
 
-The owner has authorized implementation. A local bilingual development preview, editable brand concepts and the static site foundation now exist on `codex/initial-build`. The website has not been deployed. Read [PROJECT_STATUS.md](PROJECT_STATUS.md) and [DECISIONS.md](DECISIONS.md) before resuming.
+**The complete bilingual enquiry website is live at https://eebd.ca/ on WHC.** General contact and equipment/training/service forms use Formspree; the owner confirmed receipt of the authorized test. Source is backed up on `codex/initial-build`. Read [PROJECT_STATUS.md](PROJECT_STATUS.md) and [DECISIONS.md](DECISIONS.md) before resuming.
 
 - **Repository:** https://github.com/GrafovGroup/EEBD.git
 - **Domain:** EEBD.ca — owned
@@ -31,13 +31,13 @@ node scripts/check.mjs
 node --test tests/*.test.mjs
 ```
 
-Production output is intentionally blocked until the selected identity, real offer arrangements, contracting identity, contact routing, enquiry service and hosting have been verified. Inputs in the enquiry preview do not submit or persist. See [DEPLOYMENT.md](DEPLOYMENT.md) and [LAUNCH_CHECKLIST.md](LAUNCH_CHECKLIST.md) for the exact limits.
+Production packaging is enabled for the verified enquiry-site scope. Suppliers and service providers remain unarranged, with availability subject to confirmation; no saleable models are populated. Inputs in the local preview do not submit or persist. See [DEPLOYMENT.md](DEPLOYMENT.md) and [LAUNCH_CHECKLIST.md](LAUNCH_CHECKLIST.md) for the exact limits.
 
 ## Start here
 
 Read [MASTER_PROMPT.md](MASTER_PROMPT.md) in full before implementation. It is the authoritative project-specific build brief and contains the confirmed inputs, offer boundaries, bilingual sitemap, enquiry workflows, design phase, source references, and release requirements.
 
-The website will support three customer journeys:
+The website supports three quotation journeys, plus a short general contact form:
 
 | Offer | Customer action |
 | --- | --- |
@@ -77,19 +77,19 @@ and deployed, with exact remaining dependencies and no unsupported completion cl
 - Technical SEO, useful content, mobile/accessibility checks, private enquiry handling, and verified form delivery.
 - Recoverable source, approved assets, build instructions, and evidence-backed release records.
 
-## Configuration to establish during implementation
+## Current configuration and continuing work
 
-- Contracting entity and any public business address.
-- Hosting/Site project and deployment configuration.
-- Exact supported products, supply routes, training providers, and service coverage.
-- Form endpoint and delivery destination.
-- Mailbox activation and end-to-end delivery for the proposed info@eebd.ca address.
-- Applicable analytics and search-console access.
+- Operator: Superclean Canada Inc.; no unverified premises published.
+- WHC hosting and HTTPS configured; exact release and rollback in DEPLOYMENT.md.
+- Products, supply routes, training providers and service coverage still require actual arrangements.
+- Formspree `https://formspree.io/f/xrpqpylv`, notification to info@eebd.ca.
+- Authorized real test accepted and inbox receipt confirmed by the owner.
+- Analytics and search-console submission not configured.
 
-The established new-brand phone is **(833) 696-9996**. Contact routing must be tested before the website is reported operational.
+The proposed phone remains unverified and is omitted from public pages. Verified email and forms provide the contact route.
 
 ## Scope and recovery
 
-This repository is the source destination for EEBD.ca. Preserve its history and existing work. The initial documentation setup has been followed by the owner’s build instruction. Preserve the latest decisions in DECISIONS.md, especially the integrated singular descriptor and no-.ca logo requirement. Production release remains subject to the masterplan’s actual readiness requirements.
+This repository is the source destination for EEBD.ca. Preserve its history and existing work. The initial documentation setup has been followed by the owner’s build instruction. Preserve the latest decisions in DECISIONS.md, especially the integrated singular descriptor and no-.ca logo requirement. The authorized enquiry-site release is complete; product publication still requires its own commercial and technical evidence.
 
 During the build, create or maintain the project records named in MASTER_PROMPT.md. Keep secrets, customer submissions, attachments, private supplier terms, and live production data out of Git. Record any separate hosting-source remote and the exact deployed revision.

@@ -1,47 +1,29 @@
 # EEBD.ca implementation status
 
-Updated November 15, 2026 (America/Toronto). **WHC domain/HTTPS connection is complete; the holding page is live. The full site remains a development preview. Formspree is the selected enquiry provider.** Read this file and DECISIONS.md before resuming.
+Updated November 15, 2026 (America/Toronto). **The full bilingual enquiry website is live at https://eebd.ca/ on WHC. Contact and quotation forms are enabled through Formspree.**
 
-## Completed implementation
+## Published release
 
-- Preserved the original masterplan/README history and connected the local checkout to the authorized repository on `codex/initial-build`.
-- Created two rounds of actual editable logo concepts. The second round (06–10) followed the owner's correction: **EEBD**, no `.ca`, with **EMERGENCY ESCAPE BREATHING DEVICE** embedded beneath it. Light/dark/monochrome/compact and French versions are available. The owner subsequently selected **Precision 01**, with no suffix and the singular descriptor immediately beneath the letters. The selected lockup is applied throughout the default EN/FR preview.
-- Created a dependency-free static generator, shared configuration, bilingual route-equivalence map, 19 page purposes in both languages (38 pages), localized 404s, shared header/footer, responsive navigation and original conceptual illustrations.
-- Drafted equipment categories, training, service coordination, fleet, industries, coverage, two resources, about, contact, quote and preview privacy content.
-- Implemented bilingual enquiry details, accessible validation, review and edit steps for all three branches. Local preview sends no data. Integrated the owner-provided Formspree endpoint using tailored native AJAX, with bilingual provider-confirmed success/error states. It supersedes the earlier unused PHP/SQLite proposal.
-- Implemented preview noindex, empty sitemap, metadata/canonicals/alternates, favicon references, route/product publication filters and a production build guard. No saleable product records are populated.
-- Prepared research, brand, deployment and decision records with the commercial evidence still required.
+- Deployed runtime source: `df778613444e4e7c1cb4cf9064a8e57f4c889e5e`, branch `codex/initial-build` in `GrafovGroup/EEBD`. Later documentation commits do not imply a different deployed runtime.
+- Approved Precision 01 identity: EEBD with the singular descriptor directly beneath the letters, no `.ca` inside the logo. English/French light, white and monochrome assets are included.
+- 19 page purposes in both languages: 38 public pages, plus localized error pages. Equipment categories, training, service support, fleet supply, industries, coverage, resources, about, contact, quote and privacy are published.
+- 34 indexable URLs in the sitemap. Quote and privacy pages remain available but non-indexable. Brand reviews and source files are excluded from production.
+- Superclean Canada Inc. is the operator. Verified contact route: info@eebd.ca. The unverified phone is not displayed.
+- General contact and equipment/training/service forms provide validation, review/edit, provider-confirmed success and useful failure states. Preview sending remains disabled.
+- Suppliers, trainers and service partners are not arranged. Public copy states this; availability requires confirmation. No stock, saleable models, credentials, prices or checkout are invented.
 
-## Review
+## Verification
 
-- Current brand review: `http://127.0.0.1:4173/brand-concepts/`
-- Archived first round: `/brand-concepts/round-one/`
-- English draft: `/en/`; French draft: `/fr/`
-- Selected identity: `design/precision-selected.png` / editable `.svg`. Previous concept overview: `design/brand-board.png`.
-- Selected production-source artwork: `public/assets/brand/precision-{primary,white,mono}-{en,fr}.{svg,png}`; social cards and favicon assets are present.
-- Local preview requires `node scripts/dev.mjs` to remain running. It is not a public or durable hosted URL.
+23 unit/integration tests passed. Preview checks covered 45 HTML files and 1,642 internal references. Production Chromium checks covered 152 route/width combinations across 320, 390, 768 and 1440 px, with no script errors or failed resources.
 
-## Verification and source synchronization
+On the actual WHC site, eight English/French successful form journeys, six failure journeys and double-click protection passed with all provider responses intercepted and zero real submissions. Separately, the single owner-authorized real Formspree test was accepted and the owner confirmed inbox receipt. The authenticated Formspree workflow names info@eebd.ca as its notification recipient.
 
-Verification: 22 automated tests passed; the new isolated Formspree browser suite passed six success journeys, six failure journeys and double-click protection with zero real submissions; the isolated build crawl checked 45 HTML files and 1,601 internal references; Chromium passed 152 responsive checks, six validation/review/edit journeys and twelve concept applications with no page errors or failed resources. See LAUNCH_CHECKLIST.md for limits. Generated output and local browser reports are ignored by Git. The initial milestone is backed up on GitHub at `595cebded88da34353755354e559c7951de2362d`, with the exact local source tree verified against the connector-created tree. Shell push credentials are unavailable; the connected GitHub integration is used for source backup. The selected-Precision update is recorded in the subsequent commit on the same branch; use Git history for its exact revision. No production deployment follows from source synchronization.
+The final deployment was verified at 04:33 UTC November 16 (23:33 Toronto November 15): 87 packaged public files verified on the host; all 85 readable public files matched their SHA-256 hashes over HTTPS. Canonical HTTP/www redirects, root language redirect, custom English/French 404 responses, CSP and sitemap passed. The initial error-document recursion discovered on WHC was corrected before completion.
 
-## Remaining dependencies
+See DEPLOYMENT.md for reproduction and rollback, LAUNCH_CHECKLIST.md for evidence limits, and DECISIONS.md for owner instructions. Private account/session details and enquiry data are excluded from Git.
 
-1. Selected Precision identity is implemented. Complete remaining platform/browser checks for the actual release host.
-2. Superclean Canada Inc. and info@eebd.ca are owner-confirmed. Suppliers, trainers and service partners are not arranged; no saleable models are populated.
-3. WHC selected; owner-authenticated cPanel inspected. Domain attached to its own directory, separate from existing sites. DNS and HTTPS are verified. Formspree accepted one test and the owner confirmed inbox receipt. Complete remaining full-site host checks. Keep account/session details out of source.
-4. Verify phone/mailbox routing, implement provider-dependent security/privacy handling and test acceptance/delivery for all six language/type combinations using an authorized test destination.
-5. Complete competent technical/content review, selected-brand accessibility/performance/browser checks, then publish only ready routes and verified products.
-6. Record exact deployed revision, HTTPS/domain/redirect checks and actual search-console actions.
+## Continuing operation
 
-Do not mark draft pages as published merely to bypass the guard. Do not populate products from manufacturer search results without the required commercial and model-specific evidence. Preserve the owner's singular descriptor/no-domain-suffix override.
+Keep the Formspree account, notification inbox and WHC hosting active. Formshield, submission archive and required email/contact/message validations are enabled; the project is restricted to eebd.ca. CAPTCHA was already disabled and was not changed. Plan limits and ongoing inbox monitoring are operational responsibilities.
 
-## Exact resume point
-
-Domain/hosting connection is complete. Public URL: https://eebd.ca/. It displays only the bilingual holding page; root/www HTTPS and canonical redirects were verified. Nameservers and mail records were preserved. The exact holding source is `ff5ce2abfc5ceb478d7c95e8ff5a5d1475900bb2`; hashes and rollback are in DEPLOYMENT.md.
-
-Owner selected Formspree `https://formspree.io/f/xrpqpylv` for contact/enquiry delivery. Native AJAX now supports all six language/type journeys, preserves the review/edit step, and reports provider acceptance without claiming inbox delivery. WHC packaging is static-only. The unused PHP implementation remains in source/history; it is no longer a deployment requirement.
-
-Next: review Formspree account spam/CAPTCHA and retention settings, then finish production privacy/content readiness. One authorized end-to-end delivery test is complete. Preview sending remains off. The owner authorized one clearly labelled live test. Formspree returned HTTP 200 with `ok:true` and `next:/thanks`; the owner confirmed receipt in the configured inbox. No Formspree dashboard settings have been changed. The earlier mailbox-versus-forwarding question remains separate from the new form provider choice.
-
-The approved identity is complete; do not reopen it. Routine implementation choices do not require renewed permission. The full site has not been released.
+Before publishing individual products or promising training/service delivery, establish the actual commercial relationships and model-specific evidence. Specialist technical/French review, real-device/Safari/Firefox/screen-reader checks, analytics and search-console submission have not been claimed. These do not reopen the completed identity or the owner's authorized enquiry-site launch.

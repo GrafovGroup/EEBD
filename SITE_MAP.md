@@ -1,6 +1,6 @@
 # Bilingual route map
 
-All pages below are **draft / non-indexable / local preview only**. No page is approved for production. The authoritative map is `src/routes.mjs`.
+All 38 pages below are **published** on https://eebd.ca/. The authoritative map is `src/routes.mjs`. The 34 informational/contact pages are indexable; quote and privacy pages in both languages remain available with noindex.
 
 | Purpose | English | French |
 | --- | --- | --- |
@@ -24,6 +24,6 @@ All pages below are **draft / non-indexable / local preview only**. No page is a
 | Request a quote | /en/request-a-quote/ | /fr/demander-une-soumission/ |
 | Privacy | /en/privacy/ | /fr/confidentialite/ |
 
-`/` redirects temporarily to `/en/` on the preview server; both language choices remain visible. Unknown URLs return localized HTTP 404s. Direct `/en/404/` and `/fr/404/` return 404, not success.
+`/` redirects with HTTP 302 to `/en/` on WHC; both language choices remain visible. Unknown URLs return localized HTTP 404s. Direct `/en/404/` and `/fr/404/` return 404, not success.
 
-Brand review and its archive are development utilities, not production content. Product-detail, confirmation, terms and geographic pages are not generated without their evidence/delivery/policy conditions. No empty catalogue URLs or automatic city pages exist. The sitemap is intentionally empty until actual publication.
+Brand review and its archive are development utilities, not production content. Product-detail, confirmation, terms and geographic pages are not generated without their evidence/delivery/policy conditions. No empty catalogue URLs or automatic city pages exist. The production sitemap contains 34 URLs. Development previews retain noindex and an empty sitemap.
