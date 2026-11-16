@@ -4,8 +4,8 @@ Updated November 16, 2026 (America/Toronto). **The bilingual enquiry website is 
 
 ## Published release
 
-- Runtime source: `fae7ee2716ab42158ff897f2d3a6f0b6539f5cb8`, branch `codex/initial-build` in `GrafovGroup/EEBD`. Later documentation-only commits do not change the deployed runtime.
-- Activated November 16 at 15:31:28 UTC / 10:31 Toronto, with a full previous-release backup. Archive, checksum and rollback details are in DEPLOYMENT.md.
+- Runtime source: `f2f3f1e4d0fe822de1706bf955c092706c25cf3c`, branch `codex/initial-build` in `GrafovGroup/EEBD`. Later documentation-only commits do not change the deployed runtime.
+- Activated November 16 at 15:56:56 UTC / 10:56 Toronto, with a full previous-release backup. Archive, checksum and rollback details are in DEPLOYMENT.md.
 - 48 paired page purposes: **96 public content/form pages**, **92 indexable sitemap URLs**, plus localized error pages.
 - Three bilingual model guides: Ocenco M-20.2, Interspiro Spiroscape bar configurations, and Dräger Saver CF10 N (4042056). Specification tables, source documents, model limitations and model-aware enquiries are implemented. Language switching preserves model context.
 - These are reference/enquiry pages. Suppliers, trainers and service partners remain unarranged. No stock, prices, authorized-dealer status, blanket Canadian approval or recall clearance is invented; saleable catalogue records remain empty.
@@ -20,11 +20,11 @@ Updated November 16, 2026 (America/Toronto). **The bilingual enquiry website is 
 
 ## Verification
 
-24 unit/integration tests passed. Preview checks covered 112 HTML files and 4,941 internal references. The preceding full-site release passed 384 route/width combinations (96 pages at 320/390/768/1440 px), with no page errors or horizontal overflow. The four homepage alternatives passed 40 language/width checks from 320 to 2560 px. The selected Immersive homepage then passed 10 checks across both languages at 320, 390, 768, 1440 and 2560 px, including all hero links, active enquiry UI, mobile menu, titles, canonical URLs and absence of overflow or browser errors. The photo audit confirms 48 unique asset paths and file hashes, one main photo per route, and no public AI-generation/conceptual wording.
+25 unit/integration tests passed. Preview checks covered 112 HTML files and 4,959 internal references. The current release passed 384 route/width combinations (96 pages at 320/390/768/1440 px) without page errors, failed resources or horizontal overflow. Thirty-six targeted checks at 320/390/768/900/901/1440 px passed locally and on the live host for bilingual comparison cards/tables, shorter enquiries, keyboard disclosure controls and the single-line mobile utility bar. The photo audit confirms 48 distinct images, one per page purpose.
 
-All 255 public files were verified on the host; all 253 readable files matched release SHA-256 hashes over HTTPS at 15:31:44 UTC. Localized 404s, the Bing tag and the 92-URL XML sitemap passed. The live technical crawl found no indexability blockers; this does not claim search-engine indexing. Existing HTTPS/canonical routing and privacy controls remain unchanged.
+All 255 public files were verified on the host; all 253 readable files matched release SHA-256 hashes over HTTPS at 15:57:20 UTC. Localized 404s passed. The sitemap still contains 92 URLs. These checks establish the deployed content, not search-engine indexing.
 
-The simulated form suite checks all three model prefills in both languages, translated model context, rejected unknown source context, eight successful form journeys, six failure states and double-click protection. Provider requests are intercepted; no new real enquiry is sent. The earlier single authorized real test was accepted and the owner confirmed inbox receipt. Formspree's authenticated workflow identifies info@eebd.ca as the notification destination.
+The live simulated form suite passed at 15:57:25 UTC: six model-context checks, eight standard success journeys, two shortened enquiries, two bulk journeys, inactive-field exclusion, six error states and double-click protection. All provider requests were intercepted; zero real submissions occurred. The earlier single authorized inbox test remains the delivery evidence.
 
 ## Commercial and operational follow-through
 
@@ -32,9 +32,9 @@ Keep Formspree, the notification inbox and WHC active. Required form fields, For
 
 Obtain actual supplier terms, approved commercial media, current model/serial documents and qualified service/training arrangements before promising supply. See `docs/MODEL_RESEARCH.md` for current-source conflicts and the unresolved Saver CF notice applicability. Specialist technical/French sign-off and Safari/Firefox/real-device/screen-reader testing are not claimed.
 
-Google Search Console ownership is DNS-verified. The updated sitemap was processed successfully with 90 discovered URLs. Direct inspections confirm the English and French homepages are indexed; the aggregate indexing report is still processing. See `docs/INDEXING_AUDIT.md` for checked URLs and the inspection quota limit. Search engines control crawling, indexing and ranking. See `docs/SEARCH_CONSOLE.md` and the Bing release record for actual submission status.
+Google Search Console ownership is DNS-verified. The updated sitemap was processed successfully with 92 discovered URLs. Direct inspections confirm the English and French homepages are indexed; the aggregate indexing report is still processing. See `docs/INDEXING_AUDIT.md` for checked URLs and the inspection quota limit. Search engines control crawling, indexing and ranking. See `docs/SEARCH_CONSOLE.md` and the Bing release record for actual submission status.
 
-Bing ownership is verified using the site meta tag. The updated sitemap was accepted and 90 URLs were discovered; it reached Success before the requested resubmission returned it to Processing. This does not confirm page indexing. See `docs/BING_WEBMASTER.md`. The final live simulated form check passed at 06:35:51 UTC: six model/language checks, eight standard success journeys, two bulk journeys, inactive bulk-field exclusion, six failure states and double-click protection. All Formspree requests were intercepted; zero real submissions occurred.
+Bing ownership is verified using the site meta tag. The latest checked sitemap status is Success with 92 discovered URLs, zero errors and zero warnings. Ninety completed URL inspections reported Discovered but not crawled; two inspections failed after retry and remain unverified. No Bing-indexed pages were confirmed. The earlier Google home-page indexing confirmations remain the latest completed inspections; fresh Google inspections were quota-limited. These observations preceded the mobile release and do not promise subsequent indexing.
 
 ## Latest owner-directed presentation updates
 
@@ -51,3 +51,9 @@ The owner clarified that every English/French page pair should have a separate p
 Four complete homepage alternatives are live for review at `https://eebd.ca/homepage-options/`: 01 Immersive, 02 Editorial, 03 Procurement and 04 Technical. Each has EN/FR pages and is noindex, outside the sitemap. The owner selected 01 Immersive, which is now the live homepage in both languages without the review toolbar. The gallery identifies this selection. The gallery uses screenshots of the alternatives; those screenshots and the alternatives’ shared homepage image are review material, not duplicate editorial images assigned to distinct page purposes.
 
 Final Formspree browser simulation completed at 07:37:59 UTC: six model-context checks, eight standard successes, two bulk journeys, six error states and duplicate-click protection; zero real submissions. The earlier owner-confirmed real inbox test remains the delivery evidence.
+
+## Clear titles and mobile improvements
+
+The owner authorized descriptive page titles, a shorter mobile enquiry flow and phone-friendly comparisons. All bilingual search titles now describe their topic; the English home title stays exactly as requested. Equipment enquiries have six required entries instead of nine. Organization, phone and timing sit in an optional disclosure; unknown models can be left blank. The form precedes its photograph on mobile. Comparison pages use model/criterion cards through 900 px and desktop tables above that, with all data and source/model links preserved.
+
+The owner also requested that the top bar fit on one mobile line. The tagline, Contact and EN/FR controls remain visible on one line, without overlap or page overflow at the tested 320/390 px phone widths. Source and release records are synchronized with GitHub. Existing Immersive homepage, branding, footer, commercial boundaries and Formspree endpoint are preserved.

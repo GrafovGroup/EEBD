@@ -1,17 +1,17 @@
 # Launch checklist
 
-Updated November 16, 2026 (America/Toronto), under the owner's explicit full-site launch instruction. Deployed runtime: `fae7ee2716ab42158ff897f2d3a6f0b6539f5cb8`.
+Updated November 16, 2026 (America/Toronto), under the owner's explicit full-site launch instruction. Deployed runtime: `f2f3f1e4d0fe822de1706bf955c092706c25cf3c`.
 
 | Check | Status | Evidence / limitation |
 | --- | --- | --- |
 | Source preserved and backed up | PASS | Original history retained; runtime commit on `codex/initial-build`; clean package manifest |
 | Approved identity | PASS | Precision 01, integrated singular descriptor, no .ca in logo; bilingual SVG/PNG, favicon/social assets |
 | Complete paired pages | PASS | 48 purposes × two languages, 96 public pages plus localized error pages |
-| Build and internal references | PASS | 112 preview HTML files, 4,941 references; labels, IDs and private-source exclusion |
-| Unit/integration checks | PASS | 24 tests: route/content pairs, publication guard, product filters, validation, escaping, transport, preview isolation and packaging |
-| Production responsive checks | PASS | Prior release: 384 public-page/width and 40 homepage-option checks. Selected Immersive release: 10 targeted EN/FR checks at 320/390/768/1440/2560 px; no page errors or horizontal overflow |
+| Build and internal references | PASS | 112 preview HTML files, 4,959 references; labels, IDs and private-source exclusion |
+| Unit/integration checks | PASS | 25 tests: route/content pairs, publication guard, product filters, validation, escaping, transport, preview isolation and packaging |
+| Production responsive checks | PASS | Current release: 384 public-page/width checks and 36 targeted EN/FR mobile/keyboard checks locally and on the actual host; no page errors or horizontal overflow |
 | General and scoped enquiry UI | PASS | General contact plus equipment/training/service in both languages; review/edit, active fields, consent and no persistence |
-| Actual-host form checks | PASS | Eight standard and two bulk success journeys, inactive bulk-field exclusion, six failure journeys and double-click protection; intercepted provider responses, zero real submissions |
+| Actual-host form checks | PASS | Eight standard, two shortened and two bulk success journeys, inactive bulk-field exclusion, six failure journeys and double-click protection; intercepted provider responses, zero real submissions |
 | Actual inbox delivery | PASS FOR AUTHORIZED TEST | One authorized POST accepted by Formspree; owner confirmed receipt; authenticated workflow recipient info@eebd.ca |
 | Formspree controls | PASS | Enabled form/archive/Formshield; eebd.ca domain restriction; required email/contact/message; existing CAPTCHA-disabled setting unchanged |
 | Business identity / privacy | IMPLEMENTED | Superclean Canada Inc.; bilingual notice reflects current Formspree archive/email flow and cross-border processing; no legal certification claimed |
@@ -24,7 +24,7 @@ Updated November 16, 2026 (America/Toronto), under the owner's explicit full-sit
 | Search metadata | PASS | 92 indexable sitemap URLs; reciprocal alternates/canonicals; quote/privacy noindex; review gallery noindex and excluded from sitemap |
 | Secrets and submissions excluded | PASS | No credentials, customer messages, private source or database in public output/Git |
 | Rollback | PREPARED | Private previous-release and holding-directory backups with manifests/timestamps; no rollback needed |
-| Google Search Console | PASS | Domain verified with DNS TXT; sitemap processed successfully with 90 discovered URLs; indexing/rankings not promised |
+| Google Search Console | PASS | Domain verified with DNS TXT; sitemap processed successfully with 92 discovered URLs; indexing/rankings not promised |
 | Analytics | NOT CONFIGURED | No tracking code added |
 | Editorial imagery | PASS | 48 unique page-purpose images; 39 new selections; localized alt text; no repeated photo between different page pairs |
 | Expanded enquiry topics | PASS | Nine paired detail pages; no unverified saleable models |
@@ -63,3 +63,11 @@ Browser checks are not WCAG certification or real-user performance evidence. Loc
 - PASS: Four complete homepage options with EN/FR previews, noindex metadata and a live screenshot gallery.
 - PASS: All 255 host files and 253 readable HTTPS hashes; sitemap contains 92 URLs.
 - PASS: Owner selected 01 Immersive; deployed to the English and French homepages with enquiry/comparison links and active enquiry UI checked.
+
+## Mobile UX release — November 16, 15:56 UTC
+
+- PASS: Clear bilingual browser/social titles, with the exact English homepage title preserved.
+- PASS: Six required equipment entries instead of nine; optional organization/phone/timing disclosure and optional model field; phone form appears before its photo.
+- PASS: Phone-friendly cards for model and EEBD/SCBA comparisons; desktop tables retained; values, sources and model-aware enquiry links checked.
+- PASS: Mobile utility bar stays on one line in both languages at 320 and 390 px without overlap.
+- PASS: Actual-host simulated delivery tests, all 253 readable file hashes and localized 404s. No real enquiry sent.

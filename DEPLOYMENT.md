@@ -5,10 +5,10 @@
 The complete bilingual enquiry website is live at **https://eebd.ca/** on WHC. The root redirects to `/en/`; `/fr/` is available through the language switch. The domain has its own document root, separate from existing websites.
 
 - Repository: `https://github.com/GrafovGroup/EEBD.git`, branch `codex/initial-build`.
-- Deployed runtime source: **`fae7ee2716ab42158ff897f2d3a6f0b6539f5cb8`**.
-- Activated November 16, 2026 at **15:31:28 UTC** (November 16, 10:31 Toronto).
+- Deployed runtime source: **`f2f3f1e4d0fe822de1706bf955c092706c25cf3c`**.
+- Activated November 16, 2026 at **15:56:56 UTC** (November 16, 10:56 Toronto).
 - Static package: **255 public files**, including two Apache configuration files; 253 readable files verified byte-for-byte over HTTPS.
-- Archive: `test-results/eebd-release-fae7ee2.tar.gz` (6,037,114 bytes); SHA-256 `8c260f2a6bd3f438fc11c17fd3a2fda5b33146cccadb52cb9bfc43ba27ae681e`.
+- Archive: `test-results/eebd-release-f2f3f1e.tar.gz` (6,061,740 bytes); SHA-256 `3fbe875fde8ab03c70b4fcab2b22d8126122cc59b9b792e306354ac50592f11d`.
 - `manifest.json` records every file hash, exact source commit and `sourceDirty:false`. Later documentation-only commits do not change the deployed runtime.
 
 Account identifiers, credentials, session URLs, host backup paths and submissions remain outside Git. Other hosted sites were not changed.
@@ -48,7 +48,7 @@ For the exact release, check out the deployed revision in a clean checkout, then
 
 The public endpoint is `https://formspree.io/f/xrpqpylv`; it is not an API key. Native AJAX in `public/assets/formspree.js` and `public/assets/enquiry.js` implements the review/edit flow.
 
-General contact sends name, email, optional phone and message. Equipment/training/service enquiries also send the active branch's relevant requirements, organization, location and timing. Payloads include a readable localized message, locale, whitelisted source path, privacy acknowledgement, correlation ID and `_gotcha` honeypot. Inactive branch fields, files and marketing subscription are excluded. No browser storage is used.
+General contact sends name, email, optional phone and message. Equipment/training/service enquiries also send the active branch's relevant requirements and location, plus optional organization, phone, model and timing. Payloads include a readable localized message, locale, whitelisted source path, privacy acknowledgement, correlation ID and `_gotcha` honeypot. Inactive branch fields, files and marketing subscription are excluded. No browser storage is used.
 
 Successful provider acknowledgement produces the language-specific confirmation and clears entries. Field errors, rate limits, verification requirements, uncertain responses and network failures preserve entries and explain the result. Concurrent clicks are prevented. There is no automatic retry or guarantee against duplicates after a manual retry. The correlation ID is not a provider receipt. Provider acceptance alone is not proof of inbox receipt.
 
@@ -72,6 +72,7 @@ Browser QA uses an externally installed Playwright/Chromium, not a site dependen
 
 ```sh
 node scripts/production-check.mjs
+node scripts/mobile-ux-check.mjs
 node scripts/formspree-browser-check.mjs
 EEBD_LIVE_URL=https://eebd.ca EEBD_TEST_SOURCE_ROUTE=cityHalifax node scripts/formspree-browser-check.mjs
 ```
@@ -123,3 +124,11 @@ The owner requested a generated image of EEBD use in place of the homepage boat.
 The owner selected option 01, Immersive, and explicitly requested live publication. Both language homepages now use its full-width hero without the review toolbar. The exact English title, footer, approved logo, remaining homepage sections and Formspree enquiry implementation are retained. The noindex gallery marks option 01 as live.
 
 Ten targeted responsive checks passed across both languages at five widths from 320 to 2560 px, including hero links, enabled enquiry UI and metadata. All 24 unit/integration tests, 112 preview documents, 4,941 internal references and the 48-photo uniqueness audit passed. The release activated at 15:31:28 UTC; all 255 host files passed manifest checks and all 253 readable files matched HTTPS hashes at 15:31:44 UTC. The preceding full release is retained privately for rollback. No new real enquiry was sent.
+
+## November 16 — clear titles and mobile buying flow
+
+Published `f2f3f1e4d0fe822de1706bf955c092706c25cf3c` at 15:56:56 UTC / 10:56 Toronto. Descriptive English/French search titles are independent of editorial headlines; the exact owner-requested English homepage title is preserved. Both comparison pages use stacked cards at widths up to 900 px and desktop tables above that. Model-specific enquiry links, all comparison values and sources are retained.
+
+Equipment enquiries now require contact name, email, location, application, quantity and privacy acknowledgement (six entries, formerly nine). Model, organization and timing are optional; organization/phone/timing are in an expandable section. The photo follows the form on mobile, and bulk purchasing details still open from fleet links. Review/edit and recoverable delivery states remain in place. The mobile utility tagline, Contact link and language switch stay on one line in English and French, tested down to 320 px.
+
+Validation: 25 unit/integration checks; 112 HTML documents and 4,959 internal references; 48 unique photos; 384 responsive page checks; 36 targeted layout/keyboard checks locally and again on the actual host. The live Formspree simulation passed six model-context checks, eight standard successes, two shortened enquiries, two bulk journeys, inactive-field exclusion, six failure states and double-click protection at 15:57:25 UTC. Provider responses were intercepted: zero real submissions. All 253 readable public files matched the clean release hashes over HTTPS at 15:57:20 UTC; localized 404s passed. The previous complete release is retained privately for rollback.

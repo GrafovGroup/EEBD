@@ -92,3 +92,11 @@ Published the comparison and document-checklist pages in both languages, blank C
 - Owner explicitly selected option 01, Immersive, for live publication. Set the homepage variant to 1 for both languages; the public homepages omit the review toolbar. Marked the selection in the existing noindex gallery.
 - Retained approved logo, exact English browser title and footer, the single homepage photo, all lower-page content and existing Formspree flows.
 - Published runtime `fae7ee2716ab42158ff897f2d3a6f0b6539f5cb8` at 15:31:28 UTC after 24 unit/integration checks, 112-document/4,941-reference static checks, the 48-photo audit and 10 targeted responsive checks. All 253 readable public files matched release hashes over HTTPS. Previous runtime retained for rollback; no supplier messages or real test enquiries sent.
+
+## November 16 — clearer titles, mobile enquiries and comparisons
+
+- Owner authorized implementation and publication of clear titles, a shorter mobile enquiry flow and mobile-friendly comparisons, then added a one-line mobile top-bar requirement.
+- Search titles now describe each bilingual page independently of editorial headlines. The exact English homepage title, approved Immersive layout and owner footer are preserved.
+- Equipment forms require six entries instead of nine. Model/company/timing are optional; company/phone/timing are expandable. Photos follow the form on mobile. Fleet purchasing details and review/edit/delivery handling are retained.
+- Both comparison pages use cards through 900 px and desktop tables above it, sharing their existing content sources. The utility tagline, Contact link and language controls fit on one line on tested phones.
+- Runtime `f2f3f1e4d0fe822de1706bf955c092706c25cf3c` activated at 15:56:56 UTC after 25 unit checks, 384 responsive checks, 36 targeted layout checks, static checks and simulated Formspree flows. Live checks confirmed all 253 readable file hashes and repeated the mobile/enquiry tests. No supplier messages or real test enquiries were sent. The previous runtime remains backed up privately.
