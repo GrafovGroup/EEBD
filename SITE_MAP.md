@@ -49,9 +49,9 @@ Published at https://eebd.ca/: **84 public pages across 42 paired purposes**. Th
 
 The root redirects to /en/ with HTTP 302. Both language choices are visible and equivalent pages link reciprocally. Unknown URLs and direct error-page routes return localized HTTP 404s.
 
-Nine detailed enquiry topics and fourteen city guides extend the core pages. Geographic pages contain sourced local context and original procurement guidance; they do not represent local branches or confirmed supply. Seven generated conceptual images are assigned by context.
+Nine detailed enquiry topics and fourteen city guides extend the core pages. Geographic pages contain sourced local context and original procurement guidance; they do not represent local branches or confirmed supply. Each bilingual page purpose now has a unique image; see the current additions below.
 
-Production excludes brand-review utilities. Saleable model pages are not generated without model-specific commercial and technical evidence. The production sitemap has 80 canonical URLs, 80 image references and 160 language links; development previews remain noindex with an empty sitemap. Google Search Console has processed the production sitemap successfully.
+Production excludes brand-review utilities. Saleable model pages are not generated without model-specific commercial and technical evidence. The production sitemap now has 92 canonical URLs, 92 image references and 184 language links; development previews remain noindex with an empty sitemap. Google Search Console has processed the production sitemap successfully.
 
 ## Model reference additions — November 16, 2026
 
@@ -62,3 +62,13 @@ Production excludes brand-review utilities. Saleable model pages are not generat
 | Dräger Saver CF10 N | `/en/equipment/draeger-saver-cf10-n/` | `/fr/equipement/draeger-saver-cf10-n/` |
 
 These six indexable reference pages bring the website to 90 public content/form pages and 86 sitemap URLs. They are linked from equipment and relevant category pages, with reciprocal language routes and model context in quotation enquiries.
+
+## Current procurement and comparison routes
+
+| Purpose | English | French |
+| --- | --- | --- |
+| Product model comparison | `/en/equipment/compare/` | `/fr/equipement/comparer/` |
+| Procurement checklist | `/en/resources/procurement-checklist/` | `/fr/ressources/liste-verification-approvisionnement/` |
+| EEBD vs. SCBA | `/en/resources/eebd-vs-scba/` | `/fr/ressources/eebd-vs-ari/` |
+
+Current total: 48 paired purposes, 96 public content/form pages and 92 sitemap URLs. Quote and privacy pages remain noindex. The separate `/homepage-options/` gallery and its eight EN/FR design previews are noindex and outside the route registry/sitemap. They do not replace the selected homepage.

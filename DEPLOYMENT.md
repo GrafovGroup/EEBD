@@ -5,10 +5,10 @@
 The complete bilingual enquiry website is live at **https://eebd.ca/** on WHC. The root redirects to `/en/`; `/fr/` is available through the language switch. The domain has its own document root, separate from existing websites.
 
 - Repository: `https://github.com/GrafovGroup/EEBD.git`, branch `codex/initial-build`.
-- Deployed runtime source: **`2e1f4494be14b2fae08aaf89b14ba50c65c978f3`**.
-- Activated November 16, 2026 at **07:14:32 UTC** (November 16, 02:14 Toronto).
-- Static package: **162 public files**, including two Apache configuration files; 160 readable files verified byte-for-byte over HTTPS.
-- Archive: `test-results/eebd-release-2e1f449.tar.gz` (1,498,094 bytes); SHA-256 `ef180aedac576e492fec4ba0b530866ffc1fb11b2314722ec280f2912c0d0023`.
+- Deployed runtime source: **`58722ad821b2393af9aaeb576c17ab3b421d1a51`**.
+- Activated November 16, 2026 at **07:41:53 UTC** (November 16, 02:41 Toronto).
+- Static package: **255 public files**, including two Apache configuration files; 253 readable files verified byte-for-byte over HTTPS.
+- Archive: `test-results/eebd-release-58722ad.tar.gz` (6,037,668 bytes); SHA-256 `b3364f106377bd08cb68404352a3923981589f462ff4eb2959a187cdec183386`.
 - `manifest.json` records every file hash, exact source commit and `sourceDirty:false`. Later documentation-only commits do not change the deployed runtime.
 
 Account identifiers, credentials, session URLs, host backup paths and submissions remain outside Git. Other hosted sites were not changed.
@@ -25,7 +25,7 @@ Live release checks:
 - `/` returns 302 to `/en/`; public pages return 200.
 - Missing URLs and direct error-page routes return HTTP 404 with the appropriate English/French page. Dedicated error assets avoid recursive error dispatch on WHC LiteSpeed; French directory configuration supplies the localized handler.
 - Security headers include nosniff, strict-origin referrer policy and a CSP allowing form AJAX only to Formspree. The preview's blanket noindex header is absent.
-- The sitemap contains 90 indexable URLs. Contact and quote forms work without React, external scripts, PHP or a Node service on WHC.
+- The sitemap contains 92 indexable URLs. Contact and quote forms work without React, external scripts, PHP or a Node service on WHC.
 - ACME/DCV directories and cgi-bin were preserved. Analytics is not configured. Google Search Console is verified and the sitemap submission processed successfully.
 
 ## Reproducible commands
@@ -40,7 +40,7 @@ node --test tests/*.test.mjs
 node scripts/package-whc.mjs --production
 ```
 
-Local preview runs on `127.0.0.1:4173`, builds `dist/` and watches source/public changes. It sends no enquiries; its CSP prohibits outgoing connections. Brand review utilities exist only in preview. Production readiness is checked against the actual enquiry-site scope. Saleable product records have separate evidence filters and remain empty.
+Local preview runs on `127.0.0.1:4173`, builds `dist/` and watches source/public changes. It sends no enquiries; its CSP prohibits outgoing connections. Brand review utilities exist only in preview. The new four-option homepage review gallery is published at `/homepage-options/` with noindex metadata and is excluded from the sitemap. Production readiness is checked against the actual enquiry-site scope. Saleable product records have separate evidence filters and remain empty.
 
 For the exact release, check out the deployed revision in a clean checkout, then run the production package command. Upload only the contents of `test-results/whc-production/web-root/` into the EEBD document root. Do not upload `manifest.json`, source, test reports or account records. Node is required locally only. Preview packages deny all public access until authenticated staging is configured.
 

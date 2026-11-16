@@ -79,3 +79,10 @@ The owner confirmed no existing manufacturer photo permission. A public-domain C
 The owner authorized implementation and live publication of the reviewed improvements, including model comparison, fleet procurement content and a bulk enquiry form. Tender documents are evidence for useful purchasing questions, not instructions to bid or contact third parties. No open-opportunity deadline, tender volume, accepted-equivalent status or DND supplier relationship is advertised.
 
 Published the comparison and document-checklist pages in both languages, blank CSV purchasing lists, optional bulk equipment fields, prominent model links, deeper fleet/coastal content and educational FAQs. Retained the existing verified Formspree endpoint. Supplier outreach remains deferred following the owner’s “I will do it later” response; no supplier email has been sent.
+
+## November 16 — unique page imagery and homepage review
+
+- Owner requested 5–7 additional EEBD scenes, an EEBD-versus-SCBA comparison, 3–5 homepage versions and removal of public AI-generation wording. After being told the page count, the owner explicitly selected a separate photo for every English/French page pair.
+- Published 39 new selected images; with nine retained unique images, all 48 page purposes now have individual photography. Only paired languages share each editorial asset. Retained internal prompts/provenance and CDC/NIOSH attribution. Did not use unlicensed manufacturer photographs.
+- Published sourced EN/FR EEBD-versus-SCBA guides and four full homepage alternatives in a noindex review gallery. The selected homepage remains unchanged pending the owner’s design choice.
+- Published runtime `58722ad821b2393af9aaeb576c17ab3b421d1a51` at 07:41:53 UTC, with rollback backup, 255 host-file checks and 253 matching public HTTPS hashes.
